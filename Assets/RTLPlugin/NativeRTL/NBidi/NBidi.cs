@@ -170,7 +170,7 @@ namespace NBidi
                     _text = value;
 
                     NormalizeText();
-                    
+
                     RecalculateParagraphEmbeddingLevel();
                     RecalculateCharactersEmbeddingLevels();
 
@@ -248,6 +248,8 @@ namespace NBidi
             // set the paragraph embedding level to one; otherwise, set it to zero.
             public void RecalculateParagraphEmbeddingLevel()
             {
+                embedding_level = 1;
+
                 foreach (char c in _text)
                 {
                     BidiCharacterType cType = UnicodeCharacterDataResolver.GetBidiCharacterType(c);
@@ -576,6 +578,8 @@ namespace NBidi
                 //     Start-of-level-run (sor) and end-of-level-run (eor) are used at level run boundaries.
                 // N2. Any remaining neutrals take the embedding direction.
 
+                //level = 1;
+
                 for (int i = start; i < limit; ++i)
                 {
                     BidiCharacterType t = _text_data[i]._ct;
@@ -583,7 +587,7 @@ namespace NBidi
                     {
                         // find bounds of run of neutrals
                         int runstart = i;
-                        int runlimit = FindRunLimit(runstart, limit, new BidiCharacterType[] { BidiCharacterType.B, BidiCharacterType.S, BidiCharacterType.WS, BidiCharacterType.ON });
+                        int runlimit = FindRunLimit(runstart, limit, new[] { BidiCharacterType.B, BidiCharacterType.S, BidiCharacterType.WS, BidiCharacterType.ON });
 
                         // determine effective types at ends of run
                         BidiCharacterType leadingType;
@@ -594,6 +598,7 @@ namespace NBidi
                         else
                         {
                             leadingType = _text_data[runstart - 1]._ct;
+
                             if (leadingType == BidiCharacterType.AN || leadingType == BidiCharacterType.EN)
                                 leadingType = BidiCharacterType.R;
                         }
@@ -992,8 +997,8 @@ namespace NBidi
             {
                 StringBuilder target = new StringBuilder();
                 StringBuilder buffer = new StringBuilder();
-                
-                _hasArabic =false;
+
+                _hasArabic = false;
                 _hasNSMs = false;
 
                 for (int i = 0; i < _text.Length; ++i)
@@ -1038,6 +1043,7 @@ namespace NBidi
             /// <returns></returns>
             private static BidiCharacterType TypeForLevel(int level)
             {
+                // is odd?
                 return ((level & 1) == 0) ? BidiCharacterType.L : BidiCharacterType.R;
             }
 

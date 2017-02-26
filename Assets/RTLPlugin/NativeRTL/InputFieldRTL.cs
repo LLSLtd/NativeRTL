@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
+using NBidi;
 using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
@@ -27,7 +28,9 @@ namespace UnityEngine.UI
 
         protected CanvasRenderer CachedCaretRenderer;
 
-        [SerializeField] protected string LogicalText;
+        [Multiline(30)]
+        [SerializeField]
+        protected string LogicalText;
 
         private RectTransform m_caretRectTrans;
         private readonly float m_CaretWidth = 1.0f;
@@ -35,11 +38,15 @@ namespace UnityEngine.UI
         protected UIVertex[] m_CursorVerts = null;
         private Mesh m_mesh;
 
-        [SerializeField] private NBidi.NBidi.Paragraph[] m_paragraphs;
+        [SerializeField]
+        private NBidi.NBidi.Paragraph[] m_paragraphs;
 
-        [SerializeField] protected Text TextField;
+        [SerializeField]
+        protected Text TextField;
 
-        [SerializeField] protected string VisualText;
+        [Multiline(30)]
+        [SerializeField]
+        protected string VisualText;
 
         [SerializeField]
         private int m_logicalCaretPosition;
@@ -165,12 +172,14 @@ namespace UnityEngine.UI
             return TextField.font.HasCharacter(c);
         }
 
-        private List<int> CalculateLines(string text)
+        private List<int> CalculateLineEndings(string text)
         {
             var lineEndings = new List<int>();
 
             var settings =
                 TextField.GetGenerationSettings(TextField.rectTransform.rect.size);
+
+            settings.horizontalOverflow = HorizontalWrapMode.Wrap;
 
             CachedTextGenerator.Populate(text, settings);
 
@@ -188,6 +197,9 @@ namespace UnityEngine.UI
 
         private void UpdateLabel()
         {
+            // Enforce horizontal overflow
+            TextField.horizontalOverflow = HorizontalWrapMode.Overflow;
+
             var c = m_processingEvent.character;
 
             if (IsValidChar(c))
@@ -195,7 +207,7 @@ namespace UnityEngine.UI
                 AppendChar(c);
             }
 
-            m_lines = CalculateLines(LogicalText);
+            m_lines = CalculateLineEndings(LogicalText);
             var logicalWrapperSb = new StringBuilder();
 
             if (m_lines.Count == 1)
@@ -209,7 +221,7 @@ namespace UnityEngine.UI
                 {
                     var lineEndingIdx = m_lines[index];
 
-                    var stringToAppend = LogicalText.Substring(start, lineEndingIdx - start + 1);
+                    var stringToAppend = LogicalText.Substring(start, lineEndingIdx - start + 1).Replace("\n", "");
 
                     // stringToAppend = stringToAppend.TrimEnd(' ');
 
@@ -220,9 +232,7 @@ namespace UnityEngine.UI
                     }
 
                     logicalWrapperSb.Append(stringToAppend);
-
-                    if (LogicalText[lineEndingIdx] != '\n')
-                        logicalWrapperSb.Append('\n');
+                    logicalWrapperSb.Append('\n');
 
                     start = lineEndingIdx + 1;
                 }
@@ -325,6 +335,9 @@ namespace UnityEngine.UI
 
             int logicalCharacterLine = DetermineCharacterLine(logicalCharacterPosition, gen);
 
+            if (m_paragraphs.Length <= logicalCharacterLine)
+                return null;
+
             return m_paragraphs[logicalCharacterLine];
         }
 
@@ -341,21 +354,38 @@ namespace UnityEngine.UI
             int adjustedPos = LogicalCaretPosition;
 
             TextGenerator gen = CachedTextGenerator;
+
             // TODO: optimize this
             int logicalCharacterLine = DetermineCharacterLine(adjustedPos, gen);
             var lineStartCharLogical = gen.lines[logicalCharacterLine].startCharIdx;
 
+            BidiCharacterType charType = BidiCharacterType.R;
+
             if (m_paragraphs.Length != 0)
             {
                 var adjustedLogicalPosition = Mathf.Max(0, LogicalCaretPosition);
-                var bidiIndices = GetParagraph(gen, adjustedLogicalPosition).BidiIndexes;
+                var paragraph = GetParagraph(gen, adjustedLogicalPosition);
+                if (paragraph == null)
+                {
+                    adjustedPos = lineStartCharLogical;
+                }
+                else
+                {
+                    if ((paragraph.embedding_level & 1) != 0)
+                    {
+                        adjustedPos = lineStartCharLogical;
+                    }
+                    else
+                    {
+                        var bidiIndices = paragraph.BidiIndexes;
+                        var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical - 1);
+                        var visualParagraphCharIdx = bidiIndices.Length > 0 ? bidiIndices[paragraphCharIdx] : 0;
 
-                var paragraphCharIdx = adjustedLogicalPosition - lineStartCharLogical - 1;
+                        charType = paragraph.TextData[paragraphCharIdx]._ct;
 
-                var visualParagraphCharIdx = bidiIndices[paragraphCharIdx];
-
-                // Paragraphs start at char count zero
-                adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
+                        adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
+                    }
+                }
             }
 
             if (gen == null)
@@ -369,7 +399,8 @@ namespace UnityEngine.UI
             // Calculate startPosition
             if (adjustedPos < gen.characters.Count)
             {
-                var cursorChar = gen.characters[adjustedPos];
+                UICharInfo cursorChar = gen.characters[adjustedPos];
+
                 startPosition.x = cursorChar.cursorPos.x;
             }
             startPosition.x /= TextField.pixelsPerUnit;
@@ -407,7 +438,7 @@ namespace UnityEngine.UI
             //    screenHeight = Display.displays[displayIndex].renderingHeight;
 
             startPosition.y = screenHeight - startPosition.y;
-          //  Input.compositionCursorPos = startPosition;
+            //  Input.compositionCursorPos = startPosition;
         }
 
         /// <summary>
