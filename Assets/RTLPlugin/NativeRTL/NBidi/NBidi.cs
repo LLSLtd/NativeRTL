@@ -594,7 +594,7 @@ namespace NBidi
                         BidiCharacterType trailingType;
 
                         if (runstart == start)
-                            leadingType = sor;
+                            leadingType = BidiCharacterType.R;
                         else
                         {
                             leadingType = _text_data[runstart - 1]._ct;

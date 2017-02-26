@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using NBidi;
 using UnityEngine.EventSystems;
@@ -110,6 +111,60 @@ namespace UnityEngine.UI
 
         public void OnPointerClick(PointerEventData eventData)
         {
+        }
+
+        public override void OnPointerDown(PointerEventData eventData)
+        {
+            //            if (!MayDrag(eventData))
+            //                return;
+
+            EventSystem.current.SetSelectedGameObject(gameObject, eventData);
+
+            //            bool hadFocusBefore = m_AllowInput;
+            base.OnPointerDown(eventData);
+
+            //            if (!InPlaceEditing())
+            //            {
+            //                if (m_Keyboard == null || !m_Keyboard.active)
+            //                {
+            //                    OnSelect(eventData);
+            //                    return;
+            //                }
+            //            }
+
+            // Only set caret position if we didn't just get focus now.
+            // Otherwise it will overwrite the select all on focus.
+            //            if (hadFocusBefore)
+            //            {
+            Vector2 localMousePos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(TextField.rectTransform,
+                eventData.position, eventData.pressEventCamera, out localMousePos);
+
+            int lineNum;
+            var visualCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
+
+            var p = GetParagraph(CachedTextGenerator, visualCaretPosition);
+
+            Debug.Log("Paragraph data: " + p.Text + ", Visual caret pos: " + visualCaretPosition);
+            List<int> indices = p.BidiIndexes.ToList();
+            var startCharIdx = CachedTextGenerator.lines[lineNum].startCharIdx;
+            var logicalPos = indices.IndexOf(visualCaretPosition - startCharIdx);
+            Debug.Log("logical pos: " + logicalPos);
+
+            if (logicalPos == -1)
+            {
+                // handle
+            }
+            else
+            {
+                LogicalCaretPosition = logicalPos + startCharIdx;
+                Debug.Log("Caret set to " + LogicalCaretPosition);
+            }
+
+            // + m_DrawStart;
+
+            UpdateLabel();
+            eventData.Use();
         }
 
         public void OnSubmit(BaseEventData eventData)
@@ -353,12 +408,14 @@ namespace UnityEngine.UI
 
             int adjustedPos = LogicalCaretPosition;
 
+            Debug.Log("Drawing caret at: " + adjustedPos);
+
             TextGenerator gen = CachedTextGenerator;
 
             // TODO: optimize this
             int logicalCharacterLine = DetermineCharacterLine(adjustedPos, gen);
             var lineStartCharLogical = gen.lines[logicalCharacterLine].startCharIdx;
-
+            var lineEnd = GetLineEndPosition(gen, logicalCharacterLine);
             BidiCharacterType charType = BidiCharacterType.R;
 
             if (m_paragraphs.Length != 0)
@@ -387,9 +444,6 @@ namespace UnityEngine.UI
                     }
                 }
             }
-
-            if (gen == null)
-                return;
 
             if (gen.lineCount == 0)
                 return;
@@ -512,6 +566,86 @@ namespace UnityEngine.UI
                 m_caretRectTrans.sizeDelta = TextField.rectTransform.sizeDelta;
                 m_caretRectTrans.pivot = TextField.rectTransform.pivot;
             }
+        }
+
+        private int GetUnclampedCharacterLineFromPosition(Vector2 pos, TextGenerator generator)
+        {
+            //            if (!multiLine)
+            //                return 0;
+
+            // transform y to local scale
+            float y = pos.y * TextField.pixelsPerUnit;
+            float lastBottomY = 0.0f;
+
+            for (int i = 0; i < generator.lineCount; ++i)
+            {
+                float topY = generator.lines[i].topY;
+                float bottomY = topY - generator.lines[i].height;
+
+                // pos is somewhere in the leading above this line
+                if (y > topY)
+                {
+                    // determine which line we're closer to
+                    float leading = topY - lastBottomY;
+                    if (y > topY - 0.5f * leading)
+                        return i - 1;
+                    else
+                        return i;
+                }
+
+                if (y > bottomY)
+                    return i;
+
+                lastBottomY = bottomY;
+            }
+
+            // Position is after last line.
+            return generator.lineCount;
+        }
+        private static int GetLineEndPosition(TextGenerator gen, int line)
+        {
+            line = Mathf.Max(line, 0);
+            if (line + 1 < gen.lines.Count)
+                return gen.lines[line + 1].startCharIdx - 1;
+            return gen.characterCountVisible;
+        }
+
+        protected int GetCharacterIndexFromPosition(Vector2 pos, out int lineNum)
+        {
+            lineNum = -1;
+
+            TextGenerator gen = CachedTextGenerator;
+
+            if (gen.lineCount == 0)
+                return 0;
+
+            int line = GetUnclampedCharacterLineFromPosition(pos, gen);
+
+            lineNum = line;
+
+            if (line < 0)
+                return 0;
+            if (line >= gen.lineCount)
+                return gen.characterCountVisible;
+
+            int startCharIndex = gen.lines[line].startCharIdx;
+            int endCharIndex = GetLineEndPosition(gen, line);
+
+            for (int i = startCharIndex; i < endCharIndex; i++)
+            {
+                if (i >= gen.characterCountVisible)
+                    break;
+
+                UICharInfo charInfo = gen.characters[i];
+                Vector2 charPos = charInfo.cursorPos / TextField.pixelsPerUnit;
+
+                float distToCharStart = pos.x - charPos.x;
+                float distToCharEnd = charPos.x + (charInfo.charWidth / TextField.pixelsPerUnit) - pos.x;
+                if (distToCharStart < distToCharEnd)
+                    return i;
+            }
+
+            return endCharIndex;
         }
 
         private void MarkGeometryAsDirty()
