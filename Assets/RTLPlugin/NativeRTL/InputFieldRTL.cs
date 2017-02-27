@@ -143,6 +143,8 @@ namespace UnityEngine.UI
             int lineNum;
             var visualCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
 
+            Debug.Log("lineNum: " + lineNum);
+
             var p = GetParagraph(CachedTextGenerator, visualCaretPosition);
 
             Debug.Log("Paragraph data: " + p.Text + ", Visual caret pos: " + visualCaretPosition);
@@ -422,27 +424,13 @@ namespace UnityEngine.UI
             {
                 var adjustedLogicalPosition = Mathf.Max(0, LogicalCaretPosition);
                 var paragraph = GetParagraph(gen, adjustedLogicalPosition);
-                if (paragraph == null)
-                {
-                    adjustedPos = lineStartCharLogical;
-                }
-                else
-                {
-                    if ((paragraph.embedding_level & 1) != 0)
-                    {
-                        adjustedPos = lineStartCharLogical;
-                    }
-                    else
-                    {
-                        var bidiIndices = paragraph.BidiIndexes;
-                        var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical - 1);
-                        var visualParagraphCharIdx = bidiIndices.Length > 0 ? bidiIndices[paragraphCharIdx] : 0;
+                var bidiIndices = paragraph.BidiIndexes;
+                var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical);
+                var visualParagraphCharIdx = paragraphCharIdx < bidiIndices.Length ? bidiIndices[paragraphCharIdx] : 0;
 
-                        charType = paragraph.TextData[paragraphCharIdx]._ct;
+                charType = paragraph.TextData[paragraphCharIdx - 1]._ct;
 
-                        adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
-                    }
-                }
+                adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
             }
 
             if (gen.lineCount == 0)
