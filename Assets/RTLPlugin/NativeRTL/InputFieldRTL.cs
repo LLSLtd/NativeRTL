@@ -115,27 +115,10 @@ namespace UnityEngine.UI
 
         public override void OnPointerDown(PointerEventData eventData)
         {
-            //            if (!MayDrag(eventData))
-            //                return;
+            base.OnPointerDown(eventData);
 
             EventSystem.current.SetSelectedGameObject(gameObject, eventData);
 
-            //            bool hadFocusBefore = m_AllowInput;
-            base.OnPointerDown(eventData);
-
-            //            if (!InPlaceEditing())
-            //            {
-            //                if (m_Keyboard == null || !m_Keyboard.active)
-            //                {
-            //                    OnSelect(eventData);
-            //                    return;
-            //                }
-            //            }
-
-            // Only set caret position if we didn't just get focus now.
-            // Otherwise it will overwrite the select all on focus.
-            //            if (hadFocusBefore)
-            //            {
             Vector2 localMousePos;
             RectTransformUtility.ScreenPointToLocalPointInRectangle(TextField.rectTransform,
                 eventData.position, eventData.pressEventCamera, out localMousePos);
@@ -143,28 +126,20 @@ namespace UnityEngine.UI
             int lineNum;
             var visualCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
 
-            Debug.Log("lineNum: " + lineNum);
-
             var p = GetParagraph(CachedTextGenerator, visualCaretPosition);
 
-            Debug.Log("Paragraph data: " + p.Text + ", Visual caret pos: " + visualCaretPosition);
-            List<int> indices = p.BidiIndexes.ToList();
-            var startCharIdx = CachedTextGenerator.lines[lineNum].startCharIdx;
-            var logicalPos = indices.IndexOf(visualCaretPosition - startCharIdx);
-            Debug.Log("logical pos: " + logicalPos);
-
-            if (logicalPos == -1)
+            if (p == null)
             {
-                // handle
+                LogicalCaretPosition = 0;
             }
             else
             {
+                List<int> indices = p.BidiIndexes.ToList();
+                var startCharIdx = CachedTextGenerator.lines[lineNum].startCharIdx;
+                var logicalPos = Mathf.Max(indices[visualCaretPosition - startCharIdx], startCharIdx);
+
                 LogicalCaretPosition = logicalPos + startCharIdx;
-                Debug.Log("Caret set to " + LogicalCaretPosition);
             }
-
-            // + m_DrawStart;
-
             UpdateLabel();
             eventData.Use();
         }
@@ -207,13 +182,15 @@ namespace UnityEngine.UI
         {
             base.OnRectTransformDimensionsChange();
 
-            Debug.Log("Rect dimension changed, updating label");
+            // Debug.Log("Rect dimension changed, updating label");
+
             UpdateLabel();
         }
 
         private EditState KeyPressed(Event processingEvent)
         {
-            Debug.Log("KeyPressed: " + processingEvent.character);
+            // Debug.Log("KeyPressed: " + processingEvent.character);
+
             return EditState.Continue;
         }
 
@@ -307,10 +284,38 @@ namespace UnityEngine.UI
             UpdateGeometry();
         }
 
+        private string ReplaceCharAtIdx(string theString, char newChar, int idx)
+        {
+            StringBuilder sb = new StringBuilder(theString);
+            sb[idx] = newChar;
+            theString = sb.ToString();
+
+            return theString;
+        }
+
         private void AppendChar(char c)
         {
-            LogicalCaretPosition++;
-            LogicalText += c;
+            var paragraph = GetParagraph(CachedTextGenerator, LogicalCaretPosition);
+            if (paragraph == null)
+            {
+                // we're on a new-line
+
+                LogicalText = LogicalText.Insert(LogicalCaretPosition, c.ToString());
+                LogicalCaretPosition++;
+            }
+            else
+            {
+                var line = DetermineCharacterLine(LogicalCaretPosition, CachedTextGenerator);
+                var lineStartCharLogical = CachedTextGenerator.lines[line].startCharIdx;
+                var bidiIndices = paragraph.BidiIndexes;
+                var paragraphCharIdx = Mathf.Max(0, LogicalCaretPosition - lineStartCharLogical);
+
+                var charType = paragraph.TextData[bidiIndices[paragraphCharIdx - 1]]._ct;
+
+                LogicalText = LogicalText.Insert(LogicalCaretPosition, c.ToString());
+
+                LogicalCaretPosition++;
+            }
         }
 
         protected void UpdateGeometry()
@@ -345,12 +350,6 @@ namespace UnityEngine.UI
         {
             using (var helper = new VertexHelper())
             {
-                //                if (!isFocused)
-                //                {
-                //                    helper.FillMesh(vbo);
-                //                    return;
-                //                }
-
                 var inputRect = TextField.rectTransform.rect;
                 var extents = inputRect.size;
 
@@ -370,10 +369,7 @@ namespace UnityEngine.UI
                 roundingOffset.x = roundingOffset.x - Mathf.Floor(0.5f + roundingOffset.x);
                 roundingOffset.y = roundingOffset.y - Mathf.Floor(0.5f + roundingOffset.y);
 
-                //                if (!hasSelection)
                 GenerateCaret(helper, roundingOffset);
-                //                else
-                //                    GenerateHightlight(helper, roundingOffset);
 
                 helper.FillMesh(vbo);
             }
@@ -400,17 +396,12 @@ namespace UnityEngine.UI
 
         private void GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)
         {
-            //            if (!m_CaretVisible)
-            //                return;
-
             if (m_CursorVerts == null)
                 CreateCursorVerts();
 
             var width = m_CaretWidth;
 
             int adjustedPos = LogicalCaretPosition;
-
-            Debug.Log("Drawing caret at: " + adjustedPos);
 
             TextGenerator gen = CachedTextGenerator;
 
@@ -424,19 +415,31 @@ namespace UnityEngine.UI
             {
                 var adjustedLogicalPosition = Mathf.Max(0, LogicalCaretPosition);
                 var paragraph = GetParagraph(gen, adjustedLogicalPosition);
-                var bidiIndices = paragraph.BidiIndexes;
-                var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical);
-                var visualParagraphCharIdx = paragraphCharIdx < bidiIndices.Length ? bidiIndices[paragraphCharIdx] : 0;
 
-                charType = paragraph.TextData[paragraphCharIdx - 1]._ct;
+                if (paragraph == null)
+                {
+                    adjustedPos = lineStartCharLogical;
+                }
+                else
+                {
+                    var bidiIndices = paragraph.BidiIndexes;
+                    var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical);
 
-                adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
+                    var visualParagraphCharIdx = paragraphCharIdx < bidiIndices.Length ? bidiIndices[paragraphCharIdx] : 0;
+
+                    //charType = paragraph.TextData[paragraphCharIdx]._ct;
+
+                    adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
+                }
             }
 
             if (gen.lineCount == 0)
                 return;
 
             var startPosition = Vector2.zero;
+
+            // // Debug.Log("Drawing caret at: " + adjustedPos);
+
 
             // Calculate startPosition
             if (adjustedPos < gen.characters.Count)
