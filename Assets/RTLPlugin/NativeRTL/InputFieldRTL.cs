@@ -126,20 +126,37 @@ namespace UnityEngine.UI
             int lineNum;
             var visualCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
 
-            var p = GetParagraph(CachedTextGenerator, visualCaretPosition);
+            Debug.Log("Character index after press: " + visualCaretPosition);
 
-            if (p == null)
+            var paragraph = GetParagraph(CachedTextGenerator, visualCaretPosition);
+
+            var lineStartCharLogical = CachedTextGenerator.lines[lineNum].startCharIdx;
+            var lineEndPosition = GetLineEndPosition(CachedTextGenerator, lineNum);
+
+            if (visualCaretPosition == lineEndPosition)
+            {
+                Debug.Log("visual == lineEnd");
+                // TODO
+                //LogicalCaretPosition = paragraph.BidiIndexes[lineStartCharLogical];
+            }
+            else if (paragraph == null)
             {
                 LogicalCaretPosition = 0;
             }
             else
             {
-                List<int> indices = p.BidiIndexes.ToList();
-                var startCharIdx = CachedTextGenerator.lines[lineNum].startCharIdx;
-                var logicalPos = Mathf.Max(indices[visualCaretPosition - startCharIdx], startCharIdx);
+                var bidiIndices = paragraph.BidiIndexes;
+                var reverseIndex = bidiIndices[visualCaretPosition - lineStartCharLogical];
 
-                LogicalCaretPosition = logicalPos + startCharIdx;
+                var paragraphCharIdx = reverseIndex < 0
+                    ? lineEndPosition
+                    : reverseIndex;
+
+                Debug.Log("paragraphcharidx: " + paragraphCharIdx);
+
+                LogicalCaretPosition = paragraphCharIdx + lineStartCharLogical;
             }
+
             UpdateLabel();
             eventData.Use();
         }
@@ -191,6 +208,17 @@ namespace UnityEngine.UI
         {
             // Debug.Log("KeyPressed: " + processingEvent.character);
 
+            switch (processingEvent.keyCode)
+            {
+                case KeyCode.RightArrow:
+                    LogicalCaretPosition = Mathf.Max(0, --LogicalCaretPosition);
+                    break;
+
+                case KeyCode.LeftArrow:
+                    LogicalCaretPosition = Mathf.Max(0, ++LogicalCaretPosition);
+                    break;
+            }
+
             return EditState.Continue;
         }
 
@@ -210,12 +238,7 @@ namespace UnityEngine.UI
         {
             var lineEndings = new List<int>();
 
-            var settings =
-                TextField.GetGenerationSettings(TextField.rectTransform.rect.size);
-
-            settings.horizontalOverflow = HorizontalWrapMode.Wrap;
-
-            CachedTextGenerator.Populate(text, settings);
+            PopulateCachedTextGenerator(text);
 
             var linesCount = CachedTextGenerator.lines.Count;
             for (var index = 0; index < linesCount; index++)
@@ -227,6 +250,16 @@ namespace UnityEngine.UI
             }
 
             return lineEndings;
+        }
+
+        private void PopulateCachedTextGenerator(string text)
+        {
+            var settings =
+                TextField.GetGenerationSettings(TextField.rectTransform.rect.size);
+
+            settings.horizontalOverflow = HorizontalWrapMode.Wrap;
+
+            CachedTextGenerator.Populate(text, settings);
         }
 
         private void UpdateLabel()
@@ -280,6 +313,8 @@ namespace UnityEngine.UI
             VisualText = logicalToVisual;
             TextField.text = logicalToVisual;
 
+            PopulateCachedTextGenerator(logicalToVisual);
+
             MarkGeometryAsDirty();
             UpdateGeometry();
         }
@@ -293,29 +328,39 @@ namespace UnityEngine.UI
             return theString;
         }
 
-        private void AppendChar(char c)
+        BidiCharacterType GetCharacterType(int logicalPos)
         {
-            var paragraph = GetParagraph(CachedTextGenerator, LogicalCaretPosition);
+            Debug.Log("Determining char type for " + logicalPos);
+
+            var lineNum = DetermineCharacterLine(logicalPos, CachedTextGenerator);
+            var uiLineInfo = CachedTextGenerator.lines[lineNum];
+            var paragraph = GetParagraph(CachedTextGenerator, logicalPos);
+
             if (paragraph == null)
             {
-                // we're on a new-line
+                return BidiCharacterType.L;
+            }
 
-                LogicalText = LogicalText.Insert(LogicalCaretPosition, c.ToString());
-                LogicalCaretPosition++;
+            return paragraph.TextData[paragraph.BidiIndexes[logicalPos - 1]]._ct;
+        }
+
+        private void AppendChar(char c)
+        {
+            var startIndex = Mathf.Min(LogicalCaretPosition, LogicalText.Length);
+
+            var bidiCharacterType = GetCharacterType(startIndex);
+            Debug.Log("BiDi char type: " + bidiCharacterType);
+
+            if (bidiCharacterType == BidiCharacterType.R)
+            {
+                LogicalText = LogicalText.Insert(Mathf.Min(LogicalText.Length, startIndex + 1), c.ToString());
             }
             else
             {
-                var line = DetermineCharacterLine(LogicalCaretPosition, CachedTextGenerator);
-                var lineStartCharLogical = CachedTextGenerator.lines[line].startCharIdx;
-                var bidiIndices = paragraph.BidiIndexes;
-                var paragraphCharIdx = Mathf.Max(0, LogicalCaretPosition - lineStartCharLogical);
-
-                var charType = paragraph.TextData[bidiIndices[paragraphCharIdx - 1]]._ct;
-
-                LogicalText = LogicalText.Insert(LogicalCaretPosition, c.ToString());
-
-                LogicalCaretPosition++;
+                LogicalText = LogicalText.Insert(startIndex, c.ToString());
             }
+            
+            LogicalCaretPosition++;
         }
 
         protected void UpdateGeometry()
@@ -401,12 +446,13 @@ namespace UnityEngine.UI
 
             var width = m_CaretWidth;
 
-            int adjustedPos = LogicalCaretPosition;
+            int adjustedVisualPosition = LogicalCaretPosition;
+            PopulateCachedTextGenerator(VisualText);
 
             TextGenerator gen = CachedTextGenerator;
 
             // TODO: optimize this
-            int logicalCharacterLine = DetermineCharacterLine(adjustedPos, gen);
+            int logicalCharacterLine = DetermineCharacterLine(adjustedVisualPosition, gen);
             var lineStartCharLogical = gen.lines[logicalCharacterLine].startCharIdx;
             var lineEnd = GetLineEndPosition(gen, logicalCharacterLine);
             BidiCharacterType charType = BidiCharacterType.R;
@@ -418,20 +464,30 @@ namespace UnityEngine.UI
 
                 if (paragraph == null)
                 {
-                    adjustedPos = lineStartCharLogical;
+                    adjustedVisualPosition = lineEnd;
                 }
                 else
                 {
                     var bidiIndices = paragraph.BidiIndexes;
                     var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical);
 
-                    var visualParagraphCharIdx = paragraphCharIdx < bidiIndices.Length ? bidiIndices[paragraphCharIdx] : 0;
+                    int visualParagraphCharIdx;
+                    if (paragraphCharIdx < bidiIndices.Length)
+                    {
+                        visualParagraphCharIdx = bidiIndices.ToList().IndexOf(paragraphCharIdx);
+                    }
+                    else
+                    {
+                        visualParagraphCharIdx = 0;
+                    }
 
-                    //charType = paragraph.TextData[paragraphCharIdx]._ct;
+                    //  charType = paragraph.TextData[visualParagraphCharIdx - 1]._ct;
 
-                    adjustedPos = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
+                    adjustedVisualPosition = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
                 }
             }
+
+            // Debug.Log("charType: " + charType);
 
             if (gen.lineCount == 0)
                 return;
@@ -440,21 +496,27 @@ namespace UnityEngine.UI
 
             // // Debug.Log("Drawing caret at: " + adjustedPos);
 
+            Debug.Log("Adjusted visual position: " + adjustedVisualPosition);
 
             // Calculate startPosition
-            if (adjustedPos < gen.characters.Count)
+            if (adjustedVisualPosition < gen.characters.Count)
             {
-                UICharInfo cursorChar = gen.characters[adjustedPos];
+                UICharInfo cursorChar = gen.characters[adjustedVisualPosition];
 
                 startPosition.x = cursorChar.cursorPos.x;
             }
+            else
+            {
+                Debug.Log("WTF");
+            }
+
             startPosition.x /= TextField.pixelsPerUnit;
 
             // TODO: Only clamp when Text uses horizontal word wrap.
             if (startPosition.x > TextField.rectTransform.rect.xMax)
                 startPosition.x = TextField.rectTransform.rect.xMax;
 
-            int characterLine = DetermineCharacterLine(adjustedPos, gen);
+            int characterLine = DetermineCharacterLine(adjustedVisualPosition, gen);
             startPosition.y = gen.lines[characterLine].topY / TextField.pixelsPerUnit;
             float height = gen.lines[characterLine].height / TextField.pixelsPerUnit;
 

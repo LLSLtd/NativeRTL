@@ -20,8 +20,11 @@
 // Unicode Data Copyright:
 // Copyright © 1991-2006 Unicode, Inc. All rights reserved. Distributed under the Terms of Use in http://www.unicode.org/copyright.html.
 
+using System;
+
 namespace NBidi
 {
+    [Serializable]
     /// <summary>
     /// Types of BiDi characters (Table 4 in the Unicode BiDi algorithm).
     /// </summary>

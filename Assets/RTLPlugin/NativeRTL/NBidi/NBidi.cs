@@ -103,6 +103,7 @@ namespace NBidi
             return sb.ToString();
         }
 
+        [Serializable]
         public struct CharData
         {
             public char _char;
