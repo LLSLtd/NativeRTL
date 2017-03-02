@@ -135,9 +135,11 @@ namespace UnityEngine.UI
 
             if (visualCaretPosition == lineEndPosition)
             {
-                Debug.Log("visual == lineEnd");
-                // TODO
-                //LogicalCaretPosition = paragraph.BidiIndexes[lineStartCharLogical];
+                LogicalCaretPosition = lineStartCharLogical;
+            }
+            else if (visualCaretPosition == lineStartCharLogical)
+            {
+                LogicalCaretPosition = lineEndPosition;
             }
             else if (paragraph == null)
             {
@@ -338,10 +340,10 @@ namespace UnityEngine.UI
 
             if (paragraph == null)
             {
-                return BidiCharacterType.L;
+                return BidiCharacterType.R;
             }
 
-            return paragraph.TextData[paragraph.BidiIndexes[logicalPos - 1]]._ct;
+            return paragraph.TextData[paragraph.BidiIndexes[Mathf.Max(0, logicalPos - 1)]]._ct;
         }
 
         private void AppendChar(char c)
@@ -351,15 +353,10 @@ namespace UnityEngine.UI
             var bidiCharacterType = GetCharacterType(startIndex);
             Debug.Log("BiDi char type: " + bidiCharacterType);
 
-            if (bidiCharacterType == BidiCharacterType.R)
-            {
-                LogicalText = LogicalText.Insert(Mathf.Min(LogicalText.Length, startIndex + 1), c.ToString());
-            }
-            else
-            {
-                LogicalText = LogicalText.Insert(startIndex, c.ToString());
-            }
-            
+            LogicalText = LogicalText.Insert(bidiCharacterType == BidiCharacterType.R 
+                ? Mathf.Min(LogicalText.Length, startIndex + 1)
+                : Mathf.Min(LogicalText.Length, startIndex), c.ToString());
+
             LogicalCaretPosition++;
         }
 
@@ -470,31 +467,28 @@ namespace UnityEngine.UI
                 {
                     var bidiIndices = paragraph.BidiIndexes;
                     var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharLogical);
-
                     int visualParagraphCharIdx;
-                    if (paragraphCharIdx < bidiIndices.Length)
-                    {
-                        visualParagraphCharIdx = bidiIndices.ToList().IndexOf(paragraphCharIdx);
-                    }
-                    else
+
+                    if (paragraphCharIdx == bidiIndices.Length)
                     {
                         visualParagraphCharIdx = 0;
                     }
-
-                    //  charType = paragraph.TextData[visualParagraphCharIdx - 1]._ct;
+                    else if (paragraphCharIdx == 0)
+                    {
+                        visualParagraphCharIdx = bidiIndices.Length - 1;
+                    }
+                    else
+                    {
+                        visualParagraphCharIdx = bidiIndices.ToList().IndexOf(paragraphCharIdx);
+                    }
 
                     adjustedVisualPosition = Mathf.Max(0, visualParagraphCharIdx + lineStartCharLogical);
                 }
             }
-
-            // Debug.Log("charType: " + charType);
-
             if (gen.lineCount == 0)
                 return;
 
             var startPosition = Vector2.zero;
-
-            // // Debug.Log("Drawing caret at: " + adjustedPos);
 
             Debug.Log("Adjusted visual position: " + adjustedVisualPosition);
 
@@ -502,7 +496,6 @@ namespace UnityEngine.UI
             if (adjustedVisualPosition < gen.characters.Count)
             {
                 UICharInfo cursorChar = gen.characters[adjustedVisualPosition];
-
                 startPosition.x = cursorChar.cursorPos.x;
             }
             else
