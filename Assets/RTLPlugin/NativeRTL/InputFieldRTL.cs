@@ -158,14 +158,14 @@ namespace UnityEngine.UI
             }
             else
             {
-                int reverseBidi = paragraph.BidiIndexes.ToList().IndexOf(logicalPos);
+                int reverseBidi = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx);
                 var bidiCharacterType = paragraph.TextData[reverseBidi]._ct;
                 if (bidiCharacterType == BidiCharacterType.R)
                 {
                     bidiCorrection = 1;
                 }
 
-                res = reverseBidi;
+                res = reverseBidi + startCharIdx;
             }
 
             Debug.Log("TG Pos: " + (res + bidiCorrection));
@@ -205,13 +205,13 @@ namespace UnityEngine.UI
             else
             {
                 int correction = 0;
-                var bidiCharacterType = paragraph.TextData[textGeneratorPos]._ct;
+                var bidiCharacterType = paragraph.TextData[textGeneratorPos - startCharIdx]._ct;
                 if (bidiCharacterType == BidiCharacterType.R)
                 {
                     correction = -1;
                 }
 
-                res = paragraph.BidiIndexes[textGeneratorPos + correction] - startCharIdx;
+                res = paragraph.BidiIndexes[textGeneratorPos + correction - startCharIdx] + startCharIdx;
             }
 
             return res;
