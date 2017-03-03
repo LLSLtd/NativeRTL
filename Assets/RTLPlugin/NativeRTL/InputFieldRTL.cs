@@ -134,43 +134,65 @@ namespace UnityEngine.UI
             Debug.Log("Character index after press: " + textGeneratorCaretPosition);
 
             PopulateCachedTextGenerator(VisualText);
-            LogicalCaretPosition = ConvertTextGeneratorPosToLogicalPos(CachedTextGenerator, textGeneratorCaretPosition);
+            LogicalCaretPosition = TextGenPosToLogicalPos(CachedTextGenerator, textGeneratorCaretPosition);
 
             UpdateLabel();
             eventData.Use();
         }
 
-        protected int ConvertTextGeneratorPosToLogicalPos(TextGenerator textGenerator, int textGeneratorPos)
+        protected int LogicalPosToTextGenPos(TextGenerator textGenerator, int logicalPos)
+        {
+            int res = 0;
+            int lineNum;
+            int lineEnd;
+            int startCharIdx;
+            var paragraph = GetParagraph(textGenerator, logicalPos, out lineNum, out lineEnd, out startCharIdx);
+
+            if (paragraph == null) return res;
+            
+
+
+            return res;
+        }
+
+        private NBidi.NBidi.Paragraph GetParagraph(TextGenerator textGenerator, int logicalPos, out int lineNum, out int lineEnd,
+            out int startCharIdx)
+        {
+            lineNum = DetermineCharacterLine(logicalPos, textGenerator);
+            lineEnd = GetLineEndPosition(textGenerator, lineNum);
+            startCharIdx = textGenerator.lines[lineNum].startCharIdx;
+            var paragraph = GetParagraph(textGenerator, logicalPos);
+            return paragraph;
+        }
+
+        protected int TextGenPosToLogicalPos(TextGenerator textGenerator, int textGeneratorPos)
         {
             int res = 0;
 
-            var lineNum = DetermineCharacterLine(textGeneratorPos, textGenerator);
-            var lineEnd = GetLineEndPosition(textGenerator, lineNum);
-            // try to get the corresponding BiDi paragraph
-            var paragraph = GetParagraph(textGenerator, textGeneratorPos);
-            if (paragraph != null)
+            int lineNum;
+            int lineEnd;
+            int startCharIdx;
+            var paragraph = GetParagraph(textGenerator, textGeneratorPos, out lineNum, out lineEnd, out startCharIdx);
+
+            if (paragraph == null) return res;
+
+            if (textGeneratorPos == lineEnd)
             {
-                // chrome textarea works this way
-                var startCharIdx = textGenerator.lines[lineNum].startCharIdx;
-
-                if (textGeneratorPos == lineEnd)
+                res = startCharIdx;
+            }
+            else if (textGeneratorPos == startCharIdx)
+            {
+                res = lineEnd;
+            }
+            else
+            {
+                int correction = 0;
+                if (paragraph.TextData[textGeneratorPos]._ct == BidiCharacterType.R)
                 {
-                    res = startCharIdx;
+                    correction = -1;
                 }
-                else if (textGeneratorPos == startCharIdx)
-                {
-                    res = lineEnd;
-                }
-                else
-                {
-                    int correction = 0;
-                    if (paragraph.TextData[textGeneratorPos]._ct == BidiCharacterType.R)
-                    {
-                       correction = -1;
-                    }
 
-                    res = paragraph.BidiIndexes[textGeneratorPos + correction] - startCharIdx;
-                }  
+                res = paragraph.BidiIndexes[textGeneratorPos + correction] - startCharIdx;
             }
 
             return res;
@@ -449,9 +471,9 @@ namespace UnityEngine.UI
 
             var width = m_CaretWidth;
 
-            int adjustedTextGenPos = LogicalCaretPosition;
-
             PopulateCachedTextGenerator(VisualText);
+
+            int adjustedTextGenPos = LogicalCaretPosition;
 
             TextGenerator gen = CachedTextGenerator;
 
@@ -461,7 +483,6 @@ namespace UnityEngine.UI
             if (adjustedTextGenPos < gen.characters.Count)
             {
                 UICharInfo cursorChar = gen.characters[adjustedTextGenPos];
-
                 startPosition.x = cursorChar.cursorPos.x;
             }
 
