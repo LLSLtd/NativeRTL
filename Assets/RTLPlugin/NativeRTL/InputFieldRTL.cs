@@ -50,6 +50,9 @@ namespace UnityEngine.UI
         protected string VisualText;
 
         [SerializeField]
+        private bool isEOL = false;
+
+        [SerializeField]
         private int m_logicalCaretPosition;
 
         private List<int> m_lines;
@@ -124,44 +127,53 @@ namespace UnityEngine.UI
                 eventData.position, eventData.pressEventCamera, out localMousePos);
 
             int lineNum;
-            var visualCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
 
-            Debug.Log("Character index after press: " + visualCaretPosition);
+            // this is the text generator position (including the zero-width char)
+            var textGeneratorCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
 
-            var paragraph = GetParagraph(CachedTextGenerator, visualCaretPosition);
+            Debug.Log("Character index after press: " + textGeneratorCaretPosition);
 
-            var lineStartCharLogical = CachedTextGenerator.lines[lineNum].startCharIdx;
-            var lineEndPosition = GetLineEndPosition(CachedTextGenerator, lineNum);
-
-            if (visualCaretPosition == lineEndPosition)
-            {
-                LogicalCaretPosition = lineStartCharLogical;
-            }
-            else if (visualCaretPosition == lineStartCharLogical)
-            {
-                LogicalCaretPosition = lineEndPosition;
-            }
-            else if (paragraph == null)
-            {
-                LogicalCaretPosition = 0;
-            }
-            else
-            {
-                var bidiIndices = paragraph.BidiIndexes;
-
-                // TODO: should we decrement by one? visualCaretPos is from the TextGenerator (0 [])!
-                // TODO: document
-
-                bool isRTL = paragraph.TextData[visualCaretPosition - lineStartCharLogical]._ct == BidiCharacterType.R;
-
-                var bidiIndex = bidiIndices[visualCaretPosition - lineStartCharLogical];
-                var reverseIndex = isRTL ? bidiIndex + 1 : bidiIndex;
-                var paragraphCharIdx = reverseIndex;
-                LogicalCaretPosition = paragraphCharIdx + lineStartCharLogical;
-            }
+            PopulateCachedTextGenerator(VisualText);
+            LogicalCaretPosition = ConvertTextGeneratorPosToLogicalPos(CachedTextGenerator, textGeneratorCaretPosition);
 
             UpdateLabel();
             eventData.Use();
+        }
+
+        protected int ConvertTextGeneratorPosToLogicalPos(TextGenerator textGenerator, int textGeneratorPos)
+        {
+            int res = 0;
+
+            var lineNum = DetermineCharacterLine(textGeneratorPos, textGenerator);
+            var lineEnd = GetLineEndPosition(textGenerator, lineNum);
+            // try to get the corresponding BiDi paragraph
+            var paragraph = GetParagraph(textGenerator, textGeneratorPos);
+            if (paragraph != null)
+            {
+                // chrome textarea works this way
+                var startCharIdx = textGenerator.lines[lineNum].startCharIdx;
+
+                if (textGeneratorPos == lineEnd)
+                {
+                    res = startCharIdx;
+                }
+                else if (textGeneratorPos == startCharIdx)
+                {
+                    res = lineEnd;
+                }
+                else
+                {
+                    int correction = 0;
+                    if (paragraph.TextData[textGeneratorPos]._ct == BidiCharacterType.R)
+                    {
+                       correction = -1;
+                    }
+
+                    res = paragraph.BidiIndexes[textGeneratorPos + correction] - startCharIdx;
+                }  
+            }
+
+            return res;
         }
 
         public void OnSubmit(BaseEventData eventData)
@@ -349,15 +361,8 @@ namespace UnityEngine.UI
 
         private void AppendChar(char c)
         {
-            var startIndex = Mathf.Min(LogicalCaretPosition, LogicalText.Length);
-
-            var bidiCharacterType = GetCharacterType(startIndex);
-            Debug.Log("BiDi char type: " + bidiCharacterType);
-
-            var whereToInsert = startIndex;
-
-            LogicalText = LogicalText.Insert(whereToInsert, c.ToString());
-
+            var insertionIdx = Mathf.Min(LogicalCaretPosition, LogicalText.Length);
+            LogicalText = LogicalText.Insert(insertionIdx, c.ToString());
             LogicalCaretPosition++;
         }
 
@@ -421,20 +426,20 @@ namespace UnityEngine.UI
         /// <summary>
         /// Find the paragraph corresponding to the logical position
         /// </summary>
-        /// <param name="logicalCharacterPosition"></param>
+        /// <param name="textGenPos"></param>
         /// <param name="logicalLine"></param>
         /// <param name="lineStartCharLogical"></param>
         /// <returns></returns>
-        protected NBidi.NBidi.Paragraph GetParagraph(TextGenerator gen, int logicalCharacterPosition)
+        protected NBidi.NBidi.Paragraph GetParagraph(TextGenerator gen, int textGenPos)
         {
             if (m_paragraphs.Length == 0) return null;
 
-            int logicalCharacterLine = DetermineCharacterLine(logicalCharacterPosition, gen);
+            int lineNum = DetermineCharacterLine(textGenPos, gen);
 
-            if (m_paragraphs.Length <= logicalCharacterLine)
+            if (m_paragraphs.Length <= lineNum)
                 return null;
 
-            return m_paragraphs[logicalCharacterLine];
+            return m_paragraphs[lineNum];
         }
 
         private void GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)
@@ -444,90 +449,20 @@ namespace UnityEngine.UI
 
             var width = m_CaretWidth;
 
-            int adjustedVisualPosition = LogicalCaretPosition;
+            int adjustedTextGenPos = LogicalCaretPosition;
+
             PopulateCachedTextGenerator(VisualText);
 
             TextGenerator gen = CachedTextGenerator;
 
-            // TODO: optimize this
-            int logicalCharacterLine = DetermineCharacterLine(adjustedVisualPosition, gen);
-            var lineStartCharVisual = gen.lines[logicalCharacterLine].startCharIdx;
-            var lineEnd = GetLineEndPosition(gen, logicalCharacterLine);
-
-            bool isAtLineEnd = false;
-            BidiCharacterType charType = BidiCharacterType.R;
-
-            NBidi.NBidi.Paragraph paragraph = null;
-
-            if (m_paragraphs.Length != 0)
-            {
-                var adjustedLogicalPosition = Mathf.Max(0, LogicalCaretPosition);
-                paragraph = GetParagraph(gen, adjustedLogicalPosition);
-
-                if (paragraph == null)
-                {
-                    adjustedVisualPosition = lineEnd;
-                }
-                else
-                {
-                    var bidiIndices = paragraph.BidiIndexes;
-                    var paragraphCharIdx = Mathf.Max(0, adjustedLogicalPosition - lineStartCharVisual);
-                    int visualParagraphCharIdx;
-
-                    if (paragraphCharIdx < paragraph.TextData.Length)
-                    {
-                        charType = paragraph.TextData[paragraphCharIdx]._ct;
-                    }
-
-                    if (paragraphCharIdx == bidiIndices.Length)
-                    {
-                        isAtLineEnd = true;
-                        visualParagraphCharIdx = 0;
-                    }
-                    else if (paragraphCharIdx == lineStartCharVisual)
-                    {
-                        visualParagraphCharIdx = bidiIndices.Length;
-                    }
-                    else
-                    {
-                        visualParagraphCharIdx = bidiIndices.ToList().IndexOf(paragraphCharIdx);
-                    }
-
-                    adjustedVisualPosition = visualParagraphCharIdx + lineStartCharVisual;
-                }
-            }
-            if (gen.lineCount == 0)
-                return;
-
             var startPosition = Vector2.zero;
 
-            Debug.Log("Adjusted visual position: " + adjustedVisualPosition);
-
             // Calculate startPosition
-            if (adjustedVisualPosition < gen.characters.Count && adjustedVisualPosition >= 0 && !isAtLineEnd)
+            if (adjustedTextGenPos < gen.characters.Count)
             {
-                UICharInfo cursorChar = gen.characters[adjustedVisualPosition];
+                UICharInfo cursorChar = gen.characters[adjustedTextGenPos];
 
                 startPosition.x = cursorChar.cursorPos.x;
-                if (charType == BidiCharacterType.R)
-                {
-                    startPosition.x += cursorChar.charWidth;
-                }
-            }
-            else
-            {
-                var thisLineStartIdx = gen.lines[logicalCharacterLine].startCharIdx;
-                var charIdx = gen.characters.Count - thisLineStartIdx - 1;
-
-                int[] bidiIndices = {0};
-                if (paragraph != null)
-                {
-                    bidiIndices = paragraph.BidiIndexes;
-                }
-
-                UICharInfo cursorChar = gen.characters[bidiIndices[charIdx]];
-                startPosition.x = cursorChar.cursorPos.x;
-                adjustedVisualPosition = 0;
             }
 
             startPosition.x /= TextField.pixelsPerUnit;
@@ -536,7 +471,7 @@ namespace UnityEngine.UI
             if (startPosition.x > TextField.rectTransform.rect.xMax)
                 startPosition.x = TextField.rectTransform.rect.xMax;
 
-            int characterLine = DetermineCharacterLine(adjustedVisualPosition, gen);
+            int characterLine = DetermineCharacterLine(adjustedTextGenPos, gen);
             startPosition.y = gen.lines[characterLine].topY / TextField.pixelsPerUnit;
             float height = gen.lines[characterLine].height / TextField.pixelsPerUnit;
 
