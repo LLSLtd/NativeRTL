@@ -148,11 +148,29 @@ namespace UnityEngine.UI
             int startCharIdx;
             var paragraph = GetParagraph(textGenerator, logicalPos, out lineNum, out lineEnd, out startCharIdx);
 
+            int bidiCorrection = 0;
+
             if (paragraph == null) return res;
-            
 
+            if (logicalPos == lineEnd)
+            {
+                res = startCharIdx;
+            }
+            else
+            {
+                int reverseBidi = paragraph.BidiIndexes.ToList().IndexOf(logicalPos);
+                var bidiCharacterType = paragraph.TextData[reverseBidi]._ct;
+                if (bidiCharacterType == BidiCharacterType.R)
+                {
+                    bidiCorrection = 1;
+                }
 
-            return res;
+                res = reverseBidi;
+            }
+
+            Debug.Log("TG Pos: " + (res + bidiCorrection));
+
+            return res + bidiCorrection;
         }
 
         private NBidi.NBidi.Paragraph GetParagraph(TextGenerator textGenerator, int logicalPos, out int lineNum, out int lineEnd,
@@ -187,7 +205,8 @@ namespace UnityEngine.UI
             else
             {
                 int correction = 0;
-                if (paragraph.TextData[textGeneratorPos]._ct == BidiCharacterType.R)
+                var bidiCharacterType = paragraph.TextData[textGeneratorPos]._ct;
+                if (bidiCharacterType == BidiCharacterType.R)
                 {
                     correction = -1;
                 }
@@ -473,11 +492,11 @@ namespace UnityEngine.UI
 
             PopulateCachedTextGenerator(VisualText);
 
-            int adjustedTextGenPos = LogicalCaretPosition;
-
             TextGenerator gen = CachedTextGenerator;
 
             var startPosition = Vector2.zero;
+
+            int adjustedTextGenPos = LogicalPosToTextGenPos(CachedTextGenerator, LogicalCaretPosition);
 
             // Calculate startPosition
             if (adjustedTextGenPos < gen.characters.Count)
