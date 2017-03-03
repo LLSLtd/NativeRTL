@@ -150,11 +150,18 @@ namespace UnityEngine.UI
 
             int bidiCorrection = 0;
 
-            if (paragraph == null) return res;
+            if (paragraph == null && lineNum == 0)
+                return 0;
+
+            if (paragraph == null) return startCharIdx;
 
             if (logicalPos == lineEnd)
             {
                 res = startCharIdx;
+            }
+            else if (logicalPos == startCharIdx)
+            {
+                res = lineEnd;
             }
             else
             {
