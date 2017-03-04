@@ -166,8 +166,22 @@ namespace UnityEngine.UI
             else
             {
                 int reverseBidi = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx);
-                var bidiCharacterType = paragraph.TextData[reverseBidi]._ct;
-                if (bidiCharacterType == BidiCharacterType.R)
+                var charData = paragraph.TextData[reverseBidi];
+                var bidiCharacterType = charData._ct;
+
+                int prevCharIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx - 1);
+                var prevCharData = paragraph.TextData[prevCharIdx];
+                var prevCharacterBidiType = prevCharData._ct;
+
+                if (bidiCharacterType == BidiCharacterType.L && prevCharacterBidiType == BidiCharacterType.R)
+                {
+                    bidiCorrection = 1;
+                }
+                else if (bidiCharacterType == BidiCharacterType.R && prevCharacterBidiType == BidiCharacterType.L)
+                {
+                    bidiCorrection = 1;
+                }
+                else if (bidiCharacterType == BidiCharacterType.R)
                 {
                     bidiCorrection = 1;
                 }
@@ -211,14 +225,24 @@ namespace UnityEngine.UI
             }
             else
             {
-                int correction = 0;
-                var bidiCharacterType = paragraph.TextData[textGeneratorPos - startCharIdx]._ct;
-                if (bidiCharacterType == BidiCharacterType.R)
+                var bidiCorrection = 0;
+                var lateCorrection = 0;
+                var charData = paragraph.TextData[textGeneratorPos - startCharIdx];
+                var bidiCharacterType = charData._ct;
+
+                var prevCharData = paragraph.TextData[textGeneratorPos - startCharIdx - 1];
+
+                if (bidiCharacterType == BidiCharacterType.L && prevCharData._ct == BidiCharacterType.R)
                 {
-                    correction = -1;
+                    bidiCorrection = -1;
+                }
+                else if (bidiCharacterType == BidiCharacterType.R)
+                {
+                    bidiCorrection = 0;
+                    lateCorrection = 1;
                 }
 
-                res = paragraph.BidiIndexes[textGeneratorPos + correction - startCharIdx] + startCharIdx;
+                res = paragraph.BidiIndexes[textGeneratorPos + bidiCorrection - startCharIdx] + lateCorrection + startCharIdx;
             }
 
             return res;
