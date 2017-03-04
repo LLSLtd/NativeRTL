@@ -175,7 +175,7 @@ namespace UnityEngine.UI
 
                 if (bidiCharacterType == BidiCharacterType.L && prevCharacterBidiType == BidiCharacterType.R)
                 {
-                    bidiCorrection = 1;
+                    bidiCorrection = prevCharIdx;
                 }
                 else if (bidiCharacterType == BidiCharacterType.R && prevCharacterBidiType == BidiCharacterType.L)
                 {
