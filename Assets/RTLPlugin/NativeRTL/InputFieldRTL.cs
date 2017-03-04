@@ -40,6 +40,9 @@ namespace UnityEngine.UI
         private Mesh m_mesh;
 
         [SerializeField]
+        private List<int> m_cumulativeWrappedNewLines = new List<int>();
+
+        [SerializeField]
         private NBidi.NBidi.Paragraph[] m_paragraphs;
 
         [SerializeField]
@@ -191,6 +194,12 @@ namespace UnityEngine.UI
 
             Debug.Log("TG Pos: " + (res + bidiCorrection));
 
+            int wrappedLinesCorrection = 0;
+            if (lineNum < m_cumulativeWrappedNewLines.Count)
+            {
+                wrappedLinesCorrection = m_cumulativeWrappedNewLines[lineNum];
+            }
+
             return res + bidiCorrection;
         }
 
@@ -245,7 +254,13 @@ namespace UnityEngine.UI
                 res = paragraph.BidiIndexes[textGeneratorPos + bidiCorrection - startCharIdx] + lateCorrection + startCharIdx;
             }
 
-            return res;
+            int wrappedLinesCorrection = 0;
+            if (lineNum < m_cumulativeWrappedNewLines.Count)
+            {
+                wrappedLinesCorrection = m_cumulativeWrappedNewLines[lineNum];
+            }
+
+            return res - wrappedLinesCorrection;
         }
 
         public void OnSubmit(BaseEventData eventData)
@@ -361,6 +376,9 @@ namespace UnityEngine.UI
                 AppendChar(c);
             }
 
+            int totalNewLines = 0;
+            m_cumulativeWrappedNewLines.Clear();
+
             m_lines = CalculateLineEndings(LogicalText);
             var logicalWrapperSb = new StringBuilder();
 
@@ -375,9 +393,16 @@ namespace UnityEngine.UI
                 {
                     var lineEndingIdx = m_lines[index];
 
-                    var stringToAppend = LogicalText.Substring(start, lineEndingIdx - start + 1).Replace("\n", "");
+                    var logicalTextSubstr = LogicalText.Substring(start, lineEndingIdx - start + 1);
+                    bool newLineExisted = logicalTextSubstr.Any(e => e == '\n');
 
-                    // stringToAppend = stringToAppend.TrimEnd(' ');
+                    m_cumulativeWrappedNewLines.Add(totalNewLines);
+                    if (!newLineExisted)
+                    {
+                        totalNewLines++;
+                    }
+
+                    var stringToAppend = logicalTextSubstr.Replace("\n", "");
 
                     if (index == m_lines.Count - 1)
                     {
