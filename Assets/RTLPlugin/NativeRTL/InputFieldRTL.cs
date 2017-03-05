@@ -194,12 +194,6 @@ namespace UnityEngine.UI
 
             Debug.Log("TG Pos: " + (res + bidiCorrection));
 
-            int wrappedLinesCorrection = 0;
-            if (lineNum < m_cumulativeWrappedNewLines.Count)
-            {
-                wrappedLinesCorrection = m_cumulativeWrappedNewLines[lineNum];
-            }
-
             return res + bidiCorrection;
         }
 
@@ -254,13 +248,7 @@ namespace UnityEngine.UI
                 res = paragraph.BidiIndexes[textGeneratorPos + bidiCorrection - startCharIdx] + lateCorrection + startCharIdx;
             }
 
-            int wrappedLinesCorrection = 0;
-            if (lineNum < m_cumulativeWrappedNewLines.Count)
-            {
-                wrappedLinesCorrection = m_cumulativeWrappedNewLines[lineNum];
-            }
-
-            return res - wrappedLinesCorrection;
+            return res;
         }
 
         public void OnSubmit(BaseEventData eventData)
@@ -378,6 +366,7 @@ namespace UnityEngine.UI
 
             int totalNewLines = 0;
             m_cumulativeWrappedNewLines.Clear();
+            m_cumulativeWrappedNewLines.Add(0);
 
             m_lines = CalculateLineEndings(LogicalText);
             var logicalWrapperSb = new StringBuilder();
@@ -396,7 +385,9 @@ namespace UnityEngine.UI
                     var logicalTextSubstr = LogicalText.Substring(start, lineEndingIdx - start + 1);
                     bool newLineExisted = logicalTextSubstr.Any(e => e == '\n');
 
-                    m_cumulativeWrappedNewLines.Add(totalNewLines);
+                    if (index > 0)
+                        m_cumulativeWrappedNewLines.Add(totalNewLines);
+
                     if (!newLineExisted)
                     {
                         totalNewLines++;
