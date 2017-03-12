@@ -168,8 +168,8 @@ namespace UnityEngine.UI
             }
             else
             {
-                int reverseBidi = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx);
-                var charData = paragraph.TextData[reverseBidi];
+                int reverseIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx);
+                var charData = paragraph.TextData[reverseIdx];
                 var bidiCharacterType = charData._ct;
 
                 int prevCharIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx - 1);
@@ -189,7 +189,7 @@ namespace UnityEngine.UI
                     bidiCorrection = 1;
                 }
 
-                res = reverseBidi + startCharIdx;
+                res = reverseIdx + startCharIdx;
             }
 
             Debug.Log("TG Pos: " + (res + bidiCorrection));
@@ -209,12 +209,12 @@ namespace UnityEngine.UI
 
         protected int TextGenPosToLogicalPos(TextGenerator textGenerator, int textGeneratorPos)
         {
-            int res = 0;
-
             int lineNum;
             int lineEnd;
             int startCharIdx;
             var paragraph = GetParagraph(textGenerator, textGeneratorPos, out lineNum, out lineEnd, out startCharIdx);
+
+            int res = startCharIdx;
 
             if (paragraph == null) return res;
 
