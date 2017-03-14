@@ -149,14 +149,36 @@ namespace UnityEngine.UI
             int lineNum;
             int lineEnd;
             int startCharIdx;
-            var paragraph = GetParagraph(textGenerator, logicalPos, out lineNum, out lineEnd, out startCharIdx);
+
+            #region Fake \n handling
+
+            int nonWrappedLine = m_lines.Count - 1;
+
+            // find the right line
+            //
+            // m_lines contains the line endings without \n's
+            for (int i = 0; i < m_lines.Count; i++)
+            {
+                if (logicalPos > m_lines[i]) continue;
+                nonWrappedLine = i;
+                break;
+            }
+
+            // find the actual logical position WITH the line wraps
+            logicalPos += m_cumulativeWrappedNewLines[nonWrappedLine];
+
+            #endregion
+
+            var paragraph = GetParagraph(textGenerator,
+                logicalPos, out lineNum, out lineEnd, out startCharIdx);
 
             int bidiCorrection = 0;
 
             if (paragraph == null && lineNum == 0)
                 return 0;
 
-            if (paragraph == null) return startCharIdx;
+            if (paragraph == null)
+                return startCharIdx;
 
             if (logicalPos == lineEnd)
             {
@@ -245,10 +267,11 @@ namespace UnityEngine.UI
                     lateCorrection = 1;
                 }
 
-                res = paragraph.BidiIndexes[textGeneratorPos + bidiCorrection - startCharIdx] + lateCorrection + startCharIdx;
+                res = paragraph.BidiIndexes[textGeneratorPos + bidiCorrection - startCharIdx] + lateCorrection +
+                      startCharIdx;
             }
 
-            return res;
+            return res - m_cumulativeWrappedNewLines[lineNum];
         }
 
         public void OnSubmit(BaseEventData eventData)
