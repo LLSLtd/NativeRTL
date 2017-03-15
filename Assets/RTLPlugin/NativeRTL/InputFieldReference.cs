@@ -12,7 +12,7 @@ namespace UnityEngine.UI
     /// Editable text input field.
     /// </summary>
 
-    [AddComponentMenu("UI/Input Field", 31)]
+    [AddComponentMenu("UI/Input Field Ref", 31)]
     public class InputFieldReference
         : Selectable,
         IUpdateSelectedHandler,

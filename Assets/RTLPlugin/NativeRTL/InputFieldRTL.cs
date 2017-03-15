@@ -48,6 +48,18 @@ namespace UnityEngine.UI
         [SerializeField]
         protected Text TextField;
 
+        static string Clipboard
+        {
+            get
+            {
+                return GUIUtility.systemCopyBuffer;
+            }
+            set
+            {
+                GUIUtility.systemCopyBuffer = value;
+            }
+        }
+
         [Multiline(30)]
         [SerializeField]
         protected string VisualText;
@@ -138,13 +150,28 @@ namespace UnityEngine.UI
             // this is the text generator position (including the zero-width char)
             var textGeneratorCaretPosition = GetCharacterIndexFromPosition(localMousePos, out lineNum);
 
-            Debug.Log("Character index after press: " + textGeneratorCaretPosition);
+            // Debug.Log("Character index after press: " + textGeneratorCaretPosition);
+
 
             PopulateCachedTextGenerator(VisualText);
             LogicalCaretPosition = TextGenPosToLogicalPos(CachedTextGenerator, textGeneratorCaretPosition);
 
             UpdateLabel();
             eventData.Use();
+        }
+
+        void Update()
+        {
+            RectTransform thisTrans = transform as RectTransform;
+
+
+            // TODO
+
+            float preferredHeight = TextField.preferredHeight;
+            if (thisTrans.rect.height < preferredHeight)
+            {
+               // thisTrans.sizeDelta = new Vector2(thisTrans.sizeDelta.x, preferredHeight + 10);
+            }
         }
 
         protected int LogicalPosToTextGenPos(TextGenerator textGenerator, int logicalPos)
@@ -176,7 +203,8 @@ namespace UnityEngine.UI
             var paragraph = GetParagraph(textGenerator,
                 logicalPos, out lineNum, out lineEnd, out startCharIdx);
 
-            Debug.Log("[LOGICAL TO VISUAL] lineNum: " + lineNum +", tg line num: " + m_textGenToLogicalLineNum);
+            // Debug.Log("[LOGICAL TO VISUAL] lineNum: " + lineNum +", tg line num: " + m_textGenToLogicalLineNum);
+
 
             bool isLineCorrectionNeeded = lineNum != m_textGenToLogicalLineNum;
 
@@ -230,7 +258,8 @@ namespace UnityEngine.UI
                 res = reverseIdx + startCharIdx;
             }
 
-            Debug.Log("TG Pos: " + (res + bidiCorrection));
+            // Debug.Log("TG Pos: " + (res + bidiCorrection));
+
 
             return res + bidiCorrection;
         }
@@ -254,7 +283,8 @@ namespace UnityEngine.UI
 
             m_textGenToLogicalLineNum = lineNum;
 
-            Debug.Log("lineNum: " + lineNum);
+            // Debug.Log("lineNum: " + lineNum);
+
 
             int res = startCharIdx;
 
@@ -293,7 +323,8 @@ namespace UnityEngine.UI
 
             var textGenPosToLogicalPos = res - m_cumulativeWrappedNewLines[lineNum];
 
-            Debug.Log("textGenPosToLogicalPos: " + textGenPosToLogicalPos);
+            // Debug.Log("textGenPosToLogicalPos: " + textGenPosToLogicalPos);
+
 
             return textGenPosToLogicalPos;
         }
@@ -336,14 +367,22 @@ namespace UnityEngine.UI
         {
             base.OnRectTransformDimensionsChange();
 
-            // Debug.Log("Rect dimension changed, updating label");
+            // // Debug.Log("Rect dimension changed, updating label");
+
 
             UpdateLabel();
         }
 
         private EditState KeyPressed(Event processingEvent)
         {
-            // Debug.Log("KeyPressed: " + processingEvent.character);
+            // // Debug.Log("KeyPressed: " + processingEvent.character);
+            var currentEventModifiers = processingEvent.modifiers;
+            RuntimePlatform rp = Application.platform;
+            bool isMac = (rp == RuntimePlatform.OSXEditor || rp == RuntimePlatform.OSXPlayer);
+            bool ctrl = isMac ? (currentEventModifiers & EventModifiers.Command) != 0 : (currentEventModifiers & EventModifiers.Control) != 0;
+            bool shift = (currentEventModifiers & EventModifiers.Shift) != 0;
+            bool alt = (currentEventModifiers & EventModifiers.Alt) != 0;
+            bool ctrlOnly = ctrl && !alt && !shift;
 
             switch (processingEvent.keyCode)
             {
@@ -354,6 +393,20 @@ namespace UnityEngine.UI
                 case KeyCode.LeftArrow:
                     LogicalCaretPosition = Mathf.Max(0, ++LogicalCaretPosition);
                     break;
+
+                // Paste
+                case KeyCode.V:
+                    {
+                        if (ctrlOnly)
+                        {
+                            // Paste to the current logical position
+                            var clipboardText = Clipboard;
+
+                            LogicalText = LogicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", " "));
+                            UpdateLabel();
+                        }
+                        break;
+                    }
             }
 
             return EditState.Continue;
@@ -394,6 +447,8 @@ namespace UnityEngine.UI
             var settings =
                 TextField.GetGenerationSettings(TextField.rectTransform.rect.size);
 
+            settings.generateOutOfBounds = true;
+           // settings.updateBounds = true;
             settings.horizontalOverflow = HorizontalWrapMode.Wrap;
 
             CachedTextGenerator.Populate(text, settings);
@@ -480,7 +535,8 @@ namespace UnityEngine.UI
 
         BidiCharacterType GetCharacterType(int logicalPos)
         {
-            Debug.Log("Determining char type for " + logicalPos);
+            // Debug.Log("Determining char type for " + logicalPos);
+
 
             var lineNum = DetermineCharacterLine(logicalPos, CachedTextGenerator);
             var uiLineInfo = CachedTextGenerator.lines[lineNum];
@@ -497,6 +553,7 @@ namespace UnityEngine.UI
         private void AppendChar(char c)
         {
             var insertionIdx = Mathf.Min(LogicalCaretPosition, LogicalText.Length);
+
             LogicalText = LogicalText.Insert(insertionIdx, c.ToString());
             LogicalCaretPosition++;
         }
