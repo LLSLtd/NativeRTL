@@ -394,6 +394,18 @@ namespace UnityEngine.UI
                     LogicalCaretPosition = Mathf.Max(0, ++LogicalCaretPosition);
                     break;
 
+                case KeyCode.Backspace:
+                    LogicalText = LogicalText.Remove(LogicalCaretPosition - 1, 1);
+                    LogicalCaretPosition = Mathf.Max(0, --LogicalCaretPosition);
+                    break;
+
+                case KeyCode.Delete:
+                    if (LogicalCaretPosition < LogicalText.Length)
+                    {
+                        LogicalText = LogicalText.Remove(LogicalCaretPosition, 1);
+                    }
+                    break;
+
                 // Paste
                 case KeyCode.V:
                     {
