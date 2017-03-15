@@ -201,6 +201,9 @@ namespace UnityEngine.UI
                 if (bidiCharacterType == BidiCharacterType.L && prevCharacterBidiType == BidiCharacterType.R)
                 {
                     bidiCorrection = prevCharIdx;
+                    
+                    // we just need to put the caret on the prev. ch. index
+                    reverseIdx = 0;
                 }
                 else if (bidiCharacterType == BidiCharacterType.R && prevCharacterBidiType == BidiCharacterType.L)
                 {
