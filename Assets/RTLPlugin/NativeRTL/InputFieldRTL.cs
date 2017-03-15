@@ -52,13 +52,13 @@ namespace UnityEngine.UI
         [SerializeField]
         protected string VisualText;
 
-        [SerializeField]
-        private bool isEOL = false;
+        private bool m_isLastActionWasClick = false;
 
         [SerializeField]
         private int m_logicalCaretPosition;
 
         private List<int> m_lines;
+        private int m_textGenToLogicalLineNum;
 
         protected Mesh CaretMesh
         {
@@ -86,6 +86,8 @@ namespace UnityEngine.UI
             {
                 case CanvasUpdate.LatePreRender:
                     UpdateGeometry();
+
+                    m_isLastActionWasClick = false;
                     break;
             }
         }
@@ -122,6 +124,8 @@ namespace UnityEngine.UI
         public override void OnPointerDown(PointerEventData eventData)
         {
             base.OnPointerDown(eventData);
+
+            m_isLastActionWasClick = true;
 
             EventSystem.current.SetSelectedGameObject(gameObject, eventData);
 
@@ -172,6 +176,15 @@ namespace UnityEngine.UI
             var paragraph = GetParagraph(textGenerator,
                 logicalPos, out lineNum, out lineEnd, out startCharIdx);
 
+            Debug.Log("[LOGICAL TO VISUAL] lineNum: " + lineNum +", tg line num: " + m_textGenToLogicalLineNum);
+
+            bool isLineCorrectionNeeded = lineNum != m_textGenToLogicalLineNum;
+
+            if (isLineCorrectionNeeded && m_isLastActionWasClick)
+            {
+                return CachedTextGenerator.lines[lineNum - 1].startCharIdx;
+            }
+
             int bidiCorrection = 0;
 
             if (paragraph == null && lineNum == 0)
@@ -201,7 +214,7 @@ namespace UnityEngine.UI
                 if (bidiCharacterType == BidiCharacterType.L && prevCharacterBidiType == BidiCharacterType.R)
                 {
                     bidiCorrection = prevCharIdx;
-                    
+
                     // we just need to put the caret on the prev. ch. index
                     reverseIdx = 0;
                 }
@@ -239,6 +252,10 @@ namespace UnityEngine.UI
             int startCharIdx;
             var paragraph = GetParagraph(textGenerator, textGeneratorPos, out lineNum, out lineEnd, out startCharIdx);
 
+            m_textGenToLogicalLineNum = lineNum;
+
+            Debug.Log("lineNum: " + lineNum);
+
             int res = startCharIdx;
 
             if (paragraph == null) return res;
@@ -274,7 +291,11 @@ namespace UnityEngine.UI
                       startCharIdx;
             }
 
-            return res - m_cumulativeWrappedNewLines[lineNum];
+            var textGenPosToLogicalPos = res - m_cumulativeWrappedNewLines[lineNum];
+
+            Debug.Log("textGenPosToLogicalPos: " + textGenPosToLogicalPos);
+
+            return textGenPosToLogicalPos;
         }
 
         public void OnSubmit(BaseEventData eventData)
