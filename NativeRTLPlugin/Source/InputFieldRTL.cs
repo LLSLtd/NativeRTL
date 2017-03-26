@@ -31,7 +31,7 @@ namespace UnityEngine.UI
 
         [Multiline(30)]
         [SerializeField]
-        protected string LogicalText;
+        public string LogicalText;
 
         private RectTransform m_caretRectTrans;
         private readonly float m_CaretWidth = 1.0f;
@@ -200,7 +200,7 @@ namespace UnityEngine.UI
             // Debug.Log("Character index after press: " + textGeneratorCaretPosition);
 
 
-            PopulateCachedTextGenerator(VisualText);
+            PopulateCachedTextGenerator(VisualText, HorizontalWrapMode.Overflow);
             LogicalCaretPosition = TextGenPosToLogicalPos(CachedTextGenerator, textGeneratorCaretPosition);
 
             UpdateLabel();
@@ -465,7 +465,7 @@ namespace UnityEngine.UI
         {
             var lineEndings = new List<int>();
 
-            PopulateCachedTextGenerator(text);
+            PopulateCachedTextGenerator(text, HorizontalWrapMode.Wrap);
 
             var linesCount = CachedTextGenerator.lines.Count;
             for (var index = 0; index < linesCount; index++)
@@ -479,14 +479,14 @@ namespace UnityEngine.UI
             return lineEndings;
         }
 
-        private void PopulateCachedTextGenerator(string text)
+        private void PopulateCachedTextGenerator(string text, HorizontalWrapMode settingsHorizontalOverflow)
         {
             var settings =
                 TextField.GetGenerationSettings(TextField.rectTransform.rect.size);
 
             settings.generateOutOfBounds = true;
             // settings.updateBounds = true;
-            settings.horizontalOverflow = HorizontalWrapMode.Wrap;
+            settings.horizontalOverflow = settingsHorizontalOverflow;
 
             CachedTextGenerator.Populate(text, settings);
         }
@@ -557,7 +557,7 @@ namespace UnityEngine.UI
             VisualText = logicalToVisual;
             TextField.text = logicalToVisual;
 
-            PopulateCachedTextGenerator(logicalToVisual);
+            PopulateCachedTextGenerator(logicalToVisual, HorizontalWrapMode.Overflow);
 
             MarkGeometryAsDirty();
             UpdateGeometry();
@@ -680,7 +680,7 @@ namespace UnityEngine.UI
 
             var width = m_CaretWidth;
 
-            PopulateCachedTextGenerator(VisualText);
+            PopulateCachedTextGenerator(VisualText, HorizontalWrapMode.Overflow);
 
             TextGenerator gen = CachedTextGenerator;
 
@@ -700,6 +700,11 @@ namespace UnityEngine.UI
             // TODO: Only clamp when Text uses horizontal word wrap.
             if (startPosition.x > TextField.rectTransform.rect.xMax)
                 startPosition.x = TextField.rectTransform.rect.xMax;
+
+            if (startPosition.x < TextField.rectTransform.rect.xMin)
+            {
+                startPosition.x = TextField.rectTransform.rect.xMin;
+            }
 
             int characterLine = DetermineCharacterLine(adjustedTextGenPos, gen);
             startPosition.y = gen.lines[characterLine].topY / TextField.pixelsPerUnit;
