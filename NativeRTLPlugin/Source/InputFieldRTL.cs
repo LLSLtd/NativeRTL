@@ -10,8 +10,7 @@ namespace UnityEngine.UI
     ///     Editable text input field.
     /// </summary>
     [AddComponentMenu("UI/Input Field RTL")]
-    public class InputFieldRTL
-        : Selectable,
+    public class InputFieldRTL : MonoBehaviour,
             IUpdateSelectedHandler,
             IBeginDragHandler,
             IDragHandler,
@@ -20,18 +19,11 @@ namespace UnityEngine.UI
             ISubmitHandler,
             ICanvasElement
     {
-        /// <summary>
-        ///     Magic num
-        /// </summary>
-        private readonly float m_leftOffsetX = 4f;
-
         private readonly Event m_processingEvent = new Event();
 
         protected CanvasRenderer CachedCaretRenderer;
 
-        [Multiline(30)]
-        [SerializeField]
-        public string LogicalText;
+        public string m_logicalText = "";
 
         private RectTransform m_caretRectTrans;
         private readonly float m_CaretWidth = 1.0f;
@@ -39,10 +31,8 @@ namespace UnityEngine.UI
         protected UIVertex[] m_CursorVerts = null;
         private Mesh m_mesh;
 
-        [SerializeField]
         private List<int> m_cumulativeWrappedNewLines = new List<int>();
 
-        [SerializeField]
         private NBidi.NBidi.Paragraph[] m_paragraphs;
 
         [SerializeField]
@@ -60,28 +50,52 @@ namespace UnityEngine.UI
             }
         }
 
-        public bool isFocused
-        {
-            get { return true; }
-        }
+        public bool isFocused => true;
 
-        public int characterLimit
-        {
-            get { return 200; }
-        }
+        public int characterLimit => 200;
 
         public Text textComponent
         {
-            get { return TextField; }
+            get
+            {
+                return TextField;
+            }
+
+            set { TextField = value; }
         }
 
-        [Multiline(30)]
+        private string m_visualText;
+
         [SerializeField]
-        protected string VisualText;
+        protected string VisualText
+        {
+            get { return m_visualText; }
+            set
+            {
+                m_visualText = value;
+                InputFieldRtlAdapter.text = value;
+                onValueChanged.Invoke(value);
+            }
+        }
 
-        public InputField.SubmitEvent onEndEdit { get { return m_OnEndEdit; } set { SetPropertyUtility.SetClass(ref m_OnEndEdit, value); } }
+        //public InputField.SubmitEvent onEndEdit { get { return m_onEndEdit; } set { SetPropertyUtility.SetClass(ref m_onEndEdit, value); } }
+        public InputField.OnChangeEvent onValueChanged
+        {
+            get
+            {
+                var inputFieldRtlAdapter = InputFieldRtlAdapter;
+                return inputFieldRtlAdapter != null ? inputFieldRtlAdapter.onValueChanged : null;
+            }
+        }
 
-        public InputField.OnChangeEvent onValueChanged { get { return m_OnValueChanged; } set { SetPropertyUtility.SetClass(ref m_OnValueChanged, value); } }
+        private InputFieldRTLAdapter InputFieldRtlAdapter
+        {
+            get
+            {
+                var inputFieldRtlAdapter = gameObject.GetComponent<InputFieldRTLAdapter>();
+                return inputFieldRtlAdapter;
+            }
+        }
 
         public string text
         {
@@ -93,32 +107,33 @@ namespace UnityEngine.UI
             }
         }
 
-        private bool m_isLastActionWasClick = false;
+        private bool m_isLastActionWasClick;
 
-        [SerializeField]
         private int m_logicalCaretPosition;
 
         private List<int> m_lines;
         private int m_textGenToLogicalLineNum;
         private bool m_isInitialized;
-        private InputField.SubmitEvent m_OnEndEdit;
-        private InputField.OnChangeEvent m_OnValueChanged;
+
         private bool m_updatingFromRectTransformChanged;
 
-        protected Mesh CaretMesh
-        {
-            get { return m_mesh ?? (m_mesh = new Mesh()); }
-        }
+        protected Mesh CaretMesh => m_mesh ?? (m_mesh = new Mesh());
 
-        protected TextGenerator CachedTextGenerator
-        {
-            get { return TextField.cachedTextGenerator; }
-        }
+        protected TextGenerator CachedTextGenerator => TextField.cachedTextGenerator;
 
         public int LogicalCaretPosition
         {
             get { return m_logicalCaretPosition; }
             set { m_logicalCaretPosition = value; }
+        }
+
+        public string LogicalText
+        {
+            get { return m_logicalText; }
+            set
+            {
+                m_logicalText = value;
+            }
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -137,10 +152,8 @@ namespace UnityEngine.UI
             }
         }
 
-        protected override void OnRectTransformDimensionsChange()
+        protected void OnRectTransformDimensionsChange()
         {
-            base.OnRectTransformDimensionsChange();
-
             m_updatingFromRectTransformChanged = true;
 
             if (m_isInitialized)
@@ -154,15 +167,13 @@ namespace UnityEngine.UI
         public void LayoutComplete()
         {
         }
-
+        
         public void GraphicUpdateComplete()
         {
         }
 
-        protected override void OnDisable()
+        protected void OnDisable()
         {
-            base.OnDisable();
-
             if (m_mesh != null)
                 DestroyImmediate(m_mesh);
             m_mesh = null;
@@ -180,10 +191,8 @@ namespace UnityEngine.UI
         {
         }
 
-        public override void OnPointerDown(PointerEventData eventData)
+        public void OnPointerDown(PointerEventData eventData)
         {
-            base.OnPointerDown(eventData);
-
             m_isLastActionWasClick = true;
 
             EventSystem.current.SetSelectedGameObject(gameObject, eventData);
@@ -389,13 +398,10 @@ namespace UnityEngine.UI
             eventData.Use();
         }
 
-        protected override void Start()
+        protected void Start()
         {
-            base.Start();
             LogicalCaretPosition = 0;
         }
-
- 
 
         private EditState KeyPressed(Event processingEvent)
         {
@@ -623,6 +629,8 @@ namespace UnityEngine.UI
 
             OnFillVBO(CaretMesh);
             CachedCaretRenderer.SetMesh(CaretMesh);
+
+            // update layout properties
         }
 
         private void OnFillVBO(Mesh vbo)
@@ -755,18 +763,14 @@ namespace UnityEngine.UI
             return generator.lineCount - 1;
         }
 
-        public override void OnSelect(BaseEventData eventData)
+        public void OnSelect(BaseEventData eventData)
         {
-            base.OnSelect(eventData);
-
-            Debug.Log("SELECTED");
+            //base.OnSelect(eventData);
         }
 
-        public override void OnDeselect(BaseEventData eventData)
+        public void OnDeselect(BaseEventData eventData)
         {
-            base.OnDeselect(eventData);
-
-            Debug.Log("DESELECTED");
+            // base.OnDeselect(eventData);
         }
 
         private int LineUpCharacterPosition(int originalPos, bool goToFirstChar)
@@ -916,5 +920,14 @@ namespace UnityEngine.UI
             Continue,
             Finish
         }
+
+        #region Implementation of ICanvasElement
+
+        public bool IsDestroyed()
+        {
+            return false;
+        }
+
+        #endregion
     }
 }

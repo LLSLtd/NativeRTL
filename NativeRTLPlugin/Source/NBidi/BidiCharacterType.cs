@@ -24,7 +24,6 @@ using System;
 
 namespace NBidi
 {
-    [Serializable]
     /// <summary>
     /// Types of BiDi characters (Table 4 in the Unicode BiDi algorithm).
     /// </summary>

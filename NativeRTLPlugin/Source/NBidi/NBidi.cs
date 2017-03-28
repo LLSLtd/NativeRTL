@@ -103,7 +103,6 @@ namespace NBidi
             return sb.ToString();
         }
 
-        [Serializable]
         public struct CharData
         {
             public char _char;
@@ -141,7 +140,6 @@ namespace NBidi
             return (Paragraph[])ret.ToArray(typeof(Paragraph));
         }
 
-        [Serializable]
         public class Paragraph
         {
             string _original_text;
