@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Babel.Licensing;
+using NativeRTLPlugin;
 using NBidi;
 using UnityEngine.EventSystems;
 
@@ -37,6 +40,14 @@ namespace UnityEngine.UI
 
         [SerializeField]
         protected Text TextField;
+
+        public InputFieldRTL()
+        {
+            Debug.Log("Checking license....");
+
+            var license = new License();
+            license.CheckTrialLicense();
+        }
 
         static string Clipboard
         {
@@ -499,6 +510,9 @@ namespace UnityEngine.UI
 
         private void UpdateLabel()
         {
+            if (!BabelLicenseManager.IsLicensed(typeof(License)))
+                throw new Exception("RTL is not licensed!");
+
             m_isInitialized = true;
 
             // Enforce horizontal overflow

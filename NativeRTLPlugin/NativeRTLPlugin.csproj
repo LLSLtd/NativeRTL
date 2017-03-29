@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Babel.Licensing">
+      <HintPath>..\..\Program Files\Babel\References\Framework\2.0\Babel.Licensing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -52,6 +55,9 @@
   <ItemGroup>
     <Compile Include="Source\InputFieldReference.cs" />
     <Compile Include="Source\InputFieldRTL.cs" />
+    <Compile Include="Source\InputFieldRTLAdapter.cs" />
+    <Compile Include="Source\InputFieldRTLScrollControl.cs" />
+    <Compile Include="Source\License.cs" />
     <Compile Include="Source\NBidi\ArabicShapeJoiningType.cs" />
     <Compile Include="Source\NBidi\BidiCharacterMirrorResolver.generated.cs" />
     <Compile Include="Source\NBidi\BidiCharacterType.cs" />

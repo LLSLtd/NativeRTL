@@ -2,7 +2,7 @@
 
 namespace UnityEngine.UI
 {
-    internal class InputFieldRTLAdapter : InputField
+    public class InputFieldRTLAdapter : InputField
     {
         private InputFieldRTL m_inputFieldRTL;
 

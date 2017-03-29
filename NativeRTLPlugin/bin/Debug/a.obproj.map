@@ -1,0 +1,1304 @@
+﻿<Mappings><Entry OldName="NBidi.UnicodeCharacterDataResolver.bidiCharType" NewName="NBidi.UnicodeCharacterDataResolver.CO_bidiCharType" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.categories" NewName="NBidi.UnicodeCharacterDataResolver.CO_categories" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.decomType" NewName="NBidi.UnicodeCharacterDataResolver.CO_decomType" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.canonClass" NewName="NBidi.UnicodeCharacterDataResolver.CO_canonClass" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.decomMapping" NewName="NBidi.UnicodeCharacterDataResolver.CO_decomMapping" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.composeMapping" NewName="NBidi.UnicodeCharacterDataResolver.CO_composeMapping" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_LRE" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_LRE" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_LRO" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_LRO" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_R" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_R" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_AL" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_AL" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_RLE" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_RLE" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_RLO" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_RLO" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_PDF" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_PDF" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_EN" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_EN" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_ES" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_ES" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_ET" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_ET" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_AN" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_AN" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_CS" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_CS" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_NSM" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_NSM" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_BN" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_BN" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_B" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_B" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_S" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_S" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_WS" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_WS" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.BctList_ON" NewName="NBidi.UnicodeCharacterDataResolver.CO_BctList_ON" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Lu" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Lu" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Ll" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Ll" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Lt" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Lt" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Lm" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Lm" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Lo" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Lo" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Mn" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Mn" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Mc" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Mc" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Me" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Me" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Nd" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Nd" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Nl" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Nl" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_No" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_No" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Pc" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Pc" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Pd" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Pd" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Ps" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Ps" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Pe" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Pe" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Pi" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Pi" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Pf" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Pf" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Po" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Po" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Sm" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Sm" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Sc" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Sc" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Sk" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Sk" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_So" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_So" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Zs" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Zs" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Zl" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Zl" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Zp" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Zp" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Cc" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Cc" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Cf" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Cf" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Cs" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Cs" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UgcList_Co" NewName="NBidi.UnicodeCharacterDataResolver.CO_UgcList_Co" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Font" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Font" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_NoBreak" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_NoBreak" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Initial" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Initial" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Medial" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Medial" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Final" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Final" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Isolated" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Isolated" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Circle" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Circle" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Super" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Super" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Sub" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Sub" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Vertical" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Vertical" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Wide" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Wide" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Narrow" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Narrow" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Small" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Small" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Square" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Square" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Fraction" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Fraction" />
+<Entry OldName="NBidi.UnicodeCharacterDataResolver.UdtList_Compat" NewName="NBidi.UnicodeCharacterDataResolver.CO_UdtList_Compat" />
+<Entry OldName="NBidi.NBidi.&lt;LineWrapperFunc&gt;k__BackingField" NewName="NBidi.NBidi.CO_&lt;LineWrapperFunc&gt;k__BackingField" />
+<Entry OldName="NBidi.UnicodeArabicShapingResolver.charForms" NewName="NBidi.UnicodeArabicShapingResolver.CO_charForms" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.kSeparators" NewName="UnityEngine.UI.InputFieldReference.CO_kSeparators" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_ContentType" NewName="UnityEngine.UI.InputFieldReference.CO_m_ContentType" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_InputType" NewName="UnityEngine.UI.InputFieldReference.CO_m_InputType" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_AsteriskChar" NewName="UnityEngine.UI.InputFieldReference.CO_m_AsteriskChar" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_KeyboardType" NewName="UnityEngine.UI.InputFieldReference.CO_m_KeyboardType" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_LineType" NewName="UnityEngine.UI.InputFieldReference.CO_m_LineType" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_HideMobileInput" NewName="UnityEngine.UI.InputFieldReference.CO_m_HideMobileInput" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CharacterValidation" NewName="UnityEngine.UI.InputFieldReference.CO_m_CharacterValidation" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CharacterLimit" NewName="UnityEngine.UI.InputFieldReference.CO_m_CharacterLimit" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_OnEndEdit" NewName="UnityEngine.UI.InputFieldReference.CO_m_OnEndEdit" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_OnValueChanged" NewName="UnityEngine.UI.InputFieldReference.CO_m_OnValueChanged" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_OnValidateInput" NewName="UnityEngine.UI.InputFieldReference.CO_m_OnValidateInput" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CaretColor" NewName="UnityEngine.UI.InputFieldReference.CO_m_CaretColor" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CustomCaretColor" NewName="UnityEngine.UI.InputFieldReference.CO_m_CustomCaretColor" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_SelectionColor" NewName="UnityEngine.UI.InputFieldReference.CO_m_SelectionColor" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CaretBlinkRate" NewName="UnityEngine.UI.InputFieldReference.CO_m_CaretBlinkRate" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CaretWidth" NewName="UnityEngine.UI.InputFieldReference.CO_m_CaretWidth" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_ReadOnly" NewName="UnityEngine.UI.InputFieldReference.CO_m_ReadOnly" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.caretRectTrans" NewName="UnityEngine.UI.InputFieldReference.CO_caretRectTrans" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_InputTextCache" NewName="UnityEngine.UI.InputFieldReference.CO_m_InputTextCache" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_CachedInputRenderer" NewName="UnityEngine.UI.InputFieldReference.CO_m_CachedInputRenderer" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_PreventFontCallback" NewName="UnityEngine.UI.InputFieldReference.CO_m_PreventFontCallback" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_AllowInput" NewName="UnityEngine.UI.InputFieldReference.CO_m_AllowInput" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_ShouldActivateNextUpdate" NewName="UnityEngine.UI.InputFieldReference.CO_m_ShouldActivateNextUpdate" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_UpdateDrag" NewName="UnityEngine.UI.InputFieldReference.CO_m_UpdateDrag" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_DragPositionOutOfBounds" NewName="UnityEngine.UI.InputFieldReference.CO_m_DragPositionOutOfBounds" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.kHScrollSpeed" NewName="UnityEngine.UI.InputFieldReference.CO_kHScrollSpeed" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.kVScrollSpeed" NewName="UnityEngine.UI.InputFieldReference.CO_kVScrollSpeed" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_BlinkCoroutine" NewName="UnityEngine.UI.InputFieldReference.CO_m_BlinkCoroutine" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_BlinkStartTime" NewName="UnityEngine.UI.InputFieldReference.CO_m_BlinkStartTime" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_DragCoroutine" NewName="UnityEngine.UI.InputFieldReference.CO_m_DragCoroutine" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_OriginalText" NewName="UnityEngine.UI.InputFieldReference.CO_m_OriginalText" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_WasCanceled" NewName="UnityEngine.UI.InputFieldReference.CO_m_WasCanceled" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_HasDoneFocusTransition" NewName="UnityEngine.UI.InputFieldReference.CO_m_HasDoneFocusTransition" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.kEmailSpecialCharacters" NewName="UnityEngine.UI.InputFieldReference.CO_kEmailSpecialCharacters" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.m_ProcessingEvent" NewName="UnityEngine.UI.InputFieldReference.CO_m_ProcessingEvent" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_processingEvent" NewName="UnityEngine.UI.InputFieldRTL.CO_m_processingEvent" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_caretRectTrans" NewName="UnityEngine.UI.InputFieldRTL.CO_m_caretRectTrans" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_CaretWidth" NewName="UnityEngine.UI.InputFieldRTL.CO_m_CaretWidth" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_mesh" NewName="UnityEngine.UI.InputFieldRTL.CO_m_mesh" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_cumulativeWrappedNewLines" NewName="UnityEngine.UI.InputFieldRTL.CO_m_cumulativeWrappedNewLines" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_paragraphs" NewName="UnityEngine.UI.InputFieldRTL.CO_m_paragraphs" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_visualText" NewName="UnityEngine.UI.InputFieldRTL.CO_m_visualText" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_isLastActionWasClick" NewName="UnityEngine.UI.InputFieldRTL.CO_m_isLastActionWasClick" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_logicalCaretPosition" NewName="UnityEngine.UI.InputFieldRTL.CO_m_logicalCaretPosition" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_lines" NewName="UnityEngine.UI.InputFieldRTL.CO_m_lines" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_textGenToLogicalLineNum" NewName="UnityEngine.UI.InputFieldRTL.CO_m_textGenToLogicalLineNum" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_isInitialized" NewName="UnityEngine.UI.InputFieldRTL.CO_m_isInitialized" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.m_updatingFromRectTransformChanged" NewName="UnityEngine.UI.InputFieldRTL.CO_m_updatingFromRectTransformChanged" />
+<Entry OldName="UnityEngine.UI.InputFieldRTLAdapter.m_inputFieldRTL" NewName="UnityEngine.UI.InputFieldRTLAdapter.CO_m_inputFieldRTL" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.0EDA75BA5624D39DF960BBDA2835F28587CE51B4" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_0EDA75BA5624D39DF960BBDA2835F28587CE51B4" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.17496360AFB46ED7C208BA3EADCE302654A7BE72" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_17496360AFB46ED7C208BA3EADCE302654A7BE72" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.191FDF59E5FD3FD08C92BF8553C256492F45D4D2" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_191FDF59E5FD3FD08C92BF8553C256492F45D4D2" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.19BD6C2FF86920ACFFBE9B6B927223A62F1DF67A" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_19BD6C2FF86920ACFFBE9B6B927223A62F1DF67A" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.1D1722D6180BF983AAB59DEAA4548AD245C44593" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_1D1722D6180BF983AAB59DEAA4548AD245C44593" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.24813C9A81DC5A15F528495CC5BA658D5A22563D" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_24813C9A81DC5A15F528495CC5BA658D5A22563D" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.30C8E45BDAD852952A55D8F8212BF1A8D4F55E4D" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_30C8E45BDAD852952A55D8F8212BF1A8D4F55E4D" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.35D33012080E1C184D2B389D433A8C9ACC12B427" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_35D33012080E1C184D2B389D433A8C9ACC12B427" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.3DBDBC83DA18918E9448C71F559B72F9F32DA9BD" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_3DBDBC83DA18918E9448C71F559B72F9F32DA9BD" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.41A2B912ECF985FBBF770C65B2FE0BB8AD6CE28A" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_41A2B912ECF985FBBF770C65B2FE0BB8AD6CE28A" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.43BAB886B11C4D39542A19D34A42D04783D380D1" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_43BAB886B11C4D39542A19D34A42D04783D380D1" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.48C568C0B73E01A7DF3C6375A840239998E5E359" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_48C568C0B73E01A7DF3C6375A840239998E5E359" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.4F627A5881AEFD2AB3B8D3BEA277B1DEDC9464DA" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_4F627A5881AEFD2AB3B8D3BEA277B1DEDC9464DA" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.5A4FF79F28F95E3895862CB254E53B99FB48EDC5" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_5A4FF79F28F95E3895862CB254E53B99FB48EDC5" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.5FC741724DA417744482A73C4DF3C26CFE417304" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_5FC741724DA417744482A73C4DF3C26CFE417304" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.698BDF2A3D8BC1B5A3A65EB05EE9DAC61476F7FC" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_698BDF2A3D8BC1B5A3A65EB05EE9DAC61476F7FC" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.69ADA5A00EB5264F0821C6898CDC17AB789E9EE0" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_69ADA5A00EB5264F0821C6898CDC17AB789E9EE0" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.70471910F8116B8F001EC1BD3D895AD3E26F6092" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_70471910F8116B8F001EC1BD3D895AD3E26F6092" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.7130C901EBCA77A0D33CFF691C933A73F33E56A0" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_7130C901EBCA77A0D33CFF691C933A73F33E56A0" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.72440816989E5D9617DFA95A57F86BA2BC458D7E" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_72440816989E5D9617DFA95A57F86BA2BC458D7E" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.736BB31E977D87713A330EC02A4D858D3CA7F3AE" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_736BB31E977D87713A330EC02A4D858D3CA7F3AE" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.737D7502F82C6128233EF7AC2659E16CFE5A3FD3" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_737D7502F82C6128233EF7AC2659E16CFE5A3FD3" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.79E7B1C333D129B7FD707C02414FC4BA6E1DAEB4" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_79E7B1C333D129B7FD707C02414FC4BA6E1DAEB4" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.7BBE37982E6C057ED87163CAFC7FD6E5E42EEA46" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_7BBE37982E6C057ED87163CAFC7FD6E5E42EEA46" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.7FE0826D1A6F6B3EA5F7C521A650C29AC39CAEA2" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_7FE0826D1A6F6B3EA5F7C521A650C29AC39CAEA2" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.8191F9E4C5FE56E755132485E61A30DD7599F280" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_8191F9E4C5FE56E755132485E61A30DD7599F280" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.82EED386D42310DD52E8C573561886ACA29B5889" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_82EED386D42310DD52E8C573561886ACA29B5889" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.86591E896A5DD92EC00401CB72E6F01B76AD15A9" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_86591E896A5DD92EC00401CB72E6F01B76AD15A9" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.86B2A1CD343FCC9B423EABEE266C31633B47AA5E" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_86B2A1CD343FCC9B423EABEE266C31633B47AA5E" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.888BACC2D69E3B3F8874B1DB2CD4041F42870DFB" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_888BACC2D69E3B3F8874B1DB2CD4041F42870DFB" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.89DB2CC636BD9FAF45CAB91025103509251F745E" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_89DB2CC636BD9FAF45CAB91025103509251F745E" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.8E50E3088693B5D678D9C60C7E80E709DD0AB8E8" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_8E50E3088693B5D678D9C60C7E80E709DD0AB8E8" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.9BFEB5075FCAE45F0379AD603CBB74E4E0EFDFA6" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_9BFEB5075FCAE45F0379AD603CBB74E4E0EFDFA6" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.A66E8868BEEA555B383B96FC0821A05B9AD19EA8" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_A66E8868BEEA555B383B96FC0821A05B9AD19EA8" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.A6F7A5BD6679AE7775A3BDCE569599FD66DB6A1A" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_A6F7A5BD6679AE7775A3BDCE569599FD66DB6A1A" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.A7453351675F4C8F89E62D03EE65A31026501627" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_A7453351675F4C8F89E62D03EE65A31026501627" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.AA8389CFAFBF27B382D061158908A627E8112952" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_AA8389CFAFBF27B382D061158908A627E8112952" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.AAD15CC061569FB9A6C5711A8B8C60DDF0546AF3" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_AAD15CC061569FB9A6C5711A8B8C60DDF0546AF3" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.ABA53BDF4C7C5D0BBC6C9B1AFA27C88ED38390B6" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_ABA53BDF4C7C5D0BBC6C9B1AFA27C88ED38390B6" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.AD6DA5094007543B5420072F220B5DC9A54C0822" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_AD6DA5094007543B5420072F220B5DC9A54C0822" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.B41FC6E21C76CAD01E644C7F0F614A0EF0CB185D" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_B41FC6E21C76CAD01E644C7F0F614A0EF0CB185D" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.BA095691778C44E30B514FF1987342B83D0C22D8" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_BA095691778C44E30B514FF1987342B83D0C22D8" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.BFBAEE4BB6C80DA0FE044E49296FCC44F744364C" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_BFBAEE4BB6C80DA0FE044E49296FCC44F744364C" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.C258792391581692D6125E31C0FED98A98396374" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_C258792391581692D6125E31C0FED98A98396374" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.C814011A7E71FC0DDED1842297A1F8C43D437C85" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_C814011A7E71FC0DDED1842297A1F8C43D437C85" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.C9E8AFAAA9D14C6F0976B665D66593DCF9783FF1" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_C9E8AFAAA9D14C6F0976B665D66593DCF9783FF1" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.CEAF772111B7DE469DA8178BA2B771A2CC66E2CE" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_CEAF772111B7DE469DA8178BA2B771A2CC66E2CE" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.D21D82F20CCEEE6F21182B1B2856F0654AF44E21" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_D21D82F20CCEEE6F21182B1B2856F0654AF44E21" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.DEE6CA7FEA40C35500C9F2181175138E7CEDAD56" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_DEE6CA7FEA40C35500C9F2181175138E7CEDAD56" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.E0793B5C2068E1F8BD59B58FB0DFAB02118EB871" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_E0793B5C2068E1F8BD59B58FB0DFAB02118EB871" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.E1A4074B4215E2D6E469CD42DA35F833D3D17299" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_E1A4074B4215E2D6E469CD42DA35F833D3D17299" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.E1B2EF7998BE9F3E3E9B2BB4A675A06A76A0DF70" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_E1B2EF7998BE9F3E3E9B2BB4A675A06A76A0DF70" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.E21B92D4F1B2DF57D9F48CA77E890FD7C08364D7" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_E21B92D4F1B2DF57D9F48CA77E890FD7C08364D7" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.E51D97C07E8EA5EA256D1DFAE2CD2E3990532415" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_E51D97C07E8EA5EA256D1DFAE2CD2E3990532415" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.F1145FC6F2BF2ECED868478FD0932E67BD997F8F" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_F1145FC6F2BF2ECED868478FD0932E67BD997F8F" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.FBAECAACB32BDFA0600DBAE76A0AA4A8F148CA0A" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_FBAECAACB32BDFA0600DBAE76A0AA4A8F148CA0A" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;.FFD427AC51155FBE786D5BD178A1338D06868E1F" NewName="A.CO_&lt;PrivateImplementationDetails&gt;.CO_FFD427AC51155FBE786D5BD178A1338D06868E1F" />
+<Entry OldName="NBidi.NBidi.Paragraph._original_text" NewName="NBidi.NBidi.Paragraph.CO__original_text" />
+<Entry OldName="NBidi.NBidi.Paragraph._text" NewName="NBidi.NBidi.Paragraph.CO__text" />
+<Entry OldName="NBidi.NBidi.Paragraph._bidi_text" NewName="NBidi.NBidi.Paragraph.CO__bidi_text" />
+<Entry OldName="NBidi.NBidi.Paragraph._paragraph_separator" NewName="NBidi.NBidi.Paragraph.CO__paragraph_separator" />
+<Entry OldName="NBidi.NBidi.Paragraph._text_data" NewName="NBidi.NBidi.Paragraph.CO__text_data" />
+<Entry OldName="NBidi.NBidi.Paragraph._char_lengths" NewName="NBidi.NBidi.Paragraph.CO__char_lengths" />
+<Entry OldName="NBidi.NBidi.Paragraph._bidi_indexes" NewName="NBidi.NBidi.Paragraph.CO__bidi_indexes" />
+<Entry OldName="NBidi.NBidi.Paragraph._hasArabic" NewName="NBidi.NBidi.Paragraph.CO__hasArabic" />
+<Entry OldName="NBidi.NBidi.Paragraph._hasNSMs" NewName="NBidi.NBidi.Paragraph.CO__hasNSMs" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.&lt;&gt;1__state" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_&lt;&gt;1__state" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.&lt;&gt;2__current" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_&lt;&gt;2__current" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.&lt;&gt;4__this" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_&lt;&gt;4__this" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.&lt;blinkPeriod&gt;5__1" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_&lt;blinkPeriod&gt;5__1" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.&lt;blinkState&gt;5__2" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_&lt;blinkState&gt;5__2" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.&lt;&gt;1__state" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_&lt;&gt;1__state" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.&lt;&gt;2__current" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_&lt;&gt;2__current" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.eventData" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_eventData" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.&lt;&gt;4__this" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_&lt;&gt;4__this" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.&lt;localMousePos&gt;5__1" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_&lt;localMousePos&gt;5__1" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.&lt;rect&gt;5__2" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_&lt;rect&gt;5__2" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.&lt;delay&gt;5__3" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_&lt;delay&gt;5__3" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.&lt;&gt;c.&lt;&gt;9" NewName="UnityEngine.UI.InputFieldRTL.&lt;&gt;c.CO_&lt;&gt;9" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.&lt;&gt;c.&lt;&gt;9__67_0" NewName="UnityEngine.UI.InputFieldRTL.&lt;&gt;c.CO_&lt;&gt;9__67_0" />
+<Entry OldName="NBidi.NBidi.SplitStringToParagraphs(String logicalString)" NewName="NBidi.NBidi.CO_SplitStringToParagraphs(String CO_logicalString)" />
+<Entry OldName="NBidi.NBidiEx..ctor()" NewName="A.CO_NBidi_NBidiEx..ctor()" />
+<Entry OldName="NBidi.NBidiEx.LogicalToVisual(String logicalString, Int32[]&amp; indexes, Int32[]&amp; lengths, CharData[]&amp; charData)" NewName="A.CO_NBidi_NBidiEx.CO_LogicalToVisual(String CO_logicalString, Int32[]&amp; CO_indexes, Int32[]&amp; CO_lengths, CharData[]&amp; CO_charData)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.get_hasSelection()" NewName="UnityEngine.UI.InputFieldReference.get_CO_hasSelection()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.CaretBlink()" NewName="UnityEngine.UI.InputFieldReference.CO_CaretBlink()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SetCaretVisible()" NewName="UnityEngine.UI.InputFieldReference.CO_SetCaretVisible()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SetCaretActive()" NewName="UnityEngine.UI.InputFieldReference.CO_SetCaretActive()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.get_clipboard()" NewName="UnityEngine.UI.InputFieldReference.get_CO_clipboard()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.set_clipboard(String value)" NewName="UnityEngine.UI.InputFieldReference.set_CO_clipboard(String CO_value)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.InPlaceEditing()" NewName="UnityEngine.UI.InputFieldReference.CO_InPlaceEditing()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.GetUnclampedCharacterLineFromPosition(Vector2 pos, TextGenerator generator)" NewName="UnityEngine.UI.InputFieldReference.CO_GetUnclampedCharacterLineFromPosition(Vector2 CO_pos, TextGenerator CO_generator)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MayDrag(PointerEventData eventData)" NewName="UnityEngine.UI.InputFieldReference.CO_MayDrag(PointerEventData CO_eventData)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MouseDragOutsideRect(PointerEventData eventData)" NewName="UnityEngine.UI.InputFieldReference.CO_MouseDragOutsideRect(PointerEventData CO_eventData)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.IsValidChar(Char c)" NewName="UnityEngine.UI.InputFieldReference.CO_IsValidChar(Char CO_c)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.GetSelectedString()" NewName="UnityEngine.UI.InputFieldReference.CO_GetSelectedString()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.FindtNextWordBegin()" NewName="UnityEngine.UI.InputFieldReference.CO_FindtNextWordBegin()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MoveRight(Boolean shift, Boolean ctrl)" NewName="UnityEngine.UI.InputFieldReference.CO_MoveRight(Boolean CO_shift, Boolean CO_ctrl)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.FindtPrevWordBegin()" NewName="UnityEngine.UI.InputFieldReference.CO_FindtPrevWordBegin()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MoveLeft(Boolean shift, Boolean ctrl)" NewName="UnityEngine.UI.InputFieldReference.CO_MoveLeft(Boolean CO_shift, Boolean CO_ctrl)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.DetermineCharacterLine(Int32 charPos, TextGenerator generator)" NewName="UnityEngine.UI.InputFieldReference.CO_DetermineCharacterLine(Int32 CO_charPos, TextGenerator CO_generator)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.LineUpCharacterPosition(Int32 originalPos, Boolean goToFirstChar)" NewName="UnityEngine.UI.InputFieldReference.CO_LineUpCharacterPosition(Int32 CO_originalPos, Boolean CO_goToFirstChar)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.LineDownCharacterPosition(Int32 originalPos, Boolean goToLastChar)" NewName="UnityEngine.UI.InputFieldReference.CO_LineDownCharacterPosition(Int32 CO_originalPos, Boolean CO_goToLastChar)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MoveDown(Boolean shift)" NewName="UnityEngine.UI.InputFieldReference.CO_MoveDown(Boolean CO_shift)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MoveDown(Boolean shift, Boolean goToLastChar)" NewName="UnityEngine.UI.InputFieldReference.CO_MoveDown(Boolean CO_shift, Boolean CO_goToLastChar)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MoveUp(Boolean shift)" NewName="UnityEngine.UI.InputFieldReference.CO_MoveUp(Boolean CO_shift)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MoveUp(Boolean shift, Boolean goToFirstChar)" NewName="UnityEngine.UI.InputFieldReference.CO_MoveUp(Boolean CO_shift, Boolean CO_goToFirstChar)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.Delete()" NewName="UnityEngine.UI.InputFieldReference.CO_Delete()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.ForwardSpace()" NewName="UnityEngine.UI.InputFieldReference.CO_ForwardSpace()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.Backspace()" NewName="UnityEngine.UI.InputFieldReference.CO_Backspace()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.Insert(Char c)" NewName="UnityEngine.UI.InputFieldReference.CO_Insert(Char CO_c)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SendOnValueChangedAndUpdateLabel()" NewName="UnityEngine.UI.InputFieldReference.CO_SendOnValueChangedAndUpdateLabel()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SendOnValueChanged()" NewName="UnityEngine.UI.InputFieldReference.CO_SendOnValueChanged()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.IsSelectionVisible()" NewName="UnityEngine.UI.InputFieldReference.CO_IsSelectionVisible()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.GetLineStartPosition(TextGenerator gen, Int32 line)" NewName="UnityEngine.UI.InputFieldReference.CO_GetLineStartPosition(TextGenerator CO_gen, Int32 CO_line)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.GetLineEndPosition(TextGenerator gen, Int32 line)" NewName="UnityEngine.UI.InputFieldReference.CO_GetLineEndPosition(TextGenerator CO_gen, Int32 CO_line)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SetDrawRangeToContainCaretPosition(Int32 caretPos)" NewName="UnityEngine.UI.InputFieldReference.CO_SetDrawRangeToContainCaretPosition(Int32 CO_caretPos)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.MarkGeometryAsDirty()" NewName="UnityEngine.UI.InputFieldReference.CO_MarkGeometryAsDirty()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.UpdateGeometry()" NewName="UnityEngine.UI.InputFieldReference.CO_UpdateGeometry()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.AssignPositioningIfNeeded()" NewName="UnityEngine.UI.InputFieldReference.CO_AssignPositioningIfNeeded()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.OnFillVBO(Mesh vbo)" NewName="UnityEngine.UI.InputFieldReference.CO_OnFillVBO(Mesh CO_vbo)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)" NewName="UnityEngine.UI.InputFieldReference.CO_GenerateCaret(VertexHelper CO_vbo, Vector2 CO_roundingOffset)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.CreateCursorVerts()" NewName="UnityEngine.UI.InputFieldReference.CO_CreateCursorVerts()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.GenerateHightlight(VertexHelper vbo, Vector2 roundingOffset)" NewName="UnityEngine.UI.InputFieldReference.CO_GenerateHightlight(VertexHelper CO_vbo, Vector2 CO_roundingOffset)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.ActivateInputFieldInternal()" NewName="UnityEngine.UI.InputFieldReference.CO_ActivateInputFieldInternal()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.EnforceContentType()" NewName="UnityEngine.UI.InputFieldReference.CO_EnforceContentType()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SetToCustomIfContentTypeIsNot(ContentType[] allowedContentTypes)" NewName="UnityEngine.UI.InputFieldReference.CO_SetToCustomIfContentTypeIsNot(ContentType[] CO_allowedContentTypes)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.SetToCustom()" NewName="UnityEngine.UI.InputFieldReference.CO_SetToCustom()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.UnityEngine.UI.ICanvasElement.get_transform()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine.UI.ICanvasElement.get_transform()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.UnityEngine.UI.ICanvasElement.IsDestroyed()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine.UI.ICanvasElement.IsDestroyed()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.get_Clipboard()" NewName="UnityEngine.UI.InputFieldRTL.get_CO_Clipboard()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.set_Clipboard(String value)" NewName="UnityEngine.UI.InputFieldRTL.set_CO_Clipboard(String CO_value)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.get_InputFieldRtlAdapter()" NewName="UnityEngine.UI.InputFieldRTL.get_CO_InputFieldRtlAdapter()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.GetParagraph(TextGenerator textGenerator, Int32 logicalPos, Int32&amp; lineNum, Int32&amp; lineEnd, Int32&amp; startCharIdx)" NewName="UnityEngine.UI.InputFieldRTL.CO_GetParagraph(TextGenerator CO_textGenerator, Int32 CO_logicalPos, Int32&amp; CO_lineNum, Int32&amp; CO_lineEnd, Int32&amp; CO_startCharIdx)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.KeyPressed(Event processingEvent)" NewName="UnityEngine.UI.InputFieldRTL.CO_KeyPressed(Event CO_processingEvent)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.IsValidChar(Char c)" NewName="UnityEngine.UI.InputFieldRTL.CO_IsValidChar(Char CO_c)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.CalculateLineEndings(String text)" NewName="UnityEngine.UI.InputFieldRTL.CO_CalculateLineEndings(String CO_text)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.PopulateCachedTextGenerator(String text, HorizontalWrapMode settingsHorizontalOverflow)" NewName="UnityEngine.UI.InputFieldRTL.CO_PopulateCachedTextGenerator(String CO_text, HorizontalWrapMode CO_settingsHorizontalOverflow)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.UpdateLabel()" NewName="UnityEngine.UI.InputFieldRTL.CO_UpdateLabel()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.ReplaceCharAtIdx(String theString, Char newChar, Int32 idx)" NewName="UnityEngine.UI.InputFieldRTL.CO_ReplaceCharAtIdx(String CO_theString, Char CO_newChar, Int32 CO_idx)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.GetCharacterType(Int32 logicalPos)" NewName="UnityEngine.UI.InputFieldRTL.CO_GetCharacterType(Int32 CO_logicalPos)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.AppendChar(Char c)" NewName="UnityEngine.UI.InputFieldRTL.CO_AppendChar(Char CO_c)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.OnFillVBO(Mesh vbo)" NewName="UnityEngine.UI.InputFieldRTL.CO_OnFillVBO(Mesh CO_vbo)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)" NewName="UnityEngine.UI.InputFieldRTL.CO_GenerateCaret(VertexHelper CO_vbo, Vector2 CO_roundingOffset)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.DetermineCharacterLine(Int32 charPos, TextGenerator generator)" NewName="UnityEngine.UI.InputFieldRTL.CO_DetermineCharacterLine(Int32 CO_charPos, TextGenerator CO_generator)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.LineUpCharacterPosition(Int32 originalPos, Boolean goToFirstChar)" NewName="UnityEngine.UI.InputFieldRTL.CO_LineUpCharacterPosition(Int32 CO_originalPos, Boolean CO_goToFirstChar)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.CreateCursorVerts()" NewName="UnityEngine.UI.InputFieldRTL.CO_CreateCursorVerts()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.AssignPositioningIfNeeded()" NewName="UnityEngine.UI.InputFieldRTL.CO_AssignPositioningIfNeeded()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.GetUnclampedCharacterLineFromPosition(Vector2 pos, TextGenerator generator)" NewName="UnityEngine.UI.InputFieldRTL.CO_GetUnclampedCharacterLineFromPosition(Vector2 CO_pos, TextGenerator CO_generator)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.GetLineEndPosition(TextGenerator gen, Int32 line)" NewName="UnityEngine.UI.InputFieldRTL.CO_GetLineEndPosition(TextGenerator CO_gen, Int32 CO_line)" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.MarkGeometryAsDirty()" NewName="UnityEngine.UI.InputFieldRTL.CO_MarkGeometryAsDirty()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.UnityEngine.UI.ICanvasElement.get_transform()" NewName="UnityEngine.UI.InputFieldRTL.CO_UnityEngine.UI.ICanvasElement.get_transform()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTLAdapter.get_InputFieldRtl()" NewName="UnityEngine.UI.InputFieldRTLAdapter.get_CO_InputFieldRtl()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTLAdapter.InitInputField()" NewName="UnityEngine.UI.InputFieldRTLAdapter.CO_InitInputField()" />
+<Entry OldName="UnityEngine.UI.SetPropertyUtility.SetColor(Color&amp; currentValue, Color newValue)" NewName="A.CO_UnityEngine_UI_SetPropertyUtility.CO_SetColor(Color&amp; CO_currentValue, Color CO_newValue)" />
+<Entry OldName="UnityEngine.UI.SetPropertyUtility.SetEquatableStruct[T](T&amp; currentValue, T newValue)" NewName="A.CO_UnityEngine_UI_SetPropertyUtility.CO_SetEquatableStruct[CO_T](CO_T&amp; CO_currentValue, CO_T CO_newValue)" />
+<Entry OldName="UnityEngine.UI.SetPropertyUtility.SetStruct[T](T&amp; currentValue, T newValue)" NewName="A.CO_UnityEngine_UI_SetPropertyUtility.CO_SetStruct[CO_T](CO_T&amp; CO_currentValue, CO_T CO_newValue)" />
+<Entry OldName="UnityEngine.UI.SetPropertyUtility.SetClass[T](T&amp; currentValue, T newValue)" NewName="A.CO_UnityEngine_UI_SetPropertyUtility.CO_SetClass[CO_T](CO_T&amp; CO_currentValue, CO_T CO_newValue)" />
+<Entry OldName="NBidi.NBidi.Paragraph.RemoveBidiMarkers()" NewName="NBidi.NBidi.Paragraph.CO_RemoveBidiMarkers()" />
+<Entry OldName="NBidi.NBidi.Paragraph.ResolveWeakTypes(Int32 start, Int32 limit, BidiCharacterType sor, BidiCharacterType eor)" NewName="NBidi.NBidi.Paragraph.CO_ResolveWeakTypes(Int32 CO_start, Int32 CO_limit, BidiCharacterType CO_sor, BidiCharacterType CO_eor)" />
+<Entry OldName="NBidi.NBidi.Paragraph.ResolveNeutralTypes(Int32 start, Int32 limit, BidiCharacterType sor, BidiCharacterType eor, Int32 level)" NewName="NBidi.NBidi.Paragraph.CO_ResolveNeutralTypes(Int32 CO_start, Int32 CO_limit, BidiCharacterType CO_sor, BidiCharacterType CO_eor, Int32 CO_level)" />
+<Entry OldName="NBidi.NBidi.Paragraph.ResolveImplicitTypes(Int32 start, Int32 limit, Int32 level)" NewName="NBidi.NBidi.Paragraph.CO_ResolveImplicitTypes(Int32 CO_start, Int32 CO_limit, Int32 CO_level)" />
+<Entry OldName="NBidi.NBidi.Paragraph.ReorderString(Int32 start, Int32 end)" NewName="NBidi.NBidi.Paragraph.CO_ReorderString(Int32 CO_start, Int32 CO_end)" />
+<Entry OldName="NBidi.NBidi.Paragraph.FixMirroredCharacters()" NewName="NBidi.NBidi.Paragraph.CO_FixMirroredCharacters()" />
+<Entry OldName="NBidi.NBidi.Paragraph.PerformArabicShaping(String text)" NewName="NBidi.NBidi.Paragraph.CO_PerformArabicShaping(String CO_text)" />
+<Entry OldName="NBidi.NBidi.Paragraph.GetPairwiseComposition(Char first, Char second)" NewName="NBidi.NBidi.Paragraph.CO_GetPairwiseComposition(Char CO_first, Char CO_second)" />
+<Entry OldName="NBidi.NBidi.Paragraph.InternalCompose(StringBuilder target, ArrayList char_lengths)" NewName="NBidi.NBidi.Paragraph.CO_InternalCompose(StringBuilder CO_target, ArrayList CO_char_lengths)" />
+<Entry OldName="NBidi.NBidi.Paragraph.GetRecursiveDecomposition(Boolean canonical, Char ch, StringBuilder builder)" NewName="NBidi.NBidi.Paragraph.CO_GetRecursiveDecomposition(Boolean CO_canonical, Char CO_ch, StringBuilder CO_builder)" />
+<Entry OldName="NBidi.NBidi.Paragraph.InternalDecompose(ArrayList char_lengths)" NewName="NBidi.NBidi.Paragraph.CO_InternalDecompose(ArrayList CO_char_lengths)" />
+<Entry OldName="NBidi.NBidi.Paragraph.TypeForLevel(Int32 level)" NewName="NBidi.NBidi.Paragraph.CO_TypeForLevel(Int32 CO_level)" />
+<Entry OldName="NBidi.NBidi.Paragraph.FindRunLimit(Int32 index, Int32 limit, BidiCharacterType[] validSet)" NewName="NBidi.NBidi.Paragraph.CO_FindRunLimit(Int32 CO_index, Int32 CO_limit, BidiCharacterType[] CO_validSet)" />
+<Entry OldName="NBidi.NBidi.Paragraph.SetTypes(Int32 start, Int32 limit, BidiCharacterType newType)" NewName="NBidi.NBidi.Paragraph.CO_SetTypes(Int32 CO_start, Int32 CO_limit, BidiCharacterType CO_newType)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147..ctor(Int32 &lt;&gt;1__state)" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147..ctor(Int32 CO_&lt;&gt;1__state)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.System.IDisposable.Dispose()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_System.IDisposable.Dispose()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.MoveNext()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.MoveNext()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.System.Collections.Generic.IEnumerator&lt;System.Object&gt;.get_Current()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.System.Collections.Generic.IEnumerator&lt;System.Object&gt;.get_Current()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.System.Collections.IEnumerator.Reset()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.CO_System.Collections.IEnumerator.Reset()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;CaretBlink&gt;d__147.System.Collections.IEnumerator.get_Current()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;CaretBlink&gt;d__147.System.Collections.IEnumerator.get_Current()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165..ctor(Int32 &lt;&gt;1__state)" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165..ctor(Int32 CO_&lt;&gt;1__state)" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.System.IDisposable.Dispose()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_System.IDisposable.Dispose()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.MoveNext()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.MoveNext()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.System.Collections.Generic.IEnumerator&lt;System.Object&gt;.get_Current()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.System.Collections.Generic.IEnumerator&lt;System.Object&gt;.get_Current()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.System.Collections.IEnumerator.Reset()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.CO_System.Collections.IEnumerator.Reset()" />
+<Entry OldName="UnityEngine.UI.InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.System.Collections.IEnumerator.get_Current()" NewName="UnityEngine.UI.InputFieldReference.CO_UnityEngine_UI_InputFieldReference.&lt;MouseDragOutsideRect&gt;d__165.System.Collections.IEnumerator.get_Current()" />
+<Entry OldName="UnityEngine.UI.InputFieldRTL.&lt;&gt;c.&lt;UpdateLabel&gt;b__67_0(Char e)" NewName="UnityEngine.UI.InputFieldRTL.&lt;&gt;c.CO_&lt;UpdateLabel&gt;b__67_0(Char CO_e)" />
+<Entry OldName="NBidi.NBidiEx" NewName="A.CO_NBidi_NBidiEx" />
+<Entry OldName="UnityEngine.UI.InputFieldReference+&lt;CaretBlink&gt;d__147" NewName="UnityEngine.UI.InputFieldReference+CO_UnityEngine_UI_InputFieldReference+&lt;CaretBlink&gt;d__147" />
+<Entry OldName="UnityEngine.UI.InputFieldReference+&lt;MouseDragOutsideRect&gt;d__165" NewName="UnityEngine.UI.InputFieldReference+CO_UnityEngine_UI_InputFieldReference+&lt;MouseDragOutsideRect&gt;d__165" />
+<Entry OldName="UnityEngine.UI.SetPropertyUtility" NewName="A.CO_UnityEngine_UI_SetPropertyUtility" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=12" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=12" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=16" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=16" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=24" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=24" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=32" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=32" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=40" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=40" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=48" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=48" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=64" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=64" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=72" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=72" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=80" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=80" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=88" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=88" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=104" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=104" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=112" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=112" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=144" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=144" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=152" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=152" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=160" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=160" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=176" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=176" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=184" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=184" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=208" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=208" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=248" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=248" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=312" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=312" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=432" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=432" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=440" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=440" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=560" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=560" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=568" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=568" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=576" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=576" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=600" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=600" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=664" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=664" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=784" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=784" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=808" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=808" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=904" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=904" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=936" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=936" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=1152" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=1152" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=1184" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=1184" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=2032" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=2032" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=4472" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=4472" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=4552" NewName="A.CO_&lt;PrivateImplementationDetails&gt;+CO_&lt;PrivateImplementationDetails&gt;+__StaticArrayInitTypeSize=4552" />
+<Entry OldName="&lt;PrivateImplementationDetails&gt;" NewName="A.CO_&lt;PrivateImplementationDetails&gt;" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\BidiCharacterMirrorResolver.generated.cs" NewName="File0" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\BidiCharacterTypeResolver.generated.cs" NewName="File1" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\NBidi.cs" NewName="File2" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\NBidiEx.cs" NewName="File3" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\UnicodeArabicShapingResolver.generated.cs" NewName="File4" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\InputFieldReference.cs" NewName="File5" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\InputFieldRTL.cs" NewName="File6" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\InputFieldRTLAdapter.cs" NewName="File7" />
+<Entry OldName="C:\NativeRTL\NativeRTLPlugin\Source\SetPropertyUtility.cs" NewName="File8" />
+<Assembly Name="NativeRTLPlugin"><Type Token="33554433" Name="&lt;Module&gt;" />
+<Method Token="100663297" Name="" Variables="" ParamCnt="0" />
+<Type Token="33554434" Name="InputFieldRTLScrollControl" />
+<Method Token="100663298" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Type Token="33554436" Name="NBidi.ArabicShapeJoiningType" />
+<Field Token="67108865" Name="value__" />
+<Field Token="67108866" Name="R" />
+<Field Token="67108867" Name="L" />
+<Field Token="67108868" Name="D" />
+<Field Token="67108869" Name="C" />
+<Field Token="67108870" Name="U" />
+<Field Token="67108871" Name="T" />
+<Type Token="33554438" Name="NBidi.BidiCharacterMirrorResolver" />
+<Method Token="100663306" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663307" Name="GetBidiCharacterMirror" Variables="c;V_0;V_1;" ParamCnt="1" />
+<Type Token="33554439" Name="NBidi.BidiCharacterType" />
+<Field Token="67108873" Name="value__" />
+<Field Token="67108874" Name="L" />
+<Field Token="67108875" Name="LRE" />
+<Field Token="67108876" Name="LRO" />
+<Field Token="67108877" Name="R" />
+<Field Token="67108878" Name="AL" />
+<Field Token="67108879" Name="RLE" />
+<Field Token="67108880" Name="RLO" />
+<Field Token="67108881" Name="PDF" />
+<Field Token="67108882" Name="EN" />
+<Field Token="67108883" Name="ES" />
+<Field Token="67108884" Name="ET" />
+<Field Token="67108885" Name="AN" />
+<Field Token="67108886" Name="CS" />
+<Field Token="67108887" Name="NSM" />
+<Field Token="67108888" Name="BN" />
+<Field Token="67108889" Name="B" />
+<Field Token="67108890" Name="S" />
+<Field Token="67108891" Name="WS" />
+<Field Token="67108892" Name="ON" />
+<Type Token="33554440" Name="NBidi.UnicodeCharacterDataResolver" />
+<Method Token="100663308" Name=".cctor" Variables="i;V_1;V_2;i;j;V_5;V_6;i;j;V_9;V_10;i;j;V_13;V_14;i;j;V_17;V_18;i;j;V_21;V_22;i;j;V_25;V_26;i;j;V_29;V_30;i;j;V_33;V_34;i;j;V_37;V_38;i;j;V_41;V_42;i;j;V_45;V_46;i;j;V_49;V_50;i;j;V_53;V_54;i;j;V_57;V_58;i;j;V_61;V_62;i;j;V_65;V_66;i;j;V_69;V_70;i;j;V_73;V_74;i;j;V_77;V_78;i;j;V_81;V_82;i;j;V_85;V_86;i;j;V_89;V_90;i;j;V_93;V_94;i;j;V_97;V_98;i;j;V_101;V_102;i;j;V_105;V_106;i;j;V_109;V_110;i;j;V_113;V_114;i;j;V_117;V_118;i;j;V_121;V_122;i;j;V_125;V_126;i;j;V_129;V_130;i;j;V_133;V_134;i;j;V_137;V_138;i;j;V_141;V_142;i;j;V_145;V_146;i;j;V_149;V_150;i;j;V_153;V_154;i;j;V_157;V_158;i;j;V_161;V_162;i;j;V_165;V_166;i;j;V_169;V_170;i;j;V_173;V_174;i;j;V_177;V_178;i;j;V_181;V_182;i;j;V_185;V_186;i;j;V_189;V_190;i;j;V_193;V_194;i;j;V_197;V_198;i;j;V_201;V_202;i;j;V_205;V_206;i;j;V_209;V_210;i;j;V_213;V_214;i;j;V_217;V_218;i;j;V_221;V_222;i;j;V_225;V_226;i;j;V_229;V_230;i;j;V_233;V_234;i;j;V_237;V_238;i;j;V_241;V_242;i;j;V_245;V_246;i;j;V_249;V_250;i;j;V_253;V_254;" ParamCnt="0" />
+<Method Token="100663309" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663310" Name="GetBidiCharacterType" Variables="c;V_0;" ParamCnt="1" />
+<Method Token="100663311" Name="GetUnicodeGeneralCategory" Variables="c;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663312" Name="GetUnicodeCanonicalClass" Variables="c;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663313" Name="GetUnicodeDecompositionType" Variables="c;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663314" Name="GetUnicodeDecompositionMapping" Variables="c;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663315" Name="Compose" Variables="sequence;V_0;V_1;" ParamCnt="1" />
+<Field Token="67108893" Name="bidiCharType" />
+<Field Token="67108894" Name="categories" />
+<Field Token="67108895" Name="decomType" />
+<Field Token="67108896" Name="canonClass" />
+<Field Token="67108897" Name="decomMapping" />
+<Field Token="67108898" Name="composeMapping" />
+<Field Token="67108899" Name="BctList_LRE" />
+<Field Token="67108900" Name="BctList_LRO" />
+<Field Token="67108901" Name="BctList_R" />
+<Field Token="67108902" Name="BctList_AL" />
+<Field Token="67108903" Name="BctList_RLE" />
+<Field Token="67108904" Name="BctList_RLO" />
+<Field Token="67108905" Name="BctList_PDF" />
+<Field Token="67108906" Name="BctList_EN" />
+<Field Token="67108907" Name="BctList_ES" />
+<Field Token="67108908" Name="BctList_ET" />
+<Field Token="67108909" Name="BctList_AN" />
+<Field Token="67108910" Name="BctList_CS" />
+<Field Token="67108911" Name="BctList_NSM" />
+<Field Token="67108912" Name="BctList_BN" />
+<Field Token="67108913" Name="BctList_B" />
+<Field Token="67108914" Name="BctList_S" />
+<Field Token="67108915" Name="BctList_WS" />
+<Field Token="67108916" Name="BctList_ON" />
+<Field Token="67108917" Name="UgcList_Lu" />
+<Field Token="67108918" Name="UgcList_Ll" />
+<Field Token="67108919" Name="UgcList_Lt" />
+<Field Token="67108920" Name="UgcList_Lm" />
+<Field Token="67108921" Name="UgcList_Lo" />
+<Field Token="67108922" Name="UgcList_Mn" />
+<Field Token="67108923" Name="UgcList_Mc" />
+<Field Token="67108924" Name="UgcList_Me" />
+<Field Token="67108925" Name="UgcList_Nd" />
+<Field Token="67108926" Name="UgcList_Nl" />
+<Field Token="67108927" Name="UgcList_No" />
+<Field Token="67108928" Name="UgcList_Pc" />
+<Field Token="67108929" Name="UgcList_Pd" />
+<Field Token="67108930" Name="UgcList_Ps" />
+<Field Token="67108931" Name="UgcList_Pe" />
+<Field Token="67108932" Name="UgcList_Pi" />
+<Field Token="67108933" Name="UgcList_Pf" />
+<Field Token="67108934" Name="UgcList_Po" />
+<Field Token="67108935" Name="UgcList_Sm" />
+<Field Token="67108936" Name="UgcList_Sc" />
+<Field Token="67108937" Name="UgcList_Sk" />
+<Field Token="67108938" Name="UgcList_So" />
+<Field Token="67108939" Name="UgcList_Zs" />
+<Field Token="67108940" Name="UgcList_Zl" />
+<Field Token="67108941" Name="UgcList_Zp" />
+<Field Token="67108942" Name="UgcList_Cc" />
+<Field Token="67108943" Name="UgcList_Cf" />
+<Field Token="67108944" Name="UgcList_Cs" />
+<Field Token="67108945" Name="UgcList_Co" />
+<Field Token="67108946" Name="UdtList_Font" />
+<Field Token="67108947" Name="UdtList_NoBreak" />
+<Field Token="67108948" Name="UdtList_Initial" />
+<Field Token="67108949" Name="UdtList_Medial" />
+<Field Token="67108950" Name="UdtList_Final" />
+<Field Token="67108951" Name="UdtList_Isolated" />
+<Field Token="67108952" Name="UdtList_Circle" />
+<Field Token="67108953" Name="UdtList_Super" />
+<Field Token="67108954" Name="UdtList_Sub" />
+<Field Token="67108955" Name="UdtList_Vertical" />
+<Field Token="67108956" Name="UdtList_Wide" />
+<Field Token="67108957" Name="UdtList_Narrow" />
+<Field Token="67108958" Name="UdtList_Small" />
+<Field Token="67108959" Name="UdtList_Square" />
+<Field Token="67108960" Name="UdtList_Fraction" />
+<Field Token="67108961" Name="UdtList_Compat" />
+<Type Token="33554441" Name="NBidi.BidiChars" />
+<Field Token="67108962" Name="RLM" />
+<Field Token="67108963" Name="RLE" />
+<Field Token="67108964" Name="RLO" />
+<Field Token="67108965" Name="LRM" />
+<Field Token="67108966" Name="LRE" />
+<Field Token="67108967" Name="LRO" />
+<Field Token="67108968" Name="PDF" />
+<Field Token="67108969" Name="NotAChar" />
+<Field Token="67108970" Name="ARABIC_LAM" />
+<Field Token="67108971" Name="ARABIC_ALEF_MADDA_ABOVE" />
+<Field Token="67108972" Name="ARABIC_ALEF_HAMZA_ABOVE" />
+<Field Token="67108973" Name="ARABIC_ALEF_HAMZA_BELOW" />
+<Field Token="67108974" Name="ARABIC_ALEF" />
+<Field Token="67108975" Name="ARABIC_LAM_ALEF_MADDA_ABOVE_ISOLATED" />
+<Field Token="67108976" Name="ARABIC_LAM_ALEF_MADDA_ABOVE_FINAL" />
+<Field Token="67108977" Name="ARABIC_LAM_ALEF_HAMZA_ABOVE_ISOLATED" />
+<Field Token="67108978" Name="ARABIC_LAM_ALEF_HAMZA_ABOVE_FINAL" />
+<Field Token="67108979" Name="ARABIC_LAM_ALEF_HAMZA_BELOW_ISOLATED" />
+<Field Token="67108980" Name="ARABIC_LAM_ALEF_HAMZA_BELOW_FINAL" />
+<Field Token="67108981" Name="ARABIC_LAM_ALEF_ISOLATED" />
+<Field Token="67108982" Name="ARABIC_LAM_ALEF_FINAL" />
+<Type Token="33554442" Name="NBidi.DirectionalOverrideStatus" />
+<Field Token="67108983" Name="value__" />
+<Field Token="67108984" Name="Neutral" />
+<Field Token="67108985" Name="RTL" />
+<Field Token="67108986" Name="LTR" />
+<Type Token="33554443" Name="NBidi.LetterForm" />
+<Field Token="67108987" Name="value__" />
+<Field Token="67108988" Name="Initial" />
+<Field Token="67108989" Name="Medial" />
+<Field Token="67108990" Name="Final" />
+<Field Token="67108991" Name="Isolated" />
+<Type Token="33554444" Name="NBidi.NBidi" />
+<Method Token="100663316" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663317" Name="LogicalToVisual" Variables="logicalString;pars;sb;V_2;V_3;p;V_5;" ParamCnt="1" />
+<Method Token="100663318" Name="get_LineWrapperFunc" Variables="" ParamCnt="0" />
+<Method Token="100663319" Name="set_LineWrapperFunc" Variables="value;" ParamCnt="1" />
+<Method Token="100663320" Name="LogicalToVisual" Variables="logicalString;indexes;lengths;arrIndexes;arrLengths;pars;sb;V_4;V_5;p;V_7;" ParamCnt="3" />
+<Method Token="100663321" Name="SplitStringToParagraphs" Variables="logicalString;ret;i;sb;c;cType;V_5;p;V_7;V_8;V_9;" ParamCnt="1" />
+<Field Token="67108992" Name="&lt;LineWrapperFunc&gt;k__BackingField" />
+<Type Token="33554445" Name="NBidi.NBidiEx" />
+<Method Token="100663322" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663323" Name="LogicalToVisual" Variables="logicalString;indexes;lengths;charData;arrIndexes;arrLengths;arrCharData;pars;sb;V_5;V_6;p;V_8;" ParamCnt="4" />
+<Type Token="33554446" Name="NBidi.UnicodeArabicShapingResolver" />
+<Method Token="100663324" Name=".cctor" Variables="" ParamCnt="0" />
+<Method Token="100663325" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663326" Name="GetArabicShapeJoiningType" Variables="c;ugc;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;V_10;V_11;V_12;V_13;V_14;V_15;V_16;V_17;V_18;V_19;V_20;V_21;V_22;V_23;V_24;V_25;V_26;V_27;V_28;V_29;V_30;V_31;V_32;V_33;V_34;V_35;V_36;V_37;V_38;V_39;V_40;V_41;V_42;V_43;V_44;V_45;V_46;V_47;V_48;V_49;V_50;V_51;V_52;V_53;V_54;V_55;V_56;V_57;V_58;V_59;V_60;V_61;V_62;V_63;V_64;V_65;V_66;V_67;" ParamCnt="1" />
+<Method Token="100663327" Name="GetArabicCharacterByLetterForm" Variables="ch;form;key;V_1;V_2;" ParamCnt="2" />
+<Field Token="67108993" Name="charForms" />
+<Type Token="33554447" Name="NBidi.UnicodeCanonicalClass" />
+<Field Token="67108994" Name="value__" />
+<Field Token="67108995" Name="NR" />
+<Field Token="67108996" Name="OV" />
+<Field Token="67108997" Name="NK" />
+<Field Token="67108998" Name="KV" />
+<Field Token="67108999" Name="VR" />
+<Field Token="67109000" Name="CLASS_10" />
+<Field Token="67109001" Name="CLASS_11" />
+<Field Token="67109002" Name="CLASS_12" />
+<Field Token="67109003" Name="CLASS_13" />
+<Field Token="67109004" Name="CLASS_14" />
+<Field Token="67109005" Name="CLASS_15" />
+<Field Token="67109006" Name="CLASS_16" />
+<Field Token="67109007" Name="CLASS_17" />
+<Field Token="67109008" Name="CLASS_18" />
+<Field Token="67109009" Name="CLASS_19" />
+<Field Token="67109010" Name="CLASS_20" />
+<Field Token="67109011" Name="CLASS_21" />
+<Field Token="67109012" Name="CLASS_22" />
+<Field Token="67109013" Name="CLASS_23" />
+<Field Token="67109014" Name="CLASS_24" />
+<Field Token="67109015" Name="CLASS_25" />
+<Field Token="67109016" Name="CLASS_26" />
+<Field Token="67109017" Name="CLASS_27" />
+<Field Token="67109018" Name="CLASS_28" />
+<Field Token="67109019" Name="CLASS_29" />
+<Field Token="67109020" Name="CLASS_30" />
+<Field Token="67109021" Name="CLASS_31" />
+<Field Token="67109022" Name="CLASS_32" />
+<Field Token="67109023" Name="CLASS_33" />
+<Field Token="67109024" Name="CLASS_34" />
+<Field Token="67109025" Name="CLASS_35" />
+<Field Token="67109026" Name="CLASS_36" />
+<Field Token="67109027" Name="CLASS_37" />
+<Field Token="67109028" Name="CLASS_38" />
+<Field Token="67109029" Name="CLASS_39" />
+<Field Token="67109030" Name="CLASS_40" />
+<Field Token="67109031" Name="CLASS_41" />
+<Field Token="67109032" Name="CLASS_42" />
+<Field Token="67109033" Name="CLASS_43" />
+<Field Token="67109034" Name="CLASS_44" />
+<Field Token="67109035" Name="CLASS_45" />
+<Field Token="67109036" Name="CLASS_46" />
+<Field Token="67109037" Name="CLASS_47" />
+<Field Token="67109038" Name="CLASS_48" />
+<Field Token="67109039" Name="CLASS_49" />
+<Field Token="67109040" Name="CLASS_50" />
+<Field Token="67109041" Name="CLASS_51" />
+<Field Token="67109042" Name="CLASS_52" />
+<Field Token="67109043" Name="CLASS_53" />
+<Field Token="67109044" Name="CLASS_54" />
+<Field Token="67109045" Name="CLASS_55" />
+<Field Token="67109046" Name="CLASS_56" />
+<Field Token="67109047" Name="CLASS_57" />
+<Field Token="67109048" Name="CLASS_58" />
+<Field Token="67109049" Name="CLASS_59" />
+<Field Token="67109050" Name="CLASS_60" />
+<Field Token="67109051" Name="CLASS_61" />
+<Field Token="67109052" Name="CLASS_62" />
+<Field Token="67109053" Name="CLASS_63" />
+<Field Token="67109054" Name="CLASS_64" />
+<Field Token="67109055" Name="CLASS_65" />
+<Field Token="67109056" Name="CLASS_66" />
+<Field Token="67109057" Name="CLASS_67" />
+<Field Token="67109058" Name="CLASS_68" />
+<Field Token="67109059" Name="CLASS_69" />
+<Field Token="67109060" Name="CLASS_70" />
+<Field Token="67109061" Name="CLASS_71" />
+<Field Token="67109062" Name="CLASS_72" />
+<Field Token="67109063" Name="CLASS_73" />
+<Field Token="67109064" Name="CLASS_74" />
+<Field Token="67109065" Name="CLASS_75" />
+<Field Token="67109066" Name="CLASS_76" />
+<Field Token="67109067" Name="CLASS_77" />
+<Field Token="67109068" Name="CLASS_78" />
+<Field Token="67109069" Name="CLASS_79" />
+<Field Token="67109070" Name="CLASS_80" />
+<Field Token="67109071" Name="CLASS_81" />
+<Field Token="67109072" Name="CLASS_82" />
+<Field Token="67109073" Name="CLASS_83" />
+<Field Token="67109074" Name="CLASS_84" />
+<Field Token="67109075" Name="CLASS_85" />
+<Field Token="67109076" Name="CLASS_86" />
+<Field Token="67109077" Name="CLASS_87" />
+<Field Token="67109078" Name="CLASS_88" />
+<Field Token="67109079" Name="CLASS_89" />
+<Field Token="67109080" Name="CLASS_90" />
+<Field Token="67109081" Name="CLASS_91" />
+<Field Token="67109082" Name="CLASS_92" />
+<Field Token="67109083" Name="CLASS_93" />
+<Field Token="67109084" Name="CLASS_94" />
+<Field Token="67109085" Name="CLASS_95" />
+<Field Token="67109086" Name="CLASS_96" />
+<Field Token="67109087" Name="CLASS_97" />
+<Field Token="67109088" Name="CLASS_98" />
+<Field Token="67109089" Name="CLASS_99" />
+<Field Token="67109090" Name="CLASS_100" />
+<Field Token="67109091" Name="CLASS_101" />
+<Field Token="67109092" Name="CLASS_102" />
+<Field Token="67109093" Name="CLASS_103" />
+<Field Token="67109094" Name="CLASS_104" />
+<Field Token="67109095" Name="CLASS_105" />
+<Field Token="67109096" Name="CLASS_106" />
+<Field Token="67109097" Name="CLASS_107" />
+<Field Token="67109098" Name="CLASS_108" />
+<Field Token="67109099" Name="CLASS_109" />
+<Field Token="67109100" Name="CLASS_110" />
+<Field Token="67109101" Name="CLASS_111" />
+<Field Token="67109102" Name="CLASS_112" />
+<Field Token="67109103" Name="CLASS_113" />
+<Field Token="67109104" Name="CLASS_114" />
+<Field Token="67109105" Name="CLASS_115" />
+<Field Token="67109106" Name="CLASS_116" />
+<Field Token="67109107" Name="CLASS_117" />
+<Field Token="67109108" Name="CLASS_118" />
+<Field Token="67109109" Name="CLASS_119" />
+<Field Token="67109110" Name="CLASS_120" />
+<Field Token="67109111" Name="CLASS_121" />
+<Field Token="67109112" Name="CLASS_122" />
+<Field Token="67109113" Name="CLASS_123" />
+<Field Token="67109114" Name="CLASS_124" />
+<Field Token="67109115" Name="CLASS_125" />
+<Field Token="67109116" Name="CLASS_126" />
+<Field Token="67109117" Name="CLASS_127" />
+<Field Token="67109118" Name="CLASS_128" />
+<Field Token="67109119" Name="CLASS_129" />
+<Field Token="67109120" Name="CLASS_130" />
+<Field Token="67109121" Name="CLASS_131" />
+<Field Token="67109122" Name="CLASS_132" />
+<Field Token="67109123" Name="CLASS_133" />
+<Field Token="67109124" Name="CLASS_134" />
+<Field Token="67109125" Name="CLASS_135" />
+<Field Token="67109126" Name="CLASS_136" />
+<Field Token="67109127" Name="CLASS_137" />
+<Field Token="67109128" Name="CLASS_138" />
+<Field Token="67109129" Name="CLASS_139" />
+<Field Token="67109130" Name="CLASS_140" />
+<Field Token="67109131" Name="CLASS_141" />
+<Field Token="67109132" Name="CLASS_142" />
+<Field Token="67109133" Name="CLASS_143" />
+<Field Token="67109134" Name="CLASS_144" />
+<Field Token="67109135" Name="CLASS_145" />
+<Field Token="67109136" Name="CLASS_146" />
+<Field Token="67109137" Name="CLASS_147" />
+<Field Token="67109138" Name="CLASS_148" />
+<Field Token="67109139" Name="CLASS_149" />
+<Field Token="67109140" Name="CLASS_150" />
+<Field Token="67109141" Name="CLASS_151" />
+<Field Token="67109142" Name="CLASS_152" />
+<Field Token="67109143" Name="CLASS_153" />
+<Field Token="67109144" Name="CLASS_154" />
+<Field Token="67109145" Name="CLASS_155" />
+<Field Token="67109146" Name="CLASS_156" />
+<Field Token="67109147" Name="CLASS_157" />
+<Field Token="67109148" Name="CLASS_158" />
+<Field Token="67109149" Name="CLASS_159" />
+<Field Token="67109150" Name="CLASS_160" />
+<Field Token="67109151" Name="CLASS_161" />
+<Field Token="67109152" Name="CLASS_162" />
+<Field Token="67109153" Name="CLASS_163" />
+<Field Token="67109154" Name="CLASS_164" />
+<Field Token="67109155" Name="CLASS_165" />
+<Field Token="67109156" Name="CLASS_166" />
+<Field Token="67109157" Name="CLASS_167" />
+<Field Token="67109158" Name="CLASS_168" />
+<Field Token="67109159" Name="CLASS_169" />
+<Field Token="67109160" Name="CLASS_170" />
+<Field Token="67109161" Name="CLASS_171" />
+<Field Token="67109162" Name="CLASS_172" />
+<Field Token="67109163" Name="CLASS_173" />
+<Field Token="67109164" Name="CLASS_174" />
+<Field Token="67109165" Name="CLASS_175" />
+<Field Token="67109166" Name="CLASS_176" />
+<Field Token="67109167" Name="CLASS_177" />
+<Field Token="67109168" Name="CLASS_178" />
+<Field Token="67109169" Name="CLASS_179" />
+<Field Token="67109170" Name="CLASS_180" />
+<Field Token="67109171" Name="CLASS_181" />
+<Field Token="67109172" Name="CLASS_182" />
+<Field Token="67109173" Name="CLASS_183" />
+<Field Token="67109174" Name="CLASS_184" />
+<Field Token="67109175" Name="CLASS_185" />
+<Field Token="67109176" Name="CLASS_186" />
+<Field Token="67109177" Name="CLASS_187" />
+<Field Token="67109178" Name="CLASS_188" />
+<Field Token="67109179" Name="CLASS_189" />
+<Field Token="67109180" Name="CLASS_190" />
+<Field Token="67109181" Name="CLASS_191" />
+<Field Token="67109182" Name="CLASS_192" />
+<Field Token="67109183" Name="CLASS_193" />
+<Field Token="67109184" Name="CLASS_194" />
+<Field Token="67109185" Name="CLASS_195" />
+<Field Token="67109186" Name="CLASS_196" />
+<Field Token="67109187" Name="CLASS_197" />
+<Field Token="67109188" Name="CLASS_198" />
+<Field Token="67109189" Name="CLASS_199" />
+<Field Token="67109190" Name="ATBL" />
+<Field Token="67109191" Name="ATB" />
+<Field Token="67109192" Name="ATBR" />
+<Field Token="67109193" Name="ATL" />
+<Field Token="67109194" Name="ATR" />
+<Field Token="67109195" Name="ATAL" />
+<Field Token="67109196" Name="ATA" />
+<Field Token="67109197" Name="ATAR" />
+<Field Token="67109198" Name="BL" />
+<Field Token="67109199" Name="B" />
+<Field Token="67109200" Name="BR" />
+<Field Token="67109201" Name="L" />
+<Field Token="67109202" Name="R" />
+<Field Token="67109203" Name="AL" />
+<Field Token="67109204" Name="A" />
+<Field Token="67109205" Name="AR" />
+<Field Token="67109206" Name="DB" />
+<Field Token="67109207" Name="DA" />
+<Field Token="67109208" Name="IS" />
+<Type Token="33554449" Name="NBidi.UnicodeDecompositionType" />
+<Field Token="67109210" Name="value__" />
+<Field Token="67109211" Name="None" />
+<Field Token="67109212" Name="Font" />
+<Field Token="67109213" Name="NoBreak" />
+<Field Token="67109214" Name="Initial" />
+<Field Token="67109215" Name="Medial" />
+<Field Token="67109216" Name="Final" />
+<Field Token="67109217" Name="Isolated" />
+<Field Token="67109218" Name="Circle" />
+<Field Token="67109219" Name="Super" />
+<Field Token="67109220" Name="Sub" />
+<Field Token="67109221" Name="Vertical" />
+<Field Token="67109222" Name="Wide" />
+<Field Token="67109223" Name="Narrow" />
+<Field Token="67109224" Name="Small" />
+<Field Token="67109225" Name="Square" />
+<Field Token="67109226" Name="Fraction" />
+<Field Token="67109227" Name="Compat" />
+<Type Token="33554450" Name="NBidi.UnicodeGeneralCategory" />
+<Field Token="67109228" Name="value__" />
+<Field Token="67109229" Name="Lu" />
+<Field Token="67109230" Name="Ll" />
+<Field Token="67109231" Name="Lt" />
+<Field Token="67109232" Name="Lm" />
+<Field Token="67109233" Name="Lo" />
+<Field Token="67109234" Name="Mn" />
+<Field Token="67109235" Name="Mc" />
+<Field Token="67109236" Name="Me" />
+<Field Token="67109237" Name="Nd" />
+<Field Token="67109238" Name="Nl" />
+<Field Token="67109239" Name="No" />
+<Field Token="67109240" Name="Pc" />
+<Field Token="67109241" Name="Pd" />
+<Field Token="67109242" Name="Ps" />
+<Field Token="67109243" Name="Pe" />
+<Field Token="67109244" Name="Pi" />
+<Field Token="67109245" Name="Pf" />
+<Field Token="67109246" Name="Po" />
+<Field Token="67109247" Name="Sm" />
+<Field Token="67109248" Name="Sc" />
+<Field Token="67109249" Name="Sk" />
+<Field Token="67109250" Name="So" />
+<Field Token="67109251" Name="Zs" />
+<Field Token="67109252" Name="Zl" />
+<Field Token="67109253" Name="Zp" />
+<Field Token="67109254" Name="Cc" />
+<Field Token="67109255" Name="Cf" />
+<Field Token="67109256" Name="Cs" />
+<Field Token="67109257" Name="Co" />
+<Field Token="67109258" Name="Cn" />
+<Type Token="33554451" Name="UnityEngine.UI.InputFieldReference" />
+<Method Token="100663331" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663332" Name=".cctor" Variables="" ParamCnt="0" />
+<Method Token="100663333" Name="get_mesh" Variables="this;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663334" Name="get_cachedInputTextGenerator" Variables="this;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663335" Name="set_shouldHideMobileInput" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663336" Name="get_shouldHideMobileInput" Variables="this;V_0;V_1;" ParamCnt="1" />
+<Method Token="100663337" Name="get_text" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663338" Name="set_text" Variables="this;value;V_0;V_1;V_2;V_3;validatorMethod;charactersToCheck;V_6;i;c;V_9;V_10;V_11;V_12;V_13;" ParamCnt="2" />
+<Method Token="100663339" Name="get_isFocused" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663340" Name="get_caretBlinkRate" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663341" Name="set_caretBlinkRate" Variables="this;value;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663342" Name="get_caretWidth" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663343" Name="set_caretWidth" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663344" Name="get_textComponent" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663345" Name="set_textComponent" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663346" Name="get_placeholder" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663347" Name="set_placeholder" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663348" Name="get_caretColor" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663349" Name="set_caretColor" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663350" Name="get_customCaretColor" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663351" Name="set_customCaretColor" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663352" Name="get_selectionColor" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663353" Name="set_selectionColor" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663354" Name="get_onEndEdit" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663355" Name="set_onEndEdit" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663356" Name="get_onValueChange" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663357" Name="set_onValueChange" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663358" Name="get_onValueChanged" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663359" Name="set_onValueChanged" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663360" Name="get_onValidateInput" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663361" Name="set_onValidateInput" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663362" Name="get_characterLimit" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663363" Name="set_characterLimit" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663364" Name="get_contentType" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663365" Name="set_contentType" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663366" Name="get_lineType" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663367" Name="set_lineType" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663368" Name="get_inputType" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663369" Name="set_inputType" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663370" Name="get_keyboardType" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663371" Name="set_keyboardType" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663372" Name="get_characterValidation" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663373" Name="set_characterValidation" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663374" Name="get_readOnly" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663375" Name="set_readOnly" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663376" Name="get_multiLine" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663377" Name="get_asteriskChar" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663378" Name="set_asteriskChar" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663379" Name="get_wasCanceled" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663380" Name="ClampPos" Variables="this;pos;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663381" Name="get_caretPositionInternal" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663382" Name="set_caretPositionInternal" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663383" Name="get_caretSelectPositionInternal" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663384" Name="set_caretSelectPositionInternal" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663385" Name="get_hasSelection" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663386" Name="get_caretPosition" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663387" Name="set_caretPosition" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663388" Name="get_selectionAnchorPosition" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663389" Name="set_selectionAnchorPosition" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663390" Name="get_selectionFocusPosition" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663391" Name="set_selectionFocusPosition" Variables="this;value;V_0;" ParamCnt="2" />
+<Method Token="100663392" Name="OnEnable" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663393" Name="OnDisable" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663394" Name="CaretBlink" Variables="this;" ParamCnt="1" />
+<Method Token="100663395" Name="SetCaretVisible" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663396" Name="SetCaretActive" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663397" Name="OnFocus" Variables="this;" ParamCnt="1" />
+<Method Token="100663398" Name="SelectAll" Variables="this;" ParamCnt="1" />
+<Method Token="100663399" Name="MoveTextEnd" Variables="this;shift;position;V_1;" ParamCnt="2" />
+<Method Token="100663400" Name="MoveTextStart" Variables="this;shift;position;V_1;" ParamCnt="2" />
+<Method Token="100663401" Name="get_clipboard" Variables="V_0;" ParamCnt="0" />
+<Method Token="100663402" Name="set_clipboard" Variables="value;" ParamCnt="1" />
+<Method Token="100663403" Name="InPlaceEditing" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663404" Name="LateUpdate" Variables="this;val;V_1;V_2;V_3;V_4;V_5;V_6;V_7;V_8;V_9;i;c;V_12;V_13;V_14;V_15;V_16;V_17;V_18;V_19;V_20;V_21;V_22;" ParamCnt="1" />
+<Method Token="100663405" Name="ScreenToLocal" Variables="this;screen;theCanvas;pos;V_2;V_3;V_4;V_5;mouseRay;dist;plane;" ParamCnt="2" />
+<Method Token="100663406" Name="GetUnclampedCharacterLineFromPosition" Variables="this;pos;generator;y;lastBottomY;V_2;V_3;i;topY;bottomY;V_7;leading;V_9;V_10;V_11;" ParamCnt="3" />
+<Method Token="100663407" Name="GetCharacterIndexFromPosition" Variables="this;pos;gen;line;startCharIndex;endCharIndex;V_4;V_5;V_6;V_7;i;charInfo;charPos;distToCharStart;distToCharEnd;V_13;V_14;V_15;" ParamCnt="2" />
+<Method Token="100663408" Name="MayDrag" Variables="this;eventData;V_0;" ParamCnt="2" />
+<Method Token="100663409" Name="OnBeginDrag" Variables="this;eventData;V_0;" ParamCnt="2" />
+<Method Token="100663410" Name="OnDrag" Variables="this;eventData;localMousePos;V_1;V_2;" ParamCnt="2" />
+<Method Token="100663411" Name="MouseDragOutsideRect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663412" Name="OnEndDrag" Variables="this;eventData;V_0;" ParamCnt="2" />
+<Method Token="100663413" Name="OnPointerDown" Variables="this;eventData;hadFocusBefore;V_1;V_2;V_3;V_4;localMousePos;V_6;" ParamCnt="2" />
+<Method Token="100663414" Name="KeyPressed" Variables="this;evt;currentEventModifiers;rp;isMac;ctrl;shift;alt;ctrlOnly;c;V_8;V_9;V_10;V_11;V_12;V_13;V_14;V_15;V_16;V_17;V_18;V_19;V_20;V_21;" ParamCnt="2" />
+<Method Token="100663415" Name="IsValidChar" Variables="this;c;V_0;V_1;V_2;" ParamCnt="2" />
+<Method Token="100663416" Name="ProcessEvent" Variables="this;e;" ParamCnt="2" />
+<Method Token="100663417" Name="OnUpdateSelected" Variables="this;eventData;consumedEvent;V_1;V_2;shouldContinue;V_4;V_5;V_6;V_7;V_8;" ParamCnt="2" />
+<Method Token="100663418" Name="GetSelectedString" Variables="this;startPos;endPos;V_2;V_3;V_4;temp;" ParamCnt="1" />
+<Method Token="100663419" Name="FindtNextWordBegin" Variables="this;spaceLoc;V_1;V_2;V_3;" ParamCnt="1" />
+<Method Token="100663420" Name="MoveRight" Variables="this;shift;ctrl;position;V_1;V_2;V_3;V_4;" ParamCnt="3" />
+<Method Token="100663421" Name="FindtPrevWordBegin" Variables="this;spaceLoc;V_1;V_2;V_3;" ParamCnt="1" />
+<Method Token="100663422" Name="MoveLeft" Variables="this;shift;ctrl;position;V_1;V_2;V_3;V_4;" ParamCnt="3" />
+<Method Token="100663423" Name="DetermineCharacterLine" Variables="this;charPos;generator;i;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663424" Name="LineUpCharacterPosition" Variables="this;originalPos;goToFirstChar;originChar;originLine;endCharIdx;V_3;V_4;V_5;i;V_7;V_8;" ParamCnt="3" />
+<Method Token="100663425" Name="LineDownCharacterPosition" Variables="this;originalPos;goToLastChar;originChar;originLine;endCharIdx;V_3;V_4;V_5;i;V_7;V_8;" ParamCnt="3" />
+<Method Token="100663426" Name="MoveDown" Variables="this;shift;" ParamCnt="2" />
+<Method Token="100663427" Name="MoveDown" Variables="this;shift;goToLastChar;position;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663428" Name="MoveUp" Variables="this;shift;" ParamCnt="2" />
+<Method Token="100663429" Name="MoveUp" Variables="this;shift;goToFirstChar;position;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663430" Name="Delete" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663431" Name="ForwardSpace" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663432" Name="Backspace" Variables="this;V_0;V_1;V_2;V_3;" ParamCnt="1" />
+<Method Token="100663433" Name="Insert" Variables="this;c;replaceString;V_1;V_2;V_3;" ParamCnt="2" />
+<Method Token="100663434" Name="SendOnValueChangedAndUpdateLabel" Variables="this;" ParamCnt="1" />
+<Method Token="100663435" Name="SendOnValueChanged" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663436" Name="SendOnSubmit" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663437" Name="Append" Variables="this;input;V_0;V_1;i;imax;c;V_5;V_6;" ParamCnt="2" />
+<Method Token="100663438" Name="Append" Variables="this;input;V_0;V_1;V_2;V_3;V_4;" ParamCnt="2" />
+<Method Token="100663439" Name="UpdateLabel" Variables="this;V_0;fullText;processed;isEmpty;V_4;V_5;V_6;V_7;V_8;extents;settings;V_11;" ParamCnt="1" />
+<Method Token="100663440" Name="IsSelectionVisible" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663441" Name="GetLineStartPosition" Variables="gen;line;V_0;" ParamCnt="2" />
+<Method Token="100663442" Name="GetLineEndPosition" Variables="gen;line;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663443" Name="SetDrawRangeToContainCaretPosition" Variables="this;caretPos;extents;V_1;V_2;V_3;lines;caretLine;V_6;bottomY;startLine;topY;V_10;V_11;startLine;endLine;topY;bottomY;V_16;V_17;V_18;V_19;V_20;characters;width;V_23;V_24;V_25;V_26;V_27;V_28;V_29;" ParamCnt="2" />
+<Method Token="100663444" Name="ForceLabelUpdate" Variables="this;" ParamCnt="1" />
+<Method Token="100663445" Name="MarkGeometryAsDirty" Variables="this;" ParamCnt="1" />
+<Method Token="100663446" Name="Rebuild" Variables="this;update;V_0;" ParamCnt="2" />
+<Method Token="100663447" Name="LayoutComplete" Variables="this;" ParamCnt="1" />
+<Method Token="100663448" Name="GraphicUpdateComplete" Variables="this;" ParamCnt="1" />
+<Method Token="100663449" Name="UpdateGeometry" Variables="this;V_0;V_1;go;V_3;" ParamCnt="1" />
+<Method Token="100663450" Name="AssignPositioningIfNeeded" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663451" Name="OnFillVBO" Variables="this;vbo;helper;inputRect;extents;textAnchorPivot;refPoint;roundedRefPoint;roundingOffset;V_7;V_8;" ParamCnt="2" />
+<Method Token="100663452" Name="GenerateCaret" Variables="this;vbo;roundingOffset;width;adjustedPos;gen;startPosition;characterLine;height;screenHeight;V_7;V_8;V_9;V_10;V_11;cursorChar;V_13;V_14;i;V_16;V_17;i;uiv;V_20;" ParamCnt="3" />
+<Method Token="100663453" Name="CreateCursorVerts" Variables="this;i;V_1;" ParamCnt="1" />
+<Method Token="100663454" Name="GenerateHightlight" Variables="this;vbo;roundingOffset;startChar;endChar;gen;currentLineIndex;lastCharInLineIndex;vert;currentChar;V_7;temp;V_9;V_10;startCharInfo;endCharInfo;startPosition;endPosition;startIndex;V_16;V_17;V_18;" ParamCnt="3" />
+<Method Token="100663455" Name="Validate" Variables="this;text;pos;ch;V_0;V_1;V_2;cursorBeforeDash;selectionAtStart;V_5;V_6;V_7;V_8;V_9;V_10;V_11;V_12;V_13;lastChar;nextChar;V_16;V_17;V_18;V_19;V_20;V_21;V_22;V_23;V_24;V_25;V_26;V_27;V_28;V_29;lastChar;nextChar;V_32;" ParamCnt="4" />
+<Method Token="100663456" Name="ActivateInputField" Variables="this;V_0;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663457" Name="ActivateInputFieldInternal" Variables="this;V_0;V_1;V_2;V_3;" ParamCnt="1" />
+<Method Token="100663458" Name="OnSelect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663459" Name="OnPointerClick" Variables="this;eventData;V_0;" ParamCnt="2" />
+<Method Token="100663460" Name="DeactivateInputField" Variables="this;V_0;V_1;V_2;V_3;V_4;V_5;" ParamCnt="1" />
+<Method Token="100663461" Name="OnDeselect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663462" Name="OnSubmit" Variables="this;eventData;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663463" Name="EnforceContentType" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663464" Name="SetToCustomIfContentTypeIsNot" Variables="this;allowedContentTypes;V_0;i;V_2;V_3;" ParamCnt="2" />
+<Method Token="100663465" Name="SetToCustom" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663466" Name="DoStateTransition" Variables="this;state;instant;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663467" Name="UnityEngine.UI.ICanvasElement.get_transform" Variables="this;" ParamCnt="1" />
+<Method Token="100663468" Name="UnityEngine.UI.ICanvasElement.IsDestroyed" Variables="this;" ParamCnt="1" />
+<Field Token="67109259" Name="m_Keyboard" />
+<Field Token="67109260" Name="kSeparators" />
+<Field Token="67109261" Name="m_TextComponent" />
+<Field Token="67109262" Name="m_Placeholder" />
+<Field Token="67109263" Name="m_ContentType" />
+<Field Token="67109264" Name="m_InputType" />
+<Field Token="67109265" Name="m_AsteriskChar" />
+<Field Token="67109266" Name="m_KeyboardType" />
+<Field Token="67109267" Name="m_LineType" />
+<Field Token="67109268" Name="m_HideMobileInput" />
+<Field Token="67109269" Name="m_CharacterValidation" />
+<Field Token="67109270" Name="m_CharacterLimit" />
+<Field Token="67109271" Name="m_OnEndEdit" />
+<Field Token="67109272" Name="m_OnValueChanged" />
+<Field Token="67109273" Name="m_OnValidateInput" />
+<Field Token="67109274" Name="m_CaretColor" />
+<Field Token="67109275" Name="m_CustomCaretColor" />
+<Field Token="67109276" Name="m_SelectionColor" />
+<Field Token="67109277" Name="m_Text" />
+<Field Token="67109278" Name="m_CaretBlinkRate" />
+<Field Token="67109279" Name="m_CaretWidth" />
+<Field Token="67109280" Name="m_ReadOnly" />
+<Field Token="67109281" Name="m_CaretPosition" />
+<Field Token="67109282" Name="m_CaretSelectPosition" />
+<Field Token="67109283" Name="caretRectTrans" />
+<Field Token="67109284" Name="m_CursorVerts" />
+<Field Token="67109285" Name="m_InputTextCache" />
+<Field Token="67109286" Name="m_CachedInputRenderer" />
+<Field Token="67109287" Name="m_PreventFontCallback" />
+<Field Token="67109288" Name="m_Mesh" />
+<Field Token="67109289" Name="m_AllowInput" />
+<Field Token="67109290" Name="m_ShouldActivateNextUpdate" />
+<Field Token="67109291" Name="m_UpdateDrag" />
+<Field Token="67109292" Name="m_DragPositionOutOfBounds" />
+<Field Token="67109293" Name="kHScrollSpeed" />
+<Field Token="67109294" Name="kVScrollSpeed" />
+<Field Token="67109295" Name="m_CaretVisible" />
+<Field Token="67109296" Name="m_BlinkCoroutine" />
+<Field Token="67109297" Name="m_BlinkStartTime" />
+<Field Token="67109298" Name="m_DrawStart" />
+<Field Token="67109299" Name="m_DrawEnd" />
+<Field Token="67109300" Name="m_DragCoroutine" />
+<Field Token="67109301" Name="m_OriginalText" />
+<Field Token="67109302" Name="m_WasCanceled" />
+<Field Token="67109303" Name="m_HasDoneFocusTransition" />
+<Field Token="67109304" Name="kEmailSpecialCharacters" />
+<Field Token="67109305" Name="m_ProcessingEvent" />
+<Type Token="33554453" Name="UnityEngine.UI.InputFieldRTL" />
+<Method Token="100663476" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663477" Name="get_Clipboard" Variables="V_0;" ParamCnt="0" />
+<Method Token="100663478" Name="set_Clipboard" Variables="value;" ParamCnt="1" />
+<Method Token="100663479" Name="get_isFocused" Variables="this;" ParamCnt="1" />
+<Method Token="100663480" Name="get_characterLimit" Variables="this;" ParamCnt="1" />
+<Method Token="100663481" Name="get_textComponent" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663482" Name="set_textComponent" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663483" Name="get_VisualText" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663484" Name="set_VisualText" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663485" Name="get_onValueChanged" Variables="this;inputFieldRtlAdapter;V_1;" ParamCnt="1" />
+<Method Token="100663486" Name="get_InputFieldRtlAdapter" Variables="this;inputFieldRtlAdapter;V_1;" ParamCnt="1" />
+<Method Token="100663487" Name="get_text" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663488" Name="set_text" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663489" Name="get_CaretMesh" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663490" Name="get_CachedTextGenerator" Variables="this;" ParamCnt="1" />
+<Method Token="100663491" Name="get_LogicalCaretPosition" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663492" Name="set_LogicalCaretPosition" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663493" Name="get_LogicalText" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663494" Name="set_LogicalText" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663495" Name="OnBeginDrag" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663496" Name="Rebuild" Variables="this;executing;V_0;" ParamCnt="2" />
+<Method Token="100663497" Name="OnRectTransformDimensionsChange" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663498" Name="LayoutComplete" Variables="this;" ParamCnt="1" />
+<Method Token="100663499" Name="GraphicUpdateComplete" Variables="this;" ParamCnt="1" />
+<Method Token="100663500" Name="OnDisable" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663501" Name="OnDrag" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663502" Name="OnEndDrag" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663503" Name="OnPointerClick" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663504" Name="OnPointerDown" Variables="this;eventData;localMousePos;lineNum;textGeneratorCaretPosition;" ParamCnt="2" />
+<Method Token="100663505" Name="LogicalPosToTextGenPos" Variables="this;textGenerator;logicalPos;res;lineNum;lineEnd;startCharIdx;nonWrappedLine;paragraph;isLineCorrectionNeeded;bidiCorrection;i;V_9;V_10;V_11;V_12;V_13;V_14;V_15;V_16;reverseIdx;charData;bidiCharacterType;prevCharIdx;prevCharData;prevCharacterBidiType;V_23;V_24;V_25;" ParamCnt="3" />
+<Method Token="100663506" Name="GetParagraph" Variables="this;textGenerator;logicalPos;lineNum;lineEnd;startCharIdx;paragraph;V_1;" ParamCnt="6" />
+<Method Token="100663507" Name="TextGenPosToLogicalPos" Variables="this;textGenerator;textGeneratorPos;lineNum;lineEnd;startCharIdx;paragraph;res;textGenPosToLogicalPos;V_6;V_7;V_8;V_9;bidiCorrection;lateCorrection;charData;bidiCharacterType;prevCharData;V_15;V_16;" ParamCnt="3" />
+<Method Token="100663508" Name="OnSubmit" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663509" Name="OnUpdateSelected" Variables="this;eventData;consumedEvent;editState;V_2;V_3;V_4;V_5;" ParamCnt="2" />
+<Method Token="100663510" Name="Start" Variables="this;" ParamCnt="1" />
+<Method Token="100663511" Name="KeyPressed" Variables="this;processingEvent;currentEventModifiers;rp;isMac;ctrl;shift;alt;ctrlOnly;V_7;V_8;V_9;V_10;clipboardText;V_12;" ParamCnt="2" />
+<Method Token="100663512" Name="IsValidChar" Variables="this;c;V_0;V_1;V_2;" ParamCnt="2" />
+<Method Token="100663513" Name="CalculateLineEndings" Variables="this;text;lineEndings;linesCount;index;V_3;V_4;V_5;" ParamCnt="2" />
+<Method Token="100663514" Name="PopulateCachedTextGenerator" Variables="this;text;settingsHorizontalOverflow;settings;V_1;" ParamCnt="3" />
+<Method Token="100663515" Name="UpdateLabel" Variables="this;c;totalNewLines;logicalWrapperSb;wrappedText;logicalToVisual;V_5;V_6;start;index;lineEndingIdx;logicalTextSubstr;newLineExisted;stringToAppend;V_13;V_14;V_15;V_16;" ParamCnt="1" />
+<Method Token="100663516" Name="ReplaceCharAtIdx" Variables="this;theString;newChar;idx;sb;V_1;" ParamCnt="4" />
+<Method Token="100663517" Name="GetCharacterType" Variables="this;logicalPos;lineNum;uiLineInfo;paragraph;V_3;V_4;" ParamCnt="2" />
+<Method Token="100663518" Name="AppendChar" Variables="this;c;insertionIdx;V_1;" ParamCnt="2" />
+<Method Token="100663519" Name="UpdateGeometry" Variables="this;V_0;go;V_2;" ParamCnt="1" />
+<Method Token="100663520" Name="OnFillVBO" Variables="this;vbo;helper;inputRect;extents;textAnchorPivot;refPoint;roundedRefPoint;roundingOffset;" ParamCnt="2" />
+<Method Token="100663521" Name="GetParagraph" Variables="this;gen;textGenPos;lineNum;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663522" Name="GenerateCaret" Variables="this;vbo;roundingOffset;width;gen;startPosition;adjustedTextGenPos;characterLine;height;screenHeight;V_7;V_8;cursorChar;V_10;V_11;V_12;i;V_14;V_15;i;uiv;V_18;" ParamCnt="3" />
+<Method Token="100663523" Name="DetermineCharacterLine" Variables="this;charPos;generator;i;V_1;V_2;V_3;" ParamCnt="3" />
+<Method Token="100663524" Name="OnSelect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663525" Name="OnDeselect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663526" Name="LineUpCharacterPosition" Variables="this;originalPos;goToFirstChar;originChar;originLine;endCharIdx;V_3;V_4;V_5;i;V_7;V_8;" ParamCnt="3" />
+<Method Token="100663527" Name="CreateCursorVerts" Variables="this;i;V_1;" ParamCnt="1" />
+<Method Token="100663528" Name="AssignPositioningIfNeeded" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663529" Name="GetUnclampedCharacterLineFromPosition" Variables="this;pos;generator;y;lastBottomY;i;topY;bottomY;V_5;leading;V_7;V_8;V_9;V_10;" ParamCnt="3" />
+<Method Token="100663530" Name="GetLineEndPosition" Variables="gen;line;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663531" Name="GetCharacterIndexFromPosition" Variables="this;pos;lineNum;gen;line;startCharIndex;endCharIndex;V_4;V_5;V_6;V_7;i;charInfo;charPos;distToCharStart;distToCharEnd;V_13;V_14;V_15;" ParamCnt="3" />
+<Method Token="100663532" Name="MarkGeometryAsDirty" Variables="this;" ParamCnt="1" />
+<Method Token="100663533" Name="IsDestroyed" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663534" Name="UnityEngine.UI.ICanvasElement.get_transform" Variables="this;" ParamCnt="1" />
+<Field Token="67109312" Name="m_processingEvent" />
+<Field Token="67109313" Name="CachedCaretRenderer" />
+<Field Token="67109314" Name="m_logicalText" />
+<Field Token="67109315" Name="m_caretRectTrans" />
+<Field Token="67109316" Name="m_CaretWidth" />
+<Field Token="67109317" Name="m_CursorVerts" />
+<Field Token="67109318" Name="m_mesh" />
+<Field Token="67109319" Name="m_cumulativeWrappedNewLines" />
+<Field Token="67109320" Name="m_paragraphs" />
+<Field Token="67109321" Name="TextField" />
+<Field Token="67109322" Name="m_visualText" />
+<Field Token="67109323" Name="m_isLastActionWasClick" />
+<Field Token="67109324" Name="m_logicalCaretPosition" />
+<Field Token="67109325" Name="m_lines" />
+<Field Token="67109326" Name="m_textGenToLogicalLineNum" />
+<Field Token="67109327" Name="m_isInitialized" />
+<Field Token="67109328" Name="m_updatingFromRectTransformChanged" />
+<Type Token="33554454" Name="UnityEngine.UI.InputFieldRTLAdapter" />
+<Method Token="100663535" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663536" Name="get_InputFieldRtl" Variables="this;" ParamCnt="1" />
+<Method Token="100663537" Name="InitInputField" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663538" Name="OnDrag" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663539" Name="OnEndDrag" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663540" Name="OnPointerClick" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663541" Name="OnPointerDown" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663542" Name="OnSubmit" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663543" Name="OnUpdateSelected" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663544" Name="OnSelect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663545" Name="OnDeselect" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663546" Name="OnValidate" Variables="this;" ParamCnt="1" />
+<Method Token="100663547" Name="OnEnable" Variables="this;" ParamCnt="1" />
+<Method Token="100663548" Name="OnDisable" Variables="this;" ParamCnt="1" />
+<Method Token="100663549" Name="LateUpdate" Variables="this;" ParamCnt="1" />
+<Method Token="100663550" Name="OnBeginDrag" Variables="this;eventData;" ParamCnt="2" />
+<Method Token="100663551" Name="Rebuild" Variables="this;update;" ParamCnt="2" />
+<Method Token="100663552" Name="LayoutComplete" Variables="this;" ParamCnt="1" />
+<Method Token="100663553" Name="GraphicUpdateComplete" Variables="this;" ParamCnt="1" />
+<Field Token="67109329" Name="m_inputFieldRTL" />
+<Type Token="33554456" Name="UnityEngine.UI.SetPropertyUtility" />
+<Method Token="100663557" Name="SetColor" Variables="currentValue;newValue;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663558" Name="SetEquatableStruct" Variables="currentValue;newValue;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663559" Name="SetStruct" Variables="currentValue;newValue;V_0;V_1;" ParamCnt="2" />
+<Method Token="100663560" Name="SetClass" Variables="currentValue;newValue;V_0;V_1;" ParamCnt="2" />
+<Type Token="33554457" Name="&lt;PrivateImplementationDetails&gt;" />
+<Field Token="67109330" Name="0EDA75BA5624D39DF960BBDA2835F28587CE51B4" />
+<Field Token="67109331" Name="17496360AFB46ED7C208BA3EADCE302654A7BE72" />
+<Field Token="67109332" Name="191FDF59E5FD3FD08C92BF8553C256492F45D4D2" />
+<Field Token="67109333" Name="19BD6C2FF86920ACFFBE9B6B927223A62F1DF67A" />
+<Field Token="67109334" Name="1D1722D6180BF983AAB59DEAA4548AD245C44593" />
+<Field Token="67109335" Name="24813C9A81DC5A15F528495CC5BA658D5A22563D" />
+<Field Token="67109336" Name="30C8E45BDAD852952A55D8F8212BF1A8D4F55E4D" />
+<Field Token="67109337" Name="35D33012080E1C184D2B389D433A8C9ACC12B427" />
+<Field Token="67109338" Name="3DBDBC83DA18918E9448C71F559B72F9F32DA9BD" />
+<Field Token="67109339" Name="41A2B912ECF985FBBF770C65B2FE0BB8AD6CE28A" />
+<Field Token="67109340" Name="43BAB886B11C4D39542A19D34A42D04783D380D1" />
+<Field Token="67109341" Name="48C568C0B73E01A7DF3C6375A840239998E5E359" />
+<Field Token="67109342" Name="4F627A5881AEFD2AB3B8D3BEA277B1DEDC9464DA" />
+<Field Token="67109343" Name="5A4FF79F28F95E3895862CB254E53B99FB48EDC5" />
+<Field Token="67109344" Name="5FC741724DA417744482A73C4DF3C26CFE417304" />
+<Field Token="67109345" Name="698BDF2A3D8BC1B5A3A65EB05EE9DAC61476F7FC" />
+<Field Token="67109346" Name="69ADA5A00EB5264F0821C6898CDC17AB789E9EE0" />
+<Field Token="67109347" Name="70471910F8116B8F001EC1BD3D895AD3E26F6092" />
+<Field Token="67109348" Name="7130C901EBCA77A0D33CFF691C933A73F33E56A0" />
+<Field Token="67109349" Name="72440816989E5D9617DFA95A57F86BA2BC458D7E" />
+<Field Token="67109350" Name="736BB31E977D87713A330EC02A4D858D3CA7F3AE" />
+<Field Token="67109351" Name="737D7502F82C6128233EF7AC2659E16CFE5A3FD3" />
+<Field Token="67109352" Name="79E7B1C333D129B7FD707C02414FC4BA6E1DAEB4" />
+<Field Token="67109353" Name="7BBE37982E6C057ED87163CAFC7FD6E5E42EEA46" />
+<Field Token="67109354" Name="7FE0826D1A6F6B3EA5F7C521A650C29AC39CAEA2" />
+<Field Token="67109355" Name="8191F9E4C5FE56E755132485E61A30DD7599F280" />
+<Field Token="67109356" Name="82EED386D42310DD52E8C573561886ACA29B5889" />
+<Field Token="67109357" Name="86591E896A5DD92EC00401CB72E6F01B76AD15A9" />
+<Field Token="67109358" Name="86B2A1CD343FCC9B423EABEE266C31633B47AA5E" />
+<Field Token="67109359" Name="888BACC2D69E3B3F8874B1DB2CD4041F42870DFB" />
+<Field Token="67109360" Name="89DB2CC636BD9FAF45CAB91025103509251F745E" />
+<Field Token="67109361" Name="8E50E3088693B5D678D9C60C7E80E709DD0AB8E8" />
+<Field Token="67109362" Name="9BFEB5075FCAE45F0379AD603CBB74E4E0EFDFA6" />
+<Field Token="67109363" Name="A66E8868BEEA555B383B96FC0821A05B9AD19EA8" />
+<Field Token="67109364" Name="A6F7A5BD6679AE7775A3BDCE569599FD66DB6A1A" />
+<Field Token="67109365" Name="A7453351675F4C8F89E62D03EE65A31026501627" />
+<Field Token="67109366" Name="AA8389CFAFBF27B382D061158908A627E8112952" />
+<Field Token="67109367" Name="AAD15CC061569FB9A6C5711A8B8C60DDF0546AF3" />
+<Field Token="67109368" Name="ABA53BDF4C7C5D0BBC6C9B1AFA27C88ED38390B6" />
+<Field Token="67109369" Name="AD6DA5094007543B5420072F220B5DC9A54C0822" />
+<Field Token="67109370" Name="B41FC6E21C76CAD01E644C7F0F614A0EF0CB185D" />
+<Field Token="67109371" Name="BA095691778C44E30B514FF1987342B83D0C22D8" />
+<Field Token="67109372" Name="BFBAEE4BB6C80DA0FE044E49296FCC44F744364C" />
+<Field Token="67109373" Name="C258792391581692D6125E31C0FED98A98396374" />
+<Field Token="67109374" Name="C814011A7E71FC0DDED1842297A1F8C43D437C85" />
+<Field Token="67109375" Name="C9E8AFAAA9D14C6F0976B665D66593DCF9783FF1" />
+<Field Token="67109376" Name="CEAF772111B7DE469DA8178BA2B771A2CC66E2CE" />
+<Field Token="67109377" Name="D21D82F20CCEEE6F21182B1B2856F0654AF44E21" />
+<Field Token="67109378" Name="DEE6CA7FEA40C35500C9F2181175138E7CEDAD56" />
+<Field Token="67109379" Name="E0793B5C2068E1F8BD59B58FB0DFAB02118EB871" />
+<Field Token="67109380" Name="E1A4074B4215E2D6E469CD42DA35F833D3D17299" />
+<Field Token="67109381" Name="E1B2EF7998BE9F3E3E9B2BB4A675A06A76A0DF70" />
+<Field Token="67109382" Name="E21B92D4F1B2DF57D9F48CA77E890FD7C08364D7" />
+<Field Token="67109383" Name="E51D97C07E8EA5EA256D1DFAE2CD2E3990532415" />
+<Field Token="67109384" Name="F1145FC6F2BF2ECED868478FD0932E67BD997F8F" />
+<Field Token="67109385" Name="FBAECAACB32BDFA0600DBAE76A0AA4A8F148CA0A" />
+<Field Token="67109386" Name="FFD427AC51155FBE786D5BD178A1338D06868E1F" />
+<Type Token="33554458" Name="NBidi.NBidi/CharData" />
+<Field Token="67109387" Name="_char" />
+<Field Token="67109388" Name="_el" />
+<Field Token="67109389" Name="_ct" />
+<Field Token="67109390" Name="_idx" />
+<Type Token="33554459" Name="NBidi.NBidi/Paragraph" />
+<Method Token="100663561" Name=".ctor" Variables="this;text;" ParamCnt="2" />
+<Method Token="100663562" Name="get_Text" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663563" Name="set_Text" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663564" Name="get_ParagraphSeparator" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663565" Name="set_ParagraphSeparator" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663566" Name="get_BidiText" Variables="this;ret;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663567" Name="get_BidiIndexes" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663568" Name="get_BidiIndexLengths" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663569" Name="get_EmbeddingLevel" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663570" Name="set_EmbeddingLevel" Variables="this;value;" ParamCnt="2" />
+<Method Token="100663571" Name="get_TextData" Variables="this;V_0;" ParamCnt="1" />
+<Method Token="100663572" Name="RemoveBidiMarkers" Variables="this;controlChars;sb;idxArr;lenArr;i;V_5;V_6;V_7;" ParamCnt="1" />
+<Method Token="100663573" Name="RecalculateParagraphEmbeddingLevel" Variables="this;V_0;V_1;c;cType;V_4;V_5;" ParamCnt="1" />
+<Method Token="100663574" Name="NormalizeText" Variables="this;char_lengths;sb;" ParamCnt="1" />
+<Method Token="100663575" Name="RecalculateCharactersEmbeddingLevels" Variables="this;embeddingLevel;dos;dosStack;elStack;idx;prevLevel;start;indexes;lengths;sb;V_10;i;x9Char;c;V_14;V_15;V_16;V_17;V_18;V_19;V_20;V_21;V_22;V_23;V_24;V_25;V_26;level;sor;limit;nextLevel;eor;V_32;V_33;V_34;V_35;cd;" ParamCnt="1" />
+<Method Token="100663576" Name="ResolveWeakTypes" Variables="this;start;limit;sor;eor;t_w2;t_w7;V_2;preceedingCharacterType;i;t;V_6;V_7;i;V_9;V_10;V_11;V_12;V_13;i;V_15;V_16;i;V_18;prevSepType;succSepType;V_21;V_22;V_23;i;V_25;runstart;runlimit;t;V_29;V_30;V_31;i;t;V_34;V_35;i;V_37;V_38;V_39;V_40;" ParamCnt="5" />
+<Method Token="100663577" Name="ResolveNeutralTypes" Variables="this;start;limit;sor;eor;level;i;t;V_2;runstart;runlimit;leadingType;trailingType;resolvedType;V_8;V_9;V_10;V_11;V_12;V_13;" ParamCnt="6" />
+<Method Token="100663578" Name="ResolveImplicitTypes" Variables="this;start;limit;level;V_0;i;t;V_3;V_4;V_5;i;t;V_8;V_9;" ParamCnt="4" />
+<Method Token="100663579" Name="ReorderString" Variables="this;start;end;l1_start;highest;lowest_odd;i;V_4;j;V_6;V_7;V_8;j;V_10;index;cd;V_13;V_14;V_15;el;i;V_18;l2_start;limit;V_21;j;k;temp_cd;V_25;V_26;V_27;" ParamCnt="3" />
+<Method Token="100663580" Name="FixMirroredCharacters" Variables="this;i;V_1;V_2;" ParamCnt="1" />
+<Method Token="100663581" Name="PerformArabicShaping" Variables="this;text;last_jt;last_form;last_pos;last_char;letterForms;insert_pos;sb;lenArr;curr_pos;ch;jt;V_11;V_12;V_13;V_14;V_15;curr_pos;ch;jt;V_19;V_20;V_21;V_22;V_23;V_24;V_25;V_26;V_27;" ParamCnt="2" />
+<Method Token="100663582" Name="GetPairwiseComposition" Variables="this;first;second;V_0;V_1;" ParamCnt="3" />
+<Method Token="100663583" Name="InternalCompose" Variables="this;target;char_lengths;starterPos;compPos;text_idx;starterCh;lastClass;oldLen;ch;V_7;V_8;decompPos;chClass;composite;composeType;V_13;chkPos;V_15;V_16;V_17;V_18;V_19;" ParamCnt="3" />
+<Method Token="100663584" Name="GetRecursiveDecomposition" Variables="this;canonical;ch;builder;decomp;V_1;i;V_3;" ParamCnt="4" />
+<Method Token="100663585" Name="InternalDecompose" Variables="this;char_lengths;target;buffer;i;ct;ch;j;chClass;k;V_8;ch2;V_10;V_11;V_12;V_13;V_14;" ParamCnt="2" />
+<Method Token="100663586" Name="TypeForLevel" Variables="level;V_0;" ParamCnt="1" />
+<Method Token="100663587" Name="FindRunLimit" Variables="this;index;limit;validSet;found;t;i;V_3;V_4;V_5;V_6;V_7;" ParamCnt="4" />
+<Method Token="100663588" Name="SetTypes" Variables="this;start;limit;newType;i;V_1;" ParamCnt="4" />
+<Field Token="67109391" Name="_original_text" />
+<Field Token="67109392" Name="_text" />
+<Field Token="67109393" Name="_bidi_text" />
+<Field Token="67109394" Name="_paragraph_separator" />
+<Field Token="67109395" Name="embedding_level" />
+<Field Token="67109396" Name="_text_data" />
+<Field Token="67109397" Name="_char_lengths" />
+<Field Token="67109398" Name="_bidi_indexes" />
+<Field Token="67109399" Name="_hasArabic" />
+<Field Token="67109400" Name="_hasNSMs" />
+<Type Token="33554460" Name="UnityEngine.UI.InputFieldReference/ContentType" />
+<Field Token="67109401" Name="value__" />
+<Field Token="67109402" Name="Standard" />
+<Field Token="67109403" Name="Autocorrected" />
+<Field Token="67109404" Name="IntegerNumber" />
+<Field Token="67109405" Name="DecimalNumber" />
+<Field Token="67109406" Name="Alphanumeric" />
+<Field Token="67109407" Name="Name" />
+<Field Token="67109408" Name="EmailAddress" />
+<Field Token="67109409" Name="Password" />
+<Field Token="67109410" Name="Pin" />
+<Field Token="67109411" Name="Custom" />
+<Type Token="33554461" Name="UnityEngine.UI.InputFieldReference/InputType" />
+<Field Token="67109412" Name="value__" />
+<Field Token="67109413" Name="Standard" />
+<Field Token="67109414" Name="AutoCorrect" />
+<Field Token="67109415" Name="Password" />
+<Type Token="33554462" Name="UnityEngine.UI.InputFieldReference/CharacterValidation" />
+<Field Token="67109416" Name="value__" />
+<Field Token="67109417" Name="None" />
+<Field Token="67109418" Name="Integer" />
+<Field Token="67109419" Name="Decimal" />
+<Field Token="67109420" Name="Alphanumeric" />
+<Field Token="67109421" Name="Name" />
+<Field Token="67109422" Name="EmailAddress" />
+<Type Token="33554463" Name="UnityEngine.UI.InputFieldReference/LineType" />
+<Field Token="67109423" Name="value__" />
+<Field Token="67109424" Name="SingleLine" />
+<Field Token="67109425" Name="MultiLineSubmit" />
+<Field Token="67109426" Name="MultiLineNewline" />
+<Type Token="33554464" Name="UnityEngine.UI.InputFieldReference/OnValidateInput" />
+<Method Token="100663589" Name=".ctor" Variables="this;object;method;" ParamCnt="3" />
+<Method Token="100663590" Name="Invoke" Variables="this;text;charIndex;addedChar;" ParamCnt="4" />
+<Method Token="100663591" Name="BeginInvoke" Variables="this;text;charIndex;addedChar;callback;object;" ParamCnt="6" />
+<Method Token="100663592" Name="EndInvoke" Variables="this;result;" ParamCnt="2" />
+<Type Token="33554465" Name="UnityEngine.UI.InputFieldReference/SubmitEvent" />
+<Method Token="100663593" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Type Token="33554466" Name="UnityEngine.UI.InputFieldReference/OnChangeEvent" />
+<Method Token="100663594" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Type Token="33554467" Name="UnityEngine.UI.InputFieldReference/EditState" />
+<Field Token="67109427" Name="value__" />
+<Field Token="67109428" Name="Continue" />
+<Field Token="67109429" Name="Finish" />
+<Type Token="33554468" Name="UnityEngine.UI.InputFieldReference/&lt;CaretBlink&gt;d__147" />
+<Method Token="100663595" Name=".ctor" Variables="this;&lt;&gt;1__state;" ParamCnt="2" />
+<Method Token="100663596" Name="System.IDisposable.Dispose" Variables="this;" ParamCnt="1" />
+<Method Token="100663597" Name="MoveNext" Variables="this;V_0;V_1;V_2;V_3;" ParamCnt="1" />
+<Method Token="100663598" Name="System.Collections.Generic.IEnumerator&lt;System.Object&gt;.get_Current" Variables="this;" ParamCnt="1" />
+<Method Token="100663599" Name="System.Collections.IEnumerator.Reset" Variables="this;" ParamCnt="1" />
+<Method Token="100663600" Name="System.Collections.IEnumerator.get_Current" Variables="this;" ParamCnt="1" />
+<Field Token="67109430" Name="&lt;&gt;1__state" />
+<Field Token="67109431" Name="&lt;&gt;2__current" />
+<Field Token="67109432" Name="&lt;&gt;4__this" />
+<Field Token="67109433" Name="&lt;blinkPeriod&gt;5__1" />
+<Field Token="67109434" Name="&lt;blinkState&gt;5__2" />
+<Type Token="33554469" Name="UnityEngine.UI.InputFieldReference/&lt;MouseDragOutsideRect&gt;d__165" />
+<Method Token="100663601" Name=".ctor" Variables="this;&lt;&gt;1__state;" ParamCnt="2" />
+<Method Token="100663602" Name="System.IDisposable.Dispose" Variables="this;" ParamCnt="1" />
+<Method Token="100663603" Name="MoveNext" Variables="this;V_0;V_1;V_2;V_3;V_4;V_5;V_6;" ParamCnt="1" />
+<Method Token="100663604" Name="System.Collections.Generic.IEnumerator&lt;System.Object&gt;.get_Current" Variables="this;" ParamCnt="1" />
+<Method Token="100663605" Name="System.Collections.IEnumerator.Reset" Variables="this;" ParamCnt="1" />
+<Method Token="100663606" Name="System.Collections.IEnumerator.get_Current" Variables="this;" ParamCnt="1" />
+<Field Token="67109435" Name="&lt;&gt;1__state" />
+<Field Token="67109436" Name="&lt;&gt;2__current" />
+<Field Token="67109437" Name="eventData" />
+<Field Token="67109438" Name="&lt;&gt;4__this" />
+<Field Token="67109439" Name="&lt;localMousePos&gt;5__1" />
+<Field Token="67109440" Name="&lt;rect&gt;5__2" />
+<Field Token="67109441" Name="&lt;delay&gt;5__3" />
+<Type Token="33554470" Name="UnityEngine.UI.InputFieldRTL/EditState" />
+<Field Token="67109442" Name="value__" />
+<Field Token="67109443" Name="Continue" />
+<Field Token="67109444" Name="Finish" />
+<Type Token="33554471" Name="UnityEngine.UI.InputFieldRTL/&lt;&gt;c" />
+<Method Token="100663607" Name=".cctor" Variables="" ParamCnt="0" />
+<Method Token="100663608" Name=".ctor" Variables="this;" ParamCnt="1" />
+<Method Token="100663609" Name="&lt;UpdateLabel&gt;b__67_0" Variables="this;e;" ParamCnt="2" />
+<Field Token="67109445" Name="&lt;&gt;9" />
+<Field Token="67109446" Name="&lt;&gt;9__67_0" />
+<Type Token="33554472" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=12" />
+<Type Token="33554473" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=16" />
+<Type Token="33554474" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=24" />
+<Type Token="33554475" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=32" />
+<Type Token="33554476" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=40" />
+<Type Token="33554477" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=48" />
+<Type Token="33554478" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=64" />
+<Type Token="33554479" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=72" />
+<Type Token="33554480" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=80" />
+<Type Token="33554481" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=88" />
+<Type Token="33554482" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=104" />
+<Type Token="33554483" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=112" />
+<Type Token="33554484" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=144" />
+<Type Token="33554485" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=152" />
+<Type Token="33554486" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=160" />
+<Type Token="33554487" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=176" />
+<Type Token="33554488" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=184" />
+<Type Token="33554489" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=208" />
+<Type Token="33554490" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=248" />
+<Type Token="33554491" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=312" />
+<Type Token="33554492" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=432" />
+<Type Token="33554493" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=440" />
+<Type Token="33554494" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=560" />
+<Type Token="33554495" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=568" />
+<Type Token="33554496" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=576" />
+<Type Token="33554497" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=600" />
+<Type Token="33554498" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=664" />
+<Type Token="33554499" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=784" />
+<Type Token="33554500" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=808" />
+<Type Token="33554501" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=904" />
+<Type Token="33554502" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=936" />
+<Type Token="33554503" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=1152" />
+<Type Token="33554504" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=1184" />
+<Type Token="33554505" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=2032" />
+<Type Token="33554506" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=4472" />
+<Type Token="33554507" Name="&lt;PrivateImplementationDetails&gt;/__StaticArrayInitTypeSize=4552" />
+<Type Token="33554435" Name="A.AssemblyInfoAttribute" />
+<Method Token="100663299" Name="" Variables="this;str;" ParamCnt="2" />
+</Assembly><File OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\BidiCharacterMirrorResolver.generated.cs" NewName="File0" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\BidiCharacterTypeResolver.generated.cs" NewName="File1" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\NBidi.cs" NewName="File2" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\NBidiEx.cs" NewName="File3" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\NBidi\UnicodeArabicShapingResolver.generated.cs" NewName="File4" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\InputFieldReference.cs" NewName="File5" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\InputFieldRTL.cs" NewName="File6" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\InputFieldRTLAdapter.cs" NewName="File7" />
+<File OldName="C:\NativeRTL\NativeRTLPlugin\Source\SetPropertyUtility.cs" NewName="File8" />
+</Mappings>
