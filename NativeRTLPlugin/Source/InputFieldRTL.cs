@@ -13,7 +13,7 @@ namespace UnityEngine.UI
     ///     Editable text input field.
     /// </summary>
     [AddComponentMenu("UI/Input Field RTL")]
-    public class InputFieldRTL : MonoBehaviour,
+    internal class InputFieldRTL : MonoBehaviour,
             IUpdateSelectedHandler,
             IBeginDragHandler,
             IDragHandler,
@@ -84,7 +84,9 @@ namespace UnityEngine.UI
             set
             {
                 m_visualText = value;
+
                 InputFieldRtlAdapter.text = value;
+
                 onValueChanged.Invoke(value);
             }
         }
@@ -127,6 +129,7 @@ namespace UnityEngine.UI
         private bool m_isInitialized;
 
         private bool m_updatingFromRectTransformChanged;
+        private bool m_caretVisible;
 
         protected Mesh CaretMesh => m_mesh ?? (m_mesh = new Mesh());
 
@@ -178,7 +181,7 @@ namespace UnityEngine.UI
         public void LayoutComplete()
         {
         }
-        
+
         public void GraphicUpdateComplete()
         {
         }
@@ -235,6 +238,9 @@ namespace UnityEngine.UI
             int startCharIdx;
 
             #region Fake \n handling
+
+            if (m_lines == null)
+                return 0;
 
             int nonWrappedLine = m_lines.Count - 1;
 
@@ -510,8 +516,8 @@ namespace UnityEngine.UI
 
         private void UpdateLabel()
         {
-            if (!BabelLicenseManager.IsLicensed(typeof(License)))
-                throw new Exception("RTL is not licensed!");
+            //if (!BabelLicenseManager.IsLicensed(typeof(License)))
+            //    throw new Exception("RTL is not licensed!");
 
             m_isInitialized = true;
 
@@ -685,6 +691,9 @@ namespace UnityEngine.UI
         /// <returns></returns>
         protected NBidi.NBidi.Paragraph GetParagraph(TextGenerator gen, int textGenPos)
         {
+            if (m_paragraphs == null)
+                return null;
+
             if (m_paragraphs.Length == 0) return null;
 
             int lineNum = DetermineCharacterLine(textGenPos, gen);
@@ -697,6 +706,9 @@ namespace UnityEngine.UI
 
         private void GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)
         {
+            if (!m_caretVisible)
+                return;
+
             if (m_CursorVerts == null)
                 CreateCursorVerts();
 
@@ -780,11 +792,17 @@ namespace UnityEngine.UI
         public void OnSelect(BaseEventData eventData)
         {
             //base.OnSelect(eventData);
+
+            m_caretVisible = true;
+            MarkGeometryAsDirty();
         }
 
         public void OnDeselect(BaseEventData eventData)
         {
             // base.OnDeselect(eventData);
+
+            m_caretVisible = false;
+            MarkGeometryAsDirty();
         }
 
         private int LineUpCharacterPosition(int originalPos, bool goToFirstChar)

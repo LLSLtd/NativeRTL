@@ -1,4 +1,5 @@
-﻿using UnityEngine.EventSystems;
+﻿using System.Reflection;
+using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
@@ -11,11 +12,12 @@ namespace UnityEngine.UI
         private InputFieldRTL InitInputField()
         {
             m_inputFieldRTL = gameObject.AddComponent<InputFieldRTL>();
-
             m_inputFieldRTL.textComponent = base.textComponent;
 
             return m_inputFieldRTL;
         }
+
+        internal bool m_isChangingTextValue = false;
 
         // public new Text textComponent => InputFieldRtl.textComponent;
 

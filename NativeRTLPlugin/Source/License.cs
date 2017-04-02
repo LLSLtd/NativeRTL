@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+
 using Babel.Licensing;
 
 namespace NativeRTLPlugin

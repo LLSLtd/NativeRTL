@@ -1,19 +1,20 @@
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\NativeRTLPlugin.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\NativeRTLPlugin.pdb
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\UnityEditor.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\UnityEngine.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\UnityEngine.UI.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Mono.Cecil.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Unity.SerializationLogic.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Unity.DataContract.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\ICSharpCode.NRefactory.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Unity.UNetWeaver.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Unity.CecilTools.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Mono.Cecil.Pdb.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\Mono.Cecil.Mdb.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\UnityEditor.xml
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\UnityEngine.xml
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\bin\Debug\UnityEngine.UI.xml
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.dll
-C:\Users\esx2ve\documents\visual studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.pdb
-C:\Users\esx2ve\Documents\Visual Studio 2015\Projects\NativeRTLPlugin\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.csprojResolveAssemblyReference.cache
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\NativeRTLPlugin.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\NativeRTLPlugin.pdb
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Babel.Licensing.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEditor.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.UI.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Mono.Cecil.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Unity.SerializationLogic.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Unity.DataContract.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\ICSharpCode.NRefactory.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Unity.UNetWeaver.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Unity.CecilTools.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Mono.Cecil.Pdb.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Mono.Cecil.Mdb.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Babel.Licensing.xml
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEditor.xml
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.xml
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.UI.xml
+C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.dll
+C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.pdb
