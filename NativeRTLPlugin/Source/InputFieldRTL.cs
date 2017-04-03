@@ -84,9 +84,6 @@ namespace UnityEngine.UI
             set
             {
                 m_visualText = value;
-
-                InputFieldRtlAdapter.text = value;
-
                 onValueChanged.Invoke(value);
             }
         }
@@ -110,13 +107,12 @@ namespace UnityEngine.UI
             }
         }
 
-        public string text
+        public string Text
         {
             get { return VisualText; }
             set
             {
                 LogicalText = value;
-                UpdateLabel();
             }
         }
 
@@ -141,12 +137,21 @@ namespace UnityEngine.UI
             set { m_logicalCaretPosition = value; }
         }
 
+        /// <summary>
+        /// Whether we're in the middle an UpdateLabel() cycle
+        /// </summary>
+        private bool m_isUpdating = false;
+
         public string LogicalText
         {
             get { return m_logicalText; }
             set
             {
                 m_logicalText = value;
+
+                LogicalCaretPosition = Math.Min(LogicalCaretPosition, m_logicalText.Length);
+
+                UpdateLabel();
             }
         }
 
@@ -617,9 +622,9 @@ namespace UnityEngine.UI
 
         private void AppendChar(char c)
         {
-            var insertionIdx = Mathf.Min(LogicalCaretPosition, LogicalText.Length);
+            var insertionIdx = Mathf.Min(LogicalCaretPosition, m_logicalText.Length);
 
-            LogicalText = LogicalText.Insert(insertionIdx, c.ToString());
+            m_logicalText = LogicalText.Insert(insertionIdx, c.ToString());
             LogicalCaretPosition++;
         }
 
@@ -661,7 +666,7 @@ namespace UnityEngine.UI
                 var extents = inputRect.size;
 
                 // get the text alignment anchor point for the text in local space
-                var textAnchorPivot = Text.GetTextAnchorPivot(TextField.alignment);
+                var textAnchorPivot = UI.Text.GetTextAnchorPivot(TextField.alignment);
                 var refPoint = Vector2.zero;
 
                 refPoint.x = Mathf.Lerp(inputRect.xMin, inputRect.xMax, textAnchorPivot.x);

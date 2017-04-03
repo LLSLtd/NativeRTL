@@ -18,3 +18,4 @@ C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.xml
 C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.UI.xml
 C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.dll
 C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.pdb
+C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.csprojResolveAssemblyReference.cache

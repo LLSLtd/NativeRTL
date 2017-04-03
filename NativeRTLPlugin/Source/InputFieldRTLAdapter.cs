@@ -17,6 +17,18 @@ namespace UnityEngine.UI
             return m_inputFieldRTL;
         }
 
+        public new string text
+        {
+            get
+            {
+                return InputFieldRtl.LogicalText;
+            }
+            set
+            {
+                InputFieldRtl.Text = value;
+            }
+        }
+
         internal bool m_isChangingTextValue = false;
 
         // public new Text textComponent => InputFieldRtl.textComponent;
