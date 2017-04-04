@@ -19,3 +19,5 @@ C:\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.UI.xml
 C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.dll
 C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.pdb
 C:\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.csprojResolveAssemblyReference.cache
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Harmony.dll
+C:\NativeRTL\NativeRTLPlugin\bin\Debug\Harmony.pdb

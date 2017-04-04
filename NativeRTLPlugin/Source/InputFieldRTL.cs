@@ -134,7 +134,7 @@ namespace UnityEngine.UI
         public int LogicalCaretPosition
         {
             get { return m_logicalCaretPosition; }
-            set { m_logicalCaretPosition = value; }
+            set { m_logicalCaretPosition = Math.Max(0, value); }
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace UnityEngine.UI
             {
                 m_logicalText = value;
 
-                LogicalCaretPosition = Math.Min(LogicalCaretPosition, m_logicalText.Length);
+                LogicalCaretPosition = Math.Max(LogicalCaretPosition, 0);
 
                 UpdateLabel();
             }
@@ -447,14 +447,14 @@ namespace UnityEngine.UI
                     break;
 
                 case KeyCode.Backspace:
-                    LogicalText = LogicalText.Remove(LogicalCaretPosition - 1, 1);
+                    m_logicalText = m_logicalText.Remove(LogicalCaretPosition - 1, 1);
                     LogicalCaretPosition = Mathf.Max(0, --LogicalCaretPosition);
                     break;
 
                 case KeyCode.Delete:
                     if (LogicalCaretPosition < LogicalText.Length)
                     {
-                        LogicalText = LogicalText.Remove(LogicalCaretPosition, 1);
+                        m_logicalText = m_logicalText.Remove(LogicalCaretPosition, 1);
                     }
                     break;
 
@@ -466,7 +466,7 @@ namespace UnityEngine.UI
                             // Paste to the current logical position
                             var clipboardText = Clipboard;
 
-                            LogicalText = LogicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
+                            m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
                             VisualText = string.Empty;
                             UpdateLabel();
                         }

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using Harmony;
 using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
@@ -8,6 +9,39 @@ namespace UnityEngine.UI
         private InputFieldRTL m_inputFieldRTL;
 
         private InputFieldRTL InputFieldRtl => m_inputFieldRTL ?? InitInputField();
+
+        static InputFieldRTLAdapter()
+        {
+            // Patch InputField
+            var harmony = HarmonyInstance.Create("com.lls.elbit");
+            harmony.PatchAll(Assembly.GetExecutingAssembly());
+        }
+
+        [HarmonyPatch(typeof(InputField))]
+        [HarmonyPatch("text", PropertyMethod.Setter)]
+        class InputFieldSetterPatch
+        {
+            static void Postfix(InputField __instance, ref string value)
+            {
+                if (__instance is InputFieldRTLAdapter)
+                {
+                    ((InputFieldRTLAdapter) __instance).text = value;
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(InputField))]
+        [HarmonyPatch("text", PropertyMethod.Getter)]
+        class InputFieldGetterPatch
+        {
+            static void Postfix(InputField __instance, ref string __result)
+            {
+                if (__instance is InputFieldRTLAdapter)
+                {
+                    __result = ((InputFieldRTLAdapter) __instance).text;
+                }
+            }
+        }
 
         private InputFieldRTL InitInputField()
         {
