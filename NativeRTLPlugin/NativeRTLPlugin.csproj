@@ -40,20 +40,8 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Babel.Licensing">
-      <HintPath>..\..\Program Files\Babel\References\Framework\2.0\Babel.Licensing.dll</HintPath>
-    </Reference>
-    <Reference Include="Harmony, Version=1.0.9.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Users\esx2ve\Source\Repos\Harmony\Harmony\bin\Debug\Harmony.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEditor">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEditor.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
@@ -69,7 +57,6 @@
     <Compile Include="Source\InputFieldRTL.cs" />
     <Compile Include="Source\InputFieldRTLAdapter.cs" />
     <Compile Include="Source\InputFieldRTLScrollControl.cs" />
-    <Compile Include="Source\License.cs" />
     <Compile Include="Source\NBidi\ArabicShapeJoiningType.cs" />
     <Compile Include="Source\NBidi\BidiCharacterMirrorResolver.generated.cs" />
     <Compile Include="Source\NBidi\BidiCharacterType.cs" />
@@ -83,6 +70,7 @@
     <Compile Include="Source\NBidi\UnicodeCanonicalClass.cs" />
     <Compile Include="Source\NBidi\UnicodeDecompositionType.cs" />
     <Compile Include="Source\NBidi\UnicodeGeneralCategory.cs" />
+    <Compile Include="Source\Patching\RedirectionHelper.cs" />
     <Compile Include="Source\SetPropertyUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

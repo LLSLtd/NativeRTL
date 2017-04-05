@@ -1,47 +1,18 @@
-﻿using System.Reflection;
-using Harmony;
+﻿using System;
+using System.Diagnostics;
+using System.Reflection;
+using CitiesSkylinesDetour;
 using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
 {
     public class InputFieldRTLAdapter : InputField
     {
+        public static int __forTest = 0;
+
         private InputFieldRTL m_inputFieldRTL;
 
         private InputFieldRTL InputFieldRtl => m_inputFieldRTL ?? InitInputField();
-
-        static InputFieldRTLAdapter()
-        {
-            // Patch InputField
-            var harmony = HarmonyInstance.Create("com.lls.elbit");
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-        }
-
-        [HarmonyPatch(typeof(InputField))]
-        [HarmonyPatch("text", PropertyMethod.Setter)]
-        class InputFieldSetterPatch
-        {
-            static void Postfix(InputField __instance, ref string value)
-            {
-                if (__instance is InputFieldRTLAdapter)
-                {
-                    ((InputFieldRTLAdapter) __instance).text = value;
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(InputField))]
-        [HarmonyPatch("text", PropertyMethod.Getter)]
-        class InputFieldGetterPatch
-        {
-            static void Postfix(InputField __instance, ref string __result)
-            {
-                if (__instance is InputFieldRTLAdapter)
-                {
-                    __result = ((InputFieldRTLAdapter) __instance).text;
-                }
-            }
-        }
 
         private InputFieldRTL InitInputField()
         {
@@ -49,6 +20,29 @@ namespace UnityEngine.UI
             m_inputFieldRTL.textComponent = base.textComponent;
 
             return m_inputFieldRTL;
+        }
+
+        static InputFieldRTLAdapter()
+        {
+            // Patch InputField
+            MethodInfo textGetter_orig = typeof(InputField).GetProperty("text").GetGetMethod();
+            MethodInfo textGetter_patched = typeof(InputFieldRTLAdapter).GetMethod("Getter", BindingFlags.Static | BindingFlags.Public);
+
+            MethodInfo textSetter_orig = typeof(InputField).GetProperty("text").GetSetMethod();
+            MethodInfo textSetter_patched = typeof(InputFieldRTLAdapter).GetMethod("Setter", BindingFlags.Static | BindingFlags.Public);
+
+            RedirectionHelper.RedirectCallIL(textGetter_orig, textGetter_patched);
+            RedirectionHelper.RedirectCallIL(textSetter_orig, textSetter_patched);
+        }
+
+        public static string Getter()
+        {
+            return "STATIC GETTER";
+        }
+
+        public static string Setter()
+        {
+            return "STATIC SETTER";
         }
 
         public new string text
