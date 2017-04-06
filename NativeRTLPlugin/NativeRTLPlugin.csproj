@@ -70,7 +70,6 @@
     <Compile Include="Source\NBidi\UnicodeCanonicalClass.cs" />
     <Compile Include="Source\NBidi\UnicodeDecompositionType.cs" />
     <Compile Include="Source\NBidi\UnicodeGeneralCategory.cs" />
-    <Compile Include="Source\Patching\RedirectionHelper.cs" />
     <Compile Include="Source\SetPropertyUtility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
