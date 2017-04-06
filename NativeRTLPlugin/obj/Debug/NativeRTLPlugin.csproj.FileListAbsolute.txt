@@ -1,9 +1,0 @@
-C:\sv\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.csprojResolveAssemblyReference.cache
-C:\sv\NativeRTL\NativeRTLPlugin\bin\Debug\NativeRTLPlugin.dll
-C:\sv\NativeRTL\NativeRTLPlugin\bin\Debug\NativeRTLPlugin.pdb
-C:\sv\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.dll
-C:\sv\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.UI.dll
-C:\sv\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.xml
-C:\sv\NativeRTL\NativeRTLPlugin\bin\Debug\UnityEngine.UI.xml
-C:\sv\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.dll
-C:\sv\NativeRTL\NativeRTLPlugin\obj\Debug\NativeRTLPlugin.pdb
