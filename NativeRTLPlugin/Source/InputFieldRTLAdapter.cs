@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
-using CitiesSkylinesDetour;
+using System.Runtime.CompilerServices;
 using UnityEngine.EventSystems;
 
 namespace UnityEngine.UI
@@ -19,30 +19,20 @@ namespace UnityEngine.UI
             m_inputFieldRTL = gameObject.AddComponent<InputFieldRTL>();
             m_inputFieldRTL.textComponent = base.textComponent;
 
+            base.onValueChanged.AddListener(str =>
+            {
+                if (InputFieldRtl.__internalUpdate)
+                {
+                    base.text = str;
+                    return;
+                }
+
+                InputFieldRtl.__doNotInvokeChangedEvents = true;
+                text = str;
+                InputFieldRtl.__doNotInvokeChangedEvents = false;
+            });
+
             return m_inputFieldRTL;
-        }
-
-        static InputFieldRTLAdapter()
-        {
-            // Patch InputField
-            MethodInfo textGetter_orig = typeof(InputField).GetProperty("text").GetGetMethod();
-            MethodInfo textGetter_patched = typeof(InputFieldRTLAdapter).GetMethod("Getter", BindingFlags.Static | BindingFlags.Public);
-
-            MethodInfo textSetter_orig = typeof(InputField).GetProperty("text").GetSetMethod();
-            MethodInfo textSetter_patched = typeof(InputFieldRTLAdapter).GetMethod("Setter", BindingFlags.Static | BindingFlags.Public);
-
-            RedirectionHelper.RedirectCallIL(textGetter_orig, textGetter_patched);
-            RedirectionHelper.RedirectCallIL(textSetter_orig, textSetter_patched);
-        }
-
-        public static string Getter()
-        {
-            return "STATIC GETTER";
-        }
-
-        public static string Setter()
-        {
-            return "STATIC SETTER";
         }
 
         public new string text

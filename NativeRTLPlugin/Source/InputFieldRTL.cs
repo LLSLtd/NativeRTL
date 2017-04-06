@@ -74,9 +74,17 @@ namespace UnityEngine.UI
             set
             {
                 m_visualText = value;
-                onValueChanged.Invoke(value);
+
+                if (!__doNotInvokeChangedEvents)
+                {
+                    onValueChanged.Invoke(value);
+                }
             }
         }
+
+        internal bool __doNotInvokeChangedEvents = false;
+
+        internal bool __internalUpdate = false;
 
         //public InputField.SubmitEvent onEndEdit { get { return m_onEndEdit; } set { SetPropertyUtility.SetClass(ref m_onEndEdit, value); } }
         public InputField.OnChangeEvent onValueChanged
@@ -515,6 +523,7 @@ namespace UnityEngine.UI
             //    throw new Exception("RTL is not licensed!");
 
             m_isInitialized = true;
+            __internalUpdate = true;
 
             // Enforce horizontal overflow
             TextField.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -582,6 +591,8 @@ namespace UnityEngine.UI
 
             MarkGeometryAsDirty();
             UpdateGeometry();
+
+            __internalUpdate = false;
         }
 
         private string ReplaceCharAtIdx(string theString, char newChar, int idx)
