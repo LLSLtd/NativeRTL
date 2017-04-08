@@ -12,8 +12,6 @@ namespace NativeRTL
     [RequireComponent(typeof(InputFieldRTL))]
     public class InputFieldRTLAdapter : InputField
     {
-        public static int __forTest = 0;
-
         private InputFieldRTL m_inputFieldRTL;
 
         private InputFieldRTL InputFieldRtl => m_inputFieldRTL ?? InitInputField();

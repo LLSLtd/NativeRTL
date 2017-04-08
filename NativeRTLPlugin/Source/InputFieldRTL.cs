@@ -11,7 +11,6 @@ using UnityEngine.UI;
 [assembly:
     Obfuscation(Exclude = false, Feature = "+rename(mode=unicode, renPublic=false, renameArgs=true)",
         ApplyToMembers = true)]
-
 namespace NativeRTL
 {
     /// <summary>
@@ -27,43 +26,58 @@ namespace NativeRTL
         ISubmitHandler,
         ICanvasElement
     {
+        private readonly float m_CaretWidth = 1.0f;
         private readonly Event m_processingEvent = new Event();
+
+        internal bool __doNotInvokeChangedEvents = false;
+
+        internal bool __internalUpdate;
 
         protected CanvasRenderer CachedCaretRenderer;
 
-        public string m_logicalText = "";
-
         private RectTransform m_caretRectTrans;
-        private readonly float m_CaretWidth = 1.0f;
+        private bool m_caretVisible;
 
-        protected UIVertex[] m_CursorVerts = null;
+        private readonly List<int> m_cumulativeWrappedNewLines = new List<int>();
+
+        protected UIVertex[] m_CursorVerts;
+        private bool m_isInitialized;
+
+        private bool m_isLastActionWasClick;
+
+        /// <summary>
+        ///     Whether we're in the middle an UpdateLabel() cycle
+        /// </summary>
+        private bool m_isUpdating = false;
+
+        private List<int> m_lines;
+
+        private int m_logicalCaretPosition;
+
+        internal string m_logicalText = "";
         private Mesh m_mesh;
 
-        private List<int> m_cumulativeWrappedNewLines = new List<int>();
-
         private NBidi.NBidi.Paragraph[] m_paragraphs;
+        private int m_textGenToLogicalLineNum;
 
-        [SerializeField]
-        protected Text TextField;
+        private bool m_updatingFromRectTransformChanged;
 
-        static string Clipboard
+        private string m_visualText;
+
+        [SerializeField] protected Text TextField;
+
+        private static string Clipboard
         {
             get { return GUIUtility.systemCopyBuffer; }
             set { GUIUtility.systemCopyBuffer = value; }
         }
 
-        public bool isFocused => true;
-
-        public int characterLimit => 200;
-
-        public Text textComponent
+        internal Text textComponent
         {
             get { return TextField; }
 
             set { TextField = value; }
         }
-
-        private string m_visualText;
 
         [SerializeField]
         protected string VisualText
@@ -74,18 +88,12 @@ namespace NativeRTL
                 m_visualText = value;
 
                 if (!__doNotInvokeChangedEvents)
-                {
                     onValueChanged.Invoke(value);
-                }
             }
         }
 
-        internal bool __doNotInvokeChangedEvents = false;
-
-        internal bool __internalUpdate = false;
-
         //public InputField.SubmitEvent onEndEdit { get { return m_onEndEdit; } set { SetPropertyUtility.SetClass(ref m_onEndEdit, value); } }
-        public InputField.OnChangeEvent onValueChanged
+        internal InputField.OnChangeEvent onValueChanged
         {
             get
             {
@@ -103,50 +111,37 @@ namespace NativeRTL
             }
         }
 
-        public string Text
+        internal string Text
         {
             get { return VisualText; }
             set { LogicalText = value; }
         }
 
-        private bool m_isLastActionWasClick;
-
-        private int m_logicalCaretPosition;
-
-        private List<int> m_lines;
-        private int m_textGenToLogicalLineNum;
-        private bool m_isInitialized;
-
-        private bool m_updatingFromRectTransformChanged;
-        private bool m_caretVisible;
-
         protected Mesh CaretMesh => m_mesh ?? (m_mesh = new Mesh());
 
         protected TextGenerator CachedTextGenerator => TextField.cachedTextGenerator;
 
-        public int LogicalCaretPosition
+        [SerializeField]
+        private int LogicalCaretPosition
         {
             get { return m_logicalCaretPosition; }
-            set { m_logicalCaretPosition = Math.Min(Math.Min(Math.Max(0, value), CharacterLimit > 0 ? CharacterLimit : int.MaxValue), LogicalText.Length); }
+            set
+            {
+                m_logicalCaretPosition =
+                    Math.Min(Math.Min(Math.Max(0, value), CharacterLimit > 0 ? CharacterLimit : int.MaxValue),
+                        LogicalText.Length);
+            }
         }
 
-        /// <summary>
-        /// Whether we're in the middle an UpdateLabel() cycle
-        /// </summary>
-        private bool m_isUpdating = false;
+        internal int CharacterLimit => InputFieldRtlAdapter.characterLimit;
 
-        public int CharacterLimit => InputFieldRtlAdapter.characterLimit;
-
-        public string LogicalText
+        internal string LogicalText
         {
             get { return m_logicalText; }
             set
             {
                 m_logicalText = value;
-
-
                 LogicalCaretPosition = Math.Max(LogicalCaretPosition, 0);
-
                 UpdateLabel();
             }
         }
@@ -167,18 +162,6 @@ namespace NativeRTL
             }
         }
 
-        protected void OnRectTransformDimensionsChange()
-        {
-            m_updatingFromRectTransformChanged = true;
-
-            if (m_isInitialized)
-            {
-                UpdateLabel();
-            }
-
-            m_updatingFromRectTransformChanged = false;
-        }
-
         public void LayoutComplete()
         {
         }
@@ -187,13 +170,14 @@ namespace NativeRTL
         {
         }
 
-        protected void OnDisable()
-        {
-            if (m_mesh != null)
-                DestroyImmediate(m_mesh);
+        #region Implementation of ICanvasElement
 
-            m_mesh = null;
+        public bool IsDestroyed()
+        {
+            return false;
         }
+
+        #endregion
 
         public void OnDrag(PointerEventData eventData)
         {
@@ -205,6 +189,51 @@ namespace NativeRTL
 
         public void OnPointerClick(PointerEventData eventData)
         {
+        }
+
+        public void OnSubmit(BaseEventData eventData)
+        {
+        }
+
+        public void OnUpdateSelected(BaseEventData eventData)
+        {
+            var consumedEvent = false;
+
+            while (Event.PopEvent(m_processingEvent))
+            {
+                if (m_processingEvent.rawType != EventType.KeyDown)
+                    continue;
+
+                var editState = KeyPressed(m_processingEvent);
+
+                if (editState == EditState.Continue)
+                    consumedEvent = true;
+                else
+                    break;
+            }
+
+            if (consumedEvent)
+                UpdateLabel();
+
+            eventData.Use();
+        }
+
+        protected void OnRectTransformDimensionsChange()
+        {
+            m_updatingFromRectTransformChanged = true;
+
+            if (m_isInitialized)
+                UpdateLabel();
+
+            m_updatingFromRectTransformChanged = false;
+        }
+
+        protected void OnDisable()
+        {
+            if (m_mesh != null)
+                DestroyImmediate(m_mesh);
+
+            m_mesh = null;
         }
 
         public void OnPointerDown(PointerEventData eventData)
@@ -234,7 +263,7 @@ namespace NativeRTL
 
         protected int LogicalPosToTextGenPos(TextGenerator textGenerator, int logicalPos)
         {
-            int res = 0;
+            var res = 0;
             int lineNum;
             int lineEnd;
             int startCharIdx;
@@ -244,12 +273,12 @@ namespace NativeRTL
             if (m_lines == null)
                 return 0;
 
-            int nonWrappedLine = m_lines.Count - 1;
+            var nonWrappedLine = m_lines.Count - 1;
 
             // find the right line
             //
             // m_lines contains the line endings without \n's
-            for (int i = 0; i < m_lines.Count; i++)
+            for (var i = 0; i < m_lines.Count; i++)
             {
                 if (logicalPos > m_lines[i]) continue;
                 nonWrappedLine = i;
@@ -266,14 +295,12 @@ namespace NativeRTL
 
             // Debug.Log("[LOGICAL TO VISUAL] lineNum: " + lineNum +", tg line num: " + m_textGenToLogicalLineNum);
 
-            bool isLineCorrectionNeeded = lineNum != m_textGenToLogicalLineNum;
+            var isLineCorrectionNeeded = lineNum != m_textGenToLogicalLineNum;
 
             if (isLineCorrectionNeeded && m_isLastActionWasClick)
-            {
                 return CachedTextGenerator.lines[lineNum - 1].startCharIdx;
-            }
 
-            int bidiCorrection = 0;
+            var bidiCorrection = 0;
 
             if (paragraph == null && lineNum == 0)
                 return 0;
@@ -291,11 +318,11 @@ namespace NativeRTL
             }
             else
             {
-                int reverseIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx);
+                var reverseIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx);
                 var charData = paragraph.TextData[reverseIdx];
                 var bidiCharacterType = charData._ct;
 
-                int prevCharIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx - 1);
+                var prevCharIdx = paragraph.BidiIndexes.ToList().IndexOf(logicalPos - startCharIdx - 1);
                 var prevCharData = paragraph.TextData[prevCharIdx];
                 var prevCharacterBidiType = prevCharData._ct;
 
@@ -347,7 +374,7 @@ namespace NativeRTL
             // Debug.Log("lineNum: " + lineNum);
 
 
-            int res = startCharIdx;
+            var res = startCharIdx;
 
             if (paragraph == null) return res;
 
@@ -390,33 +417,6 @@ namespace NativeRTL
             return textGenPosToLogicalPos;
         }
 
-        public void OnSubmit(BaseEventData eventData)
-        {
-        }
-
-        public void OnUpdateSelected(BaseEventData eventData)
-        {
-            var consumedEvent = false;
-
-            while (Event.PopEvent(m_processingEvent))
-            {
-                if (m_processingEvent.rawType != EventType.KeyDown)
-                    continue;
-
-                var editState = KeyPressed(m_processingEvent);
-
-                if (editState == EditState.Continue)
-                    consumedEvent = true;
-                else
-                    break;
-            }
-
-            if (consumedEvent)
-                UpdateLabel();
-
-            eventData.Use();
-        }
-
         protected void Start()
         {
             LogicalCaretPosition = 0;
@@ -426,14 +426,14 @@ namespace NativeRTL
         {
             // // Debug.Log("KeyPressed: " + processingEvent.character);
             var currentEventModifiers = processingEvent.modifiers;
-            RuntimePlatform rp = Application.platform;
-            bool isMac = (rp == RuntimePlatform.OSXEditor || rp == RuntimePlatform.OSXPlayer);
-            bool ctrl = isMac
+            var rp = Application.platform;
+            var isMac = rp == RuntimePlatform.OSXEditor || rp == RuntimePlatform.OSXPlayer;
+            var ctrl = isMac
                 ? (currentEventModifiers & EventModifiers.Command) != 0
                 : (currentEventModifiers & EventModifiers.Control) != 0;
-            bool shift = (currentEventModifiers & EventModifiers.Shift) != 0;
-            bool alt = (currentEventModifiers & EventModifiers.Alt) != 0;
-            bool ctrlOnly = ctrl && !alt && !shift;
+            var shift = (currentEventModifiers & EventModifiers.Shift) != 0;
+            var alt = (currentEventModifiers & EventModifiers.Alt) != 0;
+            var ctrlOnly = ctrl && !alt && !shift;
 
             switch (processingEvent.keyCode)
             {
@@ -452,25 +452,23 @@ namespace NativeRTL
 
                 case KeyCode.Delete:
                     if (LogicalCaretPosition < LogicalText.Length)
-                    {
                         m_logicalText = m_logicalText.Remove(LogicalCaretPosition, 1);
-                    }
                     break;
 
                 // Paste
                 case KeyCode.V:
+                {
+                    if (ctrlOnly)
                     {
-                        if (ctrlOnly)
-                        {
-                            // Paste to the current logical position
-                            var clipboardText = Clipboard;
+                        // Paste to the current logical position
+                        var clipboardText = Clipboard;
 
-                            m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
-                            VisualText = string.Empty;
-                            UpdateLabel();
-                        }
-                        break;
+                        m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
+                        VisualText = string.Empty;
+                        UpdateLabel();
                     }
+                    break;
+                }
             }
 
             return EditState.Continue;
@@ -494,14 +492,14 @@ namespace NativeRTL
 
             PopulateCachedTextGenerator(text, HorizontalWrapMode.Wrap);
 
-            var linesCount = InputFieldRtlAdapter.lineType == InputField.LineType.SingleLine ? 1 : CachedTextGenerator.lines.Count;
+            var linesCount = InputFieldRtlAdapter.lineType == InputField.LineType.SingleLine
+                ? 1
+                : CachedTextGenerator.lines.Count;
             for (var index = 0; index < linesCount; index++)
-            {
                 if (index == linesCount - 1)
                     lineEndings.Add(text.Length - 1);
                 else
                     lineEndings.Add(CachedTextGenerator.lines[index + 1].startCharIdx - 1);
-            }
 
             return lineEndings;
         }
@@ -532,11 +530,9 @@ namespace NativeRTL
             var c = m_processingEvent.character;
 
             if (IsValidChar(c) && !m_updatingFromRectTransformChanged)
-            {
                 AppendChar(c);
-            }
 
-            int totalNewLines = 0;
+            var totalNewLines = 0;
             m_cumulativeWrappedNewLines.Clear();
             m_cumulativeWrappedNewLines.Add(0);
 
@@ -555,15 +551,13 @@ namespace NativeRTL
                     var lineEndingIdx = m_lines[index];
 
                     var logicalTextSubstr = LogicalText.Substring(start, lineEndingIdx - start + 1);
-                    bool newLineExisted = logicalTextSubstr.Any(e => e == '\n');
+                    var newLineExisted = logicalTextSubstr.Any(e => e == '\n');
 
                     if (index > 0)
                         m_cumulativeWrappedNewLines.Add(totalNewLines);
 
                     if (!newLineExisted)
-                    {
                         totalNewLines++;
-                    }
 
                     var stringToAppend = logicalTextSubstr.Replace("\n", "");
 
@@ -605,14 +599,14 @@ namespace NativeRTL
 
         private string ReplaceCharAtIdx(string theString, char newChar, int idx)
         {
-            StringBuilder sb = new StringBuilder(theString);
+            var sb = new StringBuilder(theString);
             sb[idx] = newChar;
             theString = sb.ToString();
 
             return theString;
         }
 
-        BidiCharacterType GetCharacterType(int logicalPos)
+        private BidiCharacterType GetCharacterType(int logicalPos)
         {
             // Debug.Log("Determining char type for " + logicalPos);
             var lineNum = DetermineCharacterLine(logicalPos, CachedTextGenerator);
@@ -620,9 +614,7 @@ namespace NativeRTL
             var paragraph = GetParagraph(CachedTextGenerator, logicalPos);
 
             if (paragraph == null)
-            {
                 return BidiCharacterType.R;
-            }
 
             return paragraph.TextData[paragraph.BidiIndexes[Mathf.Max(0, logicalPos - 1 - uiLineInfo.startCharIdx)]]._ct;
         }
@@ -707,7 +699,7 @@ namespace NativeRTL
         }
 
         /// <summary>
-        /// Find the paragraph corresponding to the logical position
+        ///     Find the paragraph corresponding to the logical position
         /// </summary>
         /// <param name="textGenPos"></param>
         /// <param name="logicalLine"></param>
@@ -720,14 +712,14 @@ namespace NativeRTL
 
             if (m_paragraphs.Length == 0) return null;
 
-            int lineNum = DetermineCharacterLine(textGenPos, gen);
+            var lineNum = DetermineCharacterLine(textGenPos, gen);
 
             if (m_paragraphs.Length <= lineNum)
                 return null;
 
             return m_paragraphs[lineNum];
         }
-        
+
         private void GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)
         {
             if (!m_caretVisible)
@@ -740,16 +732,16 @@ namespace NativeRTL
 
             PopulateCachedTextGenerator(VisualText, HorizontalWrapMode.Overflow);
 
-            TextGenerator gen = CachedTextGenerator;
+            var gen = CachedTextGenerator;
 
             var startPosition = Vector2.zero;
 
-            int adjustedTextGenPos = LogicalPosToTextGenPos(CachedTextGenerator, LogicalCaretPosition);
+            var adjustedTextGenPos = LogicalPosToTextGenPos(CachedTextGenerator, LogicalCaretPosition);
 
             // Calculate startPosition
             if (adjustedTextGenPos < gen.characters.Count)
             {
-                UICharInfo cursorChar = gen.characters[adjustedTextGenPos];
+                var cursorChar = gen.characters[adjustedTextGenPos];
                 startPosition.x = cursorChar.cursorPos.x;
             }
 
@@ -760,13 +752,11 @@ namespace NativeRTL
                 startPosition.x = TextField.rectTransform.rect.xMax;
 
             if (startPosition.x < TextField.rectTransform.rect.xMin)
-            {
                 startPosition.x = TextField.rectTransform.rect.xMin;
-            }
 
-            int characterLine = DetermineCharacterLine(adjustedTextGenPos, gen);
+            var characterLine = DetermineCharacterLine(adjustedTextGenPos, gen);
             startPosition.y = gen.lines[characterLine].topY / TextField.pixelsPerUnit;
-            float height = gen.lines[characterLine].height / TextField.pixelsPerUnit;
+            var height = gen.lines[characterLine].height / TextField.pixelsPerUnit;
 
             for (var i = 0; i < m_CursorVerts.Length; i++)
                 m_CursorVerts[i].color = Color.black;
@@ -797,18 +787,16 @@ namespace NativeRTL
         }
 
         /// <summary>
-        /// TODO: adjust to RTL (??)
+        ///     TODO: adjust to RTL (??)
         /// </summary>
         /// <param name="charPos"></param>
         /// <param name="generator"></param>
         /// <returns></returns>
         private int DetermineCharacterLine(int charPos, TextGenerator generator)
         {
-            for (int i = 0; i < generator.lineCount - 1; ++i)
-            {
+            for (var i = 0; i < generator.lineCount - 1; ++i)
                 if (generator.lines[i + 1].startCharIdx > charPos)
                     return i;
-            }
 
             return generator.lineCount - 1;
         }
@@ -834,20 +822,18 @@ namespace NativeRTL
             if (originalPos >= CachedTextGenerator.characters.Count)
                 return 0;
 
-            UICharInfo originChar = CachedTextGenerator.characters[originalPos];
-            int originLine = DetermineCharacterLine(originalPos, CachedTextGenerator);
+            var originChar = CachedTextGenerator.characters[originalPos];
+            var originLine = DetermineCharacterLine(originalPos, CachedTextGenerator);
 
             // We are on the first line return first character
             if (originLine <= 0)
                 return goToFirstChar ? 0 : originalPos;
 
-            int endCharIdx = CachedTextGenerator.lines[originLine].startCharIdx - 1;
+            var endCharIdx = CachedTextGenerator.lines[originLine].startCharIdx - 1;
 
-            for (int i = CachedTextGenerator.lines[originLine - 1].startCharIdx; i < endCharIdx; ++i)
-            {
+            for (var i = CachedTextGenerator.lines[originLine - 1].startCharIdx; i < endCharIdx; ++i)
                 if (CachedTextGenerator.characters[i].cursorPos.x >= originChar.cursorPos.x)
                     return i;
-            }
             return endCharIdx;
         }
 
@@ -855,7 +841,7 @@ namespace NativeRTL
         {
             m_CursorVerts = new UIVertex[4];
 
-            for (int i = 0; i < m_CursorVerts.Length; i++)
+            for (var i = 0; i < m_CursorVerts.Length; i++)
             {
                 m_CursorVerts[i] = UIVertex.simpleVert;
                 m_CursorVerts[i].uv0 = Vector2.zero;
@@ -891,23 +877,22 @@ namespace NativeRTL
             //                return 0;
 
             // transform y to local scale
-            float y = pos.y * TextField.pixelsPerUnit;
-            float lastBottomY = 0.0f;
+            var y = pos.y * TextField.pixelsPerUnit;
+            var lastBottomY = 0.0f;
 
-            for (int i = 0; i < generator.lineCount; ++i)
+            for (var i = 0; i < generator.lineCount; ++i)
             {
-                float topY = generator.lines[i].topY;
-                float bottomY = topY - generator.lines[i].height;
+                var topY = generator.lines[i].topY;
+                var bottomY = topY - generator.lines[i].height;
 
                 // pos is somewhere in the leading above this line
                 if (y > topY)
                 {
                     // determine which line we're closer to
-                    float leading = topY - lastBottomY;
+                    var leading = topY - lastBottomY;
                     if (y > topY - 0.5f * leading)
                         return i - 1;
-                    else
-                        return i;
+                    return i;
                 }
 
                 if (y > bottomY)
@@ -932,12 +917,12 @@ namespace NativeRTL
         {
             lineNum = -1;
 
-            TextGenerator gen = CachedTextGenerator;
+            var gen = CachedTextGenerator;
 
             if (gen.lineCount == 0)
                 return 0;
 
-            int line = GetUnclampedCharacterLineFromPosition(pos, gen);
+            var line = GetUnclampedCharacterLineFromPosition(pos, gen);
 
             lineNum = line;
 
@@ -946,19 +931,19 @@ namespace NativeRTL
             if (line >= gen.lineCount)
                 return gen.characterCountVisible;
 
-            int startCharIndex = gen.lines[line].startCharIdx;
-            int endCharIndex = GetLineEndPosition(gen, line);
+            var startCharIndex = gen.lines[line].startCharIdx;
+            var endCharIndex = GetLineEndPosition(gen, line);
 
-            for (int i = startCharIndex; i < endCharIndex; i++)
+            for (var i = startCharIndex; i < endCharIndex; i++)
             {
                 if (i >= gen.characterCountVisible)
                     break;
 
-                UICharInfo charInfo = gen.characters[i];
-                Vector2 charPos = charInfo.cursorPos / TextField.pixelsPerUnit;
+                var charInfo = gen.characters[i];
+                var charPos = charInfo.cursorPos / TextField.pixelsPerUnit;
 
-                float distToCharStart = pos.x - charPos.x;
-                float distToCharEnd = charPos.x + (charInfo.charWidth / TextField.pixelsPerUnit) - pos.x;
+                var distToCharStart = pos.x - charPos.x;
+                var distToCharEnd = charPos.x + charInfo.charWidth / TextField.pixelsPerUnit - pos.x;
                 if (distToCharStart < distToCharEnd)
                     return i;
             }
@@ -976,14 +961,5 @@ namespace NativeRTL
             Continue,
             Finish
         }
-
-        #region Implementation of ICanvasElement
-
-        public bool IsDestroyed()
-        {
-            return false;
-        }
-
-        #endregion
     }
 }
