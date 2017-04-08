@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{22E1C5E8-3E55-4E4D-83C3-4CC3BA9C8CBA}</ProjectGuid>
+    <ProjectGuid>{04A80CBD-F4EF-4D4D-852E-73A339FE3560}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NativeRTLPlugin</RootNamespace>
-    <AssemblyName>NativeRTLPlugin</AssemblyName>
+    <RootNamespace>NBidi</RootNamespace>
+    <AssemblyName>NBidi</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,14 +21,12 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -37,38 +34,29 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>native_rtl_key.pfx</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>nbidi_key.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Core" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\" />
+    <Compile Include="NBidi\ArabicShapeJoiningType.cs" />
+    <Compile Include="NBidi\BidiCharacterMirrorResolver.generated.cs" />
+    <Compile Include="NBidi\BidiCharacterType.cs" />
+    <Compile Include="NBidi\BidiCharacterTypeResolver.generated.cs" />
+    <Compile Include="NBidi\BidiChars.cs" />
+    <Compile Include="NBidi\DirectionalOverrideStatus.cs" />
+    <Compile Include="NBidi\LetterForm.cs" />
+    <Compile Include="NBidi\NBidi.cs" />
+    <Compile Include="NBidi\NBidiEx.cs" />
+    <Compile Include="NBidi\UnicodeArabicShapingResolver.generated.cs" />
+    <Compile Include="NBidi\UnicodeCanonicalClass.cs" />
+    <Compile Include="NBidi\UnicodeDecompositionType.cs" />
+    <Compile Include="NBidi\UnicodeGeneralCategory.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\InputFieldReference.cs" />
-    <Compile Include="Source\InputFieldRTL.cs" />
-    <Compile Include="Source\InputFieldRTLAdapter.cs" />
-    <Compile Include="Source\InputFieldRTLScrollControl.cs" />
-    <Compile Include="Source\SetPropertyUtility.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="native_rtl_key.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\NBidi\NBidi.csproj">
-      <Project>{04a80cbd-f4ef-4d4d-852e-73a339fe3560}</Project>
-      <Name>NBidi</Name>
-    </ProjectReference>
+    <None Include="nbidi_key.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

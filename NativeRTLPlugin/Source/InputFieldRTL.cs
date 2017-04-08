@@ -1,24 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using NBidi;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI
+[assembly:
+    Obfuscation(Exclude = false, Feature = "+rename(mode=unicode, renPublic=false, renameArgs=true)",
+        ApplyToMembers = true)]
+
+namespace NativeRTL
 {
     /// <summary>
     ///     Editable text input field.
     /// </summary>
-    [AddComponentMenu("UI/Input Field RTL")]
-    internal class InputFieldRTL : MonoBehaviour,
-            IUpdateSelectedHandler,
-            IBeginDragHandler,
-            IDragHandler,
-            IEndDragHandler,
-            IPointerClickHandler,
-            ISubmitHandler,
-            ICanvasElement
+    [DisallowMultipleComponent]
+    public class InputFieldRTL : MonoBehaviour,
+        IUpdateSelectedHandler,
+        IBeginDragHandler,
+        IDragHandler,
+        IEndDragHandler,
+        IPointerClickHandler,
+        ISubmitHandler,
+        ICanvasElement
     {
         private readonly Event m_processingEvent = new Event();
 
@@ -41,14 +48,8 @@ namespace UnityEngine.UI
 
         static string Clipboard
         {
-            get
-            {
-                return GUIUtility.systemCopyBuffer;
-            }
-            set
-            {
-                GUIUtility.systemCopyBuffer = value;
-            }
+            get { return GUIUtility.systemCopyBuffer; }
+            set { GUIUtility.systemCopyBuffer = value; }
         }
 
         public bool isFocused => true;
@@ -57,10 +58,7 @@ namespace UnityEngine.UI
 
         public Text textComponent
         {
-            get
-            {
-                return TextField;
-            }
+            get { return TextField; }
 
             set { TextField = value; }
         }
@@ -108,10 +106,7 @@ namespace UnityEngine.UI
         public string Text
         {
             get { return VisualText; }
-            set
-            {
-                LogicalText = value;
-            }
+            set { LogicalText = value; }
         }
 
         private bool m_isLastActionWasClick;
@@ -132,7 +127,7 @@ namespace UnityEngine.UI
         public int LogicalCaretPosition
         {
             get { return m_logicalCaretPosition; }
-            set { m_logicalCaretPosition = Math.Max(0, value); }
+            set { m_logicalCaretPosition = Math.Min(Math.Min(Math.Max(0, value), CharacterLimit > 0 ? CharacterLimit : int.MaxValue), LogicalText.Length); }
         }
 
         /// <summary>
@@ -140,12 +135,15 @@ namespace UnityEngine.UI
         /// </summary>
         private bool m_isUpdating = false;
 
+        public int CharacterLimit => InputFieldRtlAdapter.characterLimit;
+
         public string LogicalText
         {
             get { return m_logicalText; }
             set
             {
                 m_logicalText = value;
+
 
                 LogicalCaretPosition = Math.Max(LogicalCaretPosition, 0);
 
@@ -193,6 +191,7 @@ namespace UnityEngine.UI
         {
             if (m_mesh != null)
                 DestroyImmediate(m_mesh);
+
             m_mesh = null;
         }
 
@@ -267,7 +266,6 @@ namespace UnityEngine.UI
 
             // Debug.Log("[LOGICAL TO VISUAL] lineNum: " + lineNum +", tg line num: " + m_textGenToLogicalLineNum);
 
-
             bool isLineCorrectionNeeded = lineNum != m_textGenToLogicalLineNum;
 
             if (isLineCorrectionNeeded && m_isLastActionWasClick)
@@ -326,7 +324,8 @@ namespace UnityEngine.UI
             return res + bidiCorrection;
         }
 
-        private NBidi.NBidi.Paragraph GetParagraph(TextGenerator textGenerator, int logicalPos, out int lineNum, out int lineEnd,
+        private NBidi.NBidi.Paragraph GetParagraph(TextGenerator textGenerator, int logicalPos, out int lineNum,
+            out int lineEnd,
             out int startCharIdx)
         {
             lineNum = DetermineCharacterLine(logicalPos, textGenerator);
@@ -429,7 +428,9 @@ namespace UnityEngine.UI
             var currentEventModifiers = processingEvent.modifiers;
             RuntimePlatform rp = Application.platform;
             bool isMac = (rp == RuntimePlatform.OSXEditor || rp == RuntimePlatform.OSXPlayer);
-            bool ctrl = isMac ? (currentEventModifiers & EventModifiers.Command) != 0 : (currentEventModifiers & EventModifiers.Control) != 0;
+            bool ctrl = isMac
+                ? (currentEventModifiers & EventModifiers.Command) != 0
+                : (currentEventModifiers & EventModifiers.Control) != 0;
             bool shift = (currentEventModifiers & EventModifiers.Shift) != 0;
             bool alt = (currentEventModifiers & EventModifiers.Alt) != 0;
             bool ctrlOnly = ctrl && !alt && !shift;
@@ -493,7 +494,7 @@ namespace UnityEngine.UI
 
             PopulateCachedTextGenerator(text, HorizontalWrapMode.Wrap);
 
-            var linesCount = CachedTextGenerator.lines.Count;
+            var linesCount = InputFieldRtlAdapter.lineType == InputField.LineType.SingleLine ? 1 : CachedTextGenerator.lines.Count;
             for (var index = 0; index < linesCount; index++)
             {
                 if (index == linesCount - 1)
@@ -581,6 +582,13 @@ namespace UnityEngine.UI
 
             var wrappedText = logicalWrapperSb.ToString();
 
+            if (InputFieldRtlAdapter.lineType == InputField.LineType.SingleLine)
+            {
+                var lines = wrappedText.Split('\n');
+                wrappedText = lines[0];
+                m_lines.RemoveRange(0, Math.Min(lines.Length - 1, m_lines.Count - 1));
+            }
+
             m_paragraphs = NBidi.NBidi.SplitStringToParagraphs(wrappedText);
 
             var logicalToVisual = NBidi.NBidi.LogicalToVisual(wrappedText);
@@ -607,8 +615,6 @@ namespace UnityEngine.UI
         BidiCharacterType GetCharacterType(int logicalPos)
         {
             // Debug.Log("Determining char type for " + logicalPos);
-
-
             var lineNum = DetermineCharacterLine(logicalPos, CachedTextGenerator);
             var uiLineInfo = CachedTextGenerator.lines[lineNum];
             var paragraph = GetParagraph(CachedTextGenerator, logicalPos);
@@ -625,12 +631,22 @@ namespace UnityEngine.UI
         {
             var insertionIdx = Mathf.Min(LogicalCaretPosition, m_logicalText.Length);
 
+            if (c == '\n' && InputFieldRtlAdapter.lineType == InputField.LineType.SingleLine)
+                return;
+
+            // limit characters
+            if (CharacterLimit > 0 && m_logicalText.Length >= CharacterLimit)
+                return;
+
             m_logicalText = LogicalText.Insert(insertionIdx, c.ToString());
             LogicalCaretPosition++;
         }
 
         protected void UpdateGeometry()
         {
+            if (Application.isEditor && !Application.isPlaying)
+                return;
+
             // No need to draw a cursor on mobile as its handled by the devices keyboard.
             if (CachedCaretRenderer == null && TextField != null)
             {
@@ -667,7 +683,7 @@ namespace UnityEngine.UI
                 var extents = inputRect.size;
 
                 // get the text alignment anchor point for the text in local space
-                var textAnchorPivot = UI.Text.GetTextAnchorPivot(TextField.alignment);
+                var textAnchorPivot = UnityEngine.UI.Text.GetTextAnchorPivot(TextField.alignment);
                 var refPoint = Vector2.zero;
 
                 refPoint.x = Mathf.Lerp(inputRect.xMin, inputRect.xMax, textAnchorPivot.x);
@@ -709,7 +725,7 @@ namespace UnityEngine.UI
 
             return m_paragraphs[lineNum];
         }
-
+        
         private void GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)
         {
             if (!m_caretVisible)

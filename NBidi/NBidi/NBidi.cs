@@ -24,10 +24,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Globalization;
-using System.Linq;
-using UnityEngine;
+using System.Reflection;
 
+[assembly: Obfuscation(Exclude = false, Feature = "namespace('Test'):-rename")]
 namespace NBidi
 {
     /// <summary>
@@ -114,7 +113,7 @@ namespace NBidi
         // 3.3.1.P1 - Split the text into separate paragraphs.
         // A paragraph separator is kept with the previous paragraph.
         // Within each paragraph, apply all the other rules of this algorithm.
-        internal static Paragraph[] SplitStringToParagraphs(string logicalString)
+        public static Paragraph[] SplitStringToParagraphs(string logicalString)
         {
             ArrayList ret = new ArrayList();
             int i;

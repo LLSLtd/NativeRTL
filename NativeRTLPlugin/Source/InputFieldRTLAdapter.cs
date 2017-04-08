@@ -2,10 +2,14 @@
 using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI
+namespace NativeRTL
 {
+    [AddComponentMenu("Input/Native RTL Input Field Adapter")]
+    [RequireComponent(typeof(InputFieldRTL))]
     public class InputFieldRTLAdapter : InputField
     {
         public static int __forTest = 0;
@@ -16,7 +20,7 @@ namespace UnityEngine.UI
 
         private InputFieldRTL InitInputField()
         {
-            m_inputFieldRTL = gameObject.AddComponent<InputFieldRTL>();
+            m_inputFieldRTL = gameObject.GetComponent<InputFieldRTL>();
             m_inputFieldRTL.textComponent = base.textComponent;
 
             base.onValueChanged.AddListener(str =>
@@ -33,6 +37,11 @@ namespace UnityEngine.UI
             });
 
             return m_inputFieldRTL;
+        }
+
+        public void Awake()
+        {
+            text = base.text;
         }
 
         public new string text
