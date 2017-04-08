@@ -43,6 +43,7 @@
     <DelaySign>false</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\..\Program Files\Unity\Editor\Data\Managed\UnityEngine.dll</HintPath>
@@ -55,10 +56,11 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Source\Addons\InputFieldRTLScrollHandler.cs" />
+    <Compile Include="Source\Addons\RectTransformExt.cs" />
     <Compile Include="Source\InputFieldReference.cs" />
     <Compile Include="Source\InputFieldRTL.cs" />
     <Compile Include="Source\InputFieldRTLAdapter.cs" />
-    <Compile Include="Source\InputFieldRTLScrollControl.cs" />
     <Compile Include="Source\SetPropertyUtility.cs" />
   </ItemGroup>
   <ItemGroup>

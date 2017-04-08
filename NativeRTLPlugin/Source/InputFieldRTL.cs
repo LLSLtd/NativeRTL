@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using NBidi;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -64,7 +65,9 @@ namespace NativeRTL
 
         private string m_visualText;
 
-        [SerializeField] protected Text TextField;
+        [SerializeField]
+        protected Text TextField;
+        private Rect m_caretCursorInfo;
 
         private static string Clipboard
         {
@@ -133,6 +136,14 @@ namespace NativeRTL
             }
         }
 
+        internal class CaretPositionChangedEvent : UnityEvent
+        {
+
+        }
+
+        // ReSharper disable once InconsistentNaming
+        internal CaretPositionChangedEvent onCaretPositionChangedEvent = new CaretPositionChangedEvent();
+
         internal int CharacterLimit => InputFieldRtlAdapter.characterLimit;
 
         internal string LogicalText
@@ -145,6 +156,13 @@ namespace NativeRTL
                 UpdateLabel();
             }
         }
+
+        internal RectTransform CaretRectTrans => m_caretRectTrans;
+
+        /// <summary>
+        /// Information about the latest generated caret, in local text-generated space.
+        /// </summary>
+        internal Rect CaretCursorInfo => m_caretCursorInfo;
 
         public void OnBeginDrag(PointerEventData eventData)
         {
@@ -457,18 +475,18 @@ namespace NativeRTL
 
                 // Paste
                 case KeyCode.V:
-                {
-                    if (ctrlOnly)
                     {
-                        // Paste to the current logical position
-                        var clipboardText = Clipboard;
+                        if (ctrlOnly)
+                        {
+                            // Paste to the current logical position
+                            var clipboardText = Clipboard;
 
-                        m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
-                        VisualText = string.Empty;
-                        UpdateLabel();
+                            m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
+                            VisualText = string.Empty;
+                            UpdateLabel();
+                        }
+                        break;
                     }
-                    break;
-                }
             }
 
             return EditState.Continue;
@@ -765,6 +783,9 @@ namespace NativeRTL
             m_CursorVerts[1].position = new Vector3(startPosition.x + width, startPosition.y - height, 0.0f);
             m_CursorVerts[2].position = new Vector3(startPosition.x + width, startPosition.y, 0.0f);
             m_CursorVerts[3].position = new Vector3(startPosition.x, startPosition.y, 0.0f);
+
+            m_caretCursorInfo = new Rect(startPosition.x - width, startPosition.y - height, width, height);
+            onCaretPositionChangedEvent.Invoke();
 
             if (roundingOffset != Vector2.zero)
                 for (var i = 0; i < m_CursorVerts.Length; i++)

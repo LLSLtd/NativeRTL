@@ -14,7 +14,7 @@ namespace NativeRTL
     {
         private InputFieldRTL m_inputFieldRTL;
 
-        private InputFieldRTL InputFieldRtl => m_inputFieldRTL ?? InitInputField();
+        internal InputFieldRTL InputFieldRtl => m_inputFieldRTL ?? InitInputField();
 
         private InputFieldRTL InitInputField()
         {
