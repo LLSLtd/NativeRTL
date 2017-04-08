@@ -666,6 +666,8 @@ namespace NativeRTL
                 AssignPositioningIfNeeded();
             }
 
+            AssignPositioningIfNeeded();
+
             if (CachedCaretRenderer == null)
                 return;
 
