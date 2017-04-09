@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions.Comparers;
 
 public static class RectUtilsExt
 {
@@ -22,6 +23,16 @@ public static class RectUtilsExt
         return new Rect(topLeft, scaledSize);
     }
 
+    private static float Round(float num)
+    {
+        return (int)(num * 1000.0f) / 1000.0f;
+    }
+
+    private static bool ApproximatelyRounded(float a, float b)
+    {
+        return Mathf.Approximately(Round(a), Round(b));
+    }
+
     /// <summary>
     /// Same as Unity's Contains, but inclusive
     /// </summary>
@@ -30,8 +41,28 @@ public static class RectUtilsExt
     /// <returns></returns>
     internal static bool ContainsInclusive(this Rect rect, Vector2 point)
     {
-        if (point.x >= rect.xMin && point.x <= rect.xMax && point.y >= rect.yMin)
-            return point.y <= rect.yMax;
+        if (ApproximatelyRounded(point.x, rect.xMin))
+        {
+            return (point.y > rect.yMin || ApproximatelyRounded(point.y, rect.yMin)) && (point.y < rect.yMax || ApproximatelyRounded(point.y, rect.yMax));
+        }
+
+        if (ApproximatelyRounded(point.x, rect.xMax))
+        {
+            return (point.y > rect.yMin || ApproximatelyRounded(point.y, rect.yMin)) && (point.y < rect.yMax || ApproximatelyRounded(point.y, rect.yMax));
+        }
+
+        if (ApproximatelyRounded(point.y, rect.yMin))
+        {
+            return (point.x > rect.xMin || ApproximatelyRounded(point.x, rect.xMin)) && (point.x < rect.xMax || ApproximatelyRounded(point.x, rect.xMax));
+        }
+
+        if (ApproximatelyRounded(point.y, rect.yMax))
+        {
+            return (point.x > rect.xMin || ApproximatelyRounded(point.x, rect.xMin)) && (point.x < rect.xMax || ApproximatelyRounded(point.x, rect.xMax));
+        }
+
+        if (point.x >= (double)rect.xMin && (double)point.x <= rect.xMax && point.y >= (double)rect.yMin)
+            return point.y <= (double)rect.yMax;
         return false;
     }
 }
