@@ -2,4 +2,7 @@
   <module path="NativeRTLPlugin.dll" snKey="C:\sv\NativeRTL\NativeRTLPlugin\native_rtl_key.pfx" snKeyPass="xqx322dp">
     <rule pattern="true" preset="normal" inherit="false" />
   </module>
+  <module path="NBidi.dll" snKey="C:\sv\NativeRTL\NBidi\nbidi_key.pfx" snKeyPass="xqx322dp">
+    <rule pattern="true" inherit="false" />
+  </module>
 </project>

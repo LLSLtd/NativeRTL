@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,14 +9,17 @@ using UnityEngine.UI;
 namespace NativeRTL
 {
     [RequireComponent(typeof(InputFieldRTLAdapter))]
-    class InputFieldRTLScrollHandler : MonoBehaviour
+    public class InputFieldRTLScrollHandler : MonoBehaviour
     {
         private InputFieldRTLAdapter m_inputFieldRtlAdapter;
 
         [SerializeField]
+        [Obfuscation(Exclude = true)]
         private ScrollRect m_scrollRect;
 
-        void Awake()
+        private bool m_destroyed = false;
+
+        public void Awake()
         {
             m_inputFieldRtlAdapter = GetComponent<InputFieldRTLAdapter>();
 
@@ -23,18 +27,20 @@ namespace NativeRTL
             m_inputFieldRtlAdapter.InputFieldRtl.onCaretPositionChangedEvent.AddListener(OnCaretPosChanged);
         }
 
+        public void OnDestroy()
+        {
+            m_destroyed = true;
+        }
+
         private void OnCaretPosChanged()
         {
-            // calculate the caret positon in normalized coordinates
+            if (m_destroyed)
+                return;
+
             var localCaretRect = m_inputFieldRtlAdapter.InputFieldRtl.CaretCursorInfo;
-            //Debug.Log("localCaretRect yMin: " + localCaretRect.min);
-            //Debug.Log("localCaretRect yMax: " + localCaretRect.max);
-            //Debug.Log("m_scrollContentTransform:" + m_scrollContentTransform.rect.min);
-            //Debug.Log("m_scrollContentTransform:" + m_scrollContentTransform.rect.max);
 
             var scrollContentTransfrom = m_scrollRect.content;
             var scrollViewTransform = m_scrollRect.viewport;
-
             var scrollViewTransformRect = scrollViewTransform.rect;
 
             var worldCaretPosMin = scrollContentTransfrom.TransformPoint(new Vector2(localCaretRect.min.x, localCaretRect.min.y));
@@ -46,15 +52,13 @@ namespace NativeRTL
             if (!scrollViewTransformRect.ContainsInclusive(localCaretPosMin))
             {
                 // caret is outside of visible view, calculate the correct scroll amount
-                var pointToNormalized = Rect.PointToNormalized(m_scrollRect.viewport.rect, localCaretPosMin);
-                Debug.Log("**************: " + pointToNormalized);
+                var pointToNormalized = Rect.PointToNormalized(m_scrollRect.content.rect, localCaretRect.min);
                 m_scrollRect.verticalNormalizedPosition = pointToNormalized.y;
             }
             else if (!scrollViewTransformRect.ContainsInclusive(localCaretPosMax))
             {
                 // caret is outside of visible view, calculate the correct scroll amount
-                var pointToNormalized = Rect.PointToNormalized(m_scrollRect.viewport.rect, localCaretPosMax);
-                Debug.Log("**************: " + pointToNormalized);
+                var pointToNormalized = Rect.PointToNormalized(m_scrollRect.content.rect, localCaretRect.max);
                 m_scrollRect.verticalNormalizedPosition = pointToNormalized.y;
             }
         }

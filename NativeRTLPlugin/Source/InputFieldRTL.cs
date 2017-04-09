@@ -9,9 +9,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-[assembly:
-    Obfuscation(Exclude = false, Feature = "+rename(mode=unicode, renPublic=false, renameArgs=true)",
-        ApplyToMembers = true)]
+[assembly:Obfuscation(Exclude = true, ApplyToMembers = true)]
 namespace NativeRTL
 {
     /// <summary>
@@ -65,10 +63,10 @@ namespace NativeRTL
 
         private string m_visualText;
 
-        [SerializeField]
         protected Text TextField;
         private Rect m_caretCursorInfo;
 
+        [Obfuscation(Exclude = true)]
         private static string Clipboard
         {
             get { return GUIUtility.systemCopyBuffer; }
@@ -143,6 +141,8 @@ namespace NativeRTL
 
         // ReSharper disable once InconsistentNaming
         internal CaretPositionChangedEvent onCaretPositionChangedEvent = new CaretPositionChangedEvent();
+        private bool m_isDestroyed = false;
+        private bool m_isDisabled;
 
         internal int CharacterLimit => InputFieldRtlAdapter.characterLimit;
 
@@ -192,7 +192,7 @@ namespace NativeRTL
 
         public bool IsDestroyed()
         {
-            return false;
+            return m_isDestroyed;
         }
 
         #endregion
@@ -248,6 +248,8 @@ namespace NativeRTL
 
         protected void OnDisable()
         {
+            m_isDisabled = true;
+
             if (m_mesh != null)
                 DestroyImmediate(m_mesh);
 
@@ -464,8 +466,11 @@ namespace NativeRTL
                     break;
 
                 case KeyCode.Backspace:
-                    m_logicalText = m_logicalText.Remove(LogicalCaretPosition - 1, 1);
-                    LogicalCaretPosition = Mathf.Max(0, --LogicalCaretPosition);
+                    if (m_logicalText.Length > 0)
+                    {
+                        m_logicalText = m_logicalText.Remove(LogicalCaretPosition - 1, 1);
+                        LogicalCaretPosition = Mathf.Max(0, --LogicalCaretPosition);
+                    }
                     break;
 
                 case KeyCode.Delete:
@@ -481,8 +486,11 @@ namespace NativeRTL
                             // Paste to the current logical position
                             var clipboardText = Clipboard;
 
-                            m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
+                            __doNotInvokeChangedEvents = true;
                             VisualText = string.Empty;
+                            m_logicalText = m_logicalText.Insert(LogicalCaretPosition, clipboardText.Replace("\r", ""));
+                            __doNotInvokeChangedEvents = false;
+
                             UpdateLabel();
                         }
                         break;
@@ -740,7 +748,7 @@ namespace NativeRTL
 
         private void GenerateCaret(VertexHelper vbo, Vector2 roundingOffset)
         {
-            if (!m_caretVisible)
+            if (!m_caretVisible || m_isDisabled)
                 return;
 
             if (m_CursorVerts == null)
@@ -784,9 +792,6 @@ namespace NativeRTL
             m_CursorVerts[2].position = new Vector3(startPosition.x + width, startPosition.y, 0.0f);
             m_CursorVerts[3].position = new Vector3(startPosition.x, startPosition.y, 0.0f);
 
-            m_caretCursorInfo = new Rect(startPosition.x - width, startPosition.y - height, width, height);
-            onCaretPositionChangedEvent.Invoke();
-
             if (roundingOffset != Vector2.zero)
                 for (var i = 0; i < m_CursorVerts.Length; i++)
                 {
@@ -794,6 +799,9 @@ namespace NativeRTL
                     uiv.position.x += roundingOffset.x;
                     uiv.position.y += roundingOffset.y;
                 }
+
+            m_caretCursorInfo = new Rect(startPosition.x - width, startPosition.y - height, width, height);
+            onCaretPositionChangedEvent.Invoke();
 
             vbo.AddUIVertexQuad(m_CursorVerts);
 
@@ -805,6 +813,8 @@ namespace NativeRTL
 
             startPosition.y = screenHeight - startPosition.y;
             //  Input.compositionCursorPos = startPosition;
+
+            
         }
 
         /// <summary>
@@ -828,6 +838,11 @@ namespace NativeRTL
 
             m_caretVisible = true;
             MarkGeometryAsDirty();
+        }
+
+        void OnDestroy()
+        {
+            m_isDestroyed = true;
         }
 
         public void OnDeselect(BaseEventData eventData)

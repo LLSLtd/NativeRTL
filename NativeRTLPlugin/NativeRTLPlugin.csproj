@@ -74,7 +74,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Plugins\NativeRTL\</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+echo DEBUG BUILD
+xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Plugins\NativeRTL\
+) ELSE (
+   echo RELEASE
+
+   C:\Users\esvee\Downloads\ConfuserEx_bin\Confuser.CLI.exe $(ProjectDir)Confuser.crproj
+   xcopy /y $(TargetDir)Confused\*.* $(ProjectDir)..\TestProject\Assets\NativeRTL\Plugins\NativeRTL\
+)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

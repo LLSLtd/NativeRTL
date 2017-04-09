@@ -26,7 +26,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
-[assembly: Obfuscation(Exclude = false, Feature = "namespace('Test'):-rename")]
+[assembly: Obfuscation(Exclude = false, Feature = "+rename(mode=unicode, renPublic=false, renameArgs=true)", ApplyToMembers = true)]
 namespace NBidi
 {
     /// <summary>
