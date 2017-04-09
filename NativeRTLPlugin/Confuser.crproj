@@ -1,8 +1,8 @@
-<project outputDir="C:\sv\NativeRTL\NativeRTLPlugin\bin\Release\Confused" baseDir="C:\sv\NativeRTL\NativeRTLPlugin\bin\Release" debug="true" xmlns="http://confuser.codeplex.com">
-  <module path="NativeRTLPlugin.dll" snKey="C:\sv\NativeRTL\NativeRTLPlugin\native_rtl_key.pfx" snKeyPass="xqx322dp">
+<project outputDir="C:\NativeRTL\NativeRTLPlugin\bin\Release\Confused" baseDir="C:\NativeRTL\NativeRTLPlugin\bin\Release" debug="true" xmlns="http://confuser.codeplex.com">
+  <module path="NativeRTLPlugin.dll" snKey="C:\NativeRTL\NativeRTLPlugin\native_rtl_key.pfx" snKeyPass="xqx322dp">
     <rule pattern="true" preset="normal" inherit="false" />
   </module>
-  <module path="NBidi.dll" snKey="C:\sv\NativeRTL\NBidi\nbidi_key.pfx" snKeyPass="xqx322dp">
+  <module path="NBidi.dll" snKey="C:\NativeRTL\NBidi\nbidi_key.pfx" snKeyPass="xqx322dp">
     <rule pattern="true" preset="minimum" inherit="false" />
   </module>
 </project>

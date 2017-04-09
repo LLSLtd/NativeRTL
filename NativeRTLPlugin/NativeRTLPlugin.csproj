@@ -76,12 +76,11 @@
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Debug (
 echo DEBUG BUILD
-xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Plugins\NativeRTL\
+xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Assets\Plugins\NativeRTL\
 ) ELSE (
    echo RELEASE
-
-   C:\Users\esvee\Downloads\ConfuserEx_bin\Confuser.CLI.exe $(ProjectDir)Confuser.crproj
-   xcopy /y $(TargetDir)Confused\*.* $(ProjectDir)..\TestProject\Assets\NativeRTL\Plugins\NativeRTL\
+   C:\Confuser_ex\Confuser.CLI.exe $(ProjectDir)Confuser.crproj
+   xcopy /y $(TargetDir)Confused\*.* $(ProjectDir)..\TestProject\Assets\NativeRTL\Assets\Plugins\NativeRTL\
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -62,7 +62,7 @@
   <PropertyGroup>
     <PostBuildEvent>if $(ConfigurationName) == Debug (
 echo DEBUG BUILD
-xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Plugins\NativeRTL\
+xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Assets\Plugins\NativeRTL\
 ) ELSE (
    echo RELEASE
 )</PostBuildEvent>

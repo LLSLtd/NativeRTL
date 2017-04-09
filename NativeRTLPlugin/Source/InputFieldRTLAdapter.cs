@@ -40,6 +40,7 @@ namespace NativeRTL
         public void Awake()
         {
             text = base.text;
+            UpdateLabel();
         }
 
         public new string text
