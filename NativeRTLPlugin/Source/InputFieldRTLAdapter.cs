@@ -9,7 +9,6 @@ using UnityEngine.UI;
 namespace NativeRTL
 {
     [AddComponentMenu("Input/Native RTL Input Field Adapter")]
-    [RequireComponent(typeof(InputFieldRTL))]
     public class InputFieldRTLAdapter : InputField
     {
         private InputFieldRTL m_inputFieldRTL;
@@ -18,7 +17,8 @@ namespace NativeRTL
 
         private InputFieldRTL InitInputField()
         {
-            m_inputFieldRTL = gameObject.GetComponent<InputFieldRTL>();
+            m_inputFieldRTL = gameObject.GetComponent<InputFieldRTL>() ?? gameObject.AddComponent<InputFieldRTL>();
+
             m_inputFieldRTL.textComponent = base.textComponent;
 
             base.onValueChanged.AddListener(str =>
