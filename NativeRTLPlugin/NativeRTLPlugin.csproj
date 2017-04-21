@@ -62,6 +62,7 @@
     <Compile Include="Source\InputFieldRTL.cs" />
     <Compile Include="Source\InputFieldRTLAdapter.cs" />
     <Compile Include="Source\SetPropertyUtility.cs" />
+    <Compile Include="Source\TextRTL.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="native_rtl_key.pfx" />

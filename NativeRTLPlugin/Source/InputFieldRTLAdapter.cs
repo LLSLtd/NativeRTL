@@ -107,10 +107,12 @@ namespace NativeRTL
 
         protected override void OnEnable()
         {
+
         }
 
         protected override void OnDisable()
         {
+
         }
 
         protected override void LateUpdate()

@@ -246,6 +246,18 @@ namespace NativeRTL
             m_updatingFromRectTransformChanged = false;
         }
 
+        protected void OnEnable()
+        {
+            if (TextField != null)
+            {
+                TextField.RegisterDirtyVerticesCallback(MarkGeometryAsDirty);
+                TextField.RegisterDirtyVerticesCallback(UpdateLabel);
+                UpdateLabel();
+            }
+
+            m_isDisabled = false;
+        }
+
         protected void OnDisable()
         {
             m_isDisabled = true;
