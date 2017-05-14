@@ -19,13 +19,15 @@ namespace NativeRTL
         {
             m_inputFieldRTL = gameObject.GetComponent<InputFieldRTL>() ?? gameObject.AddComponent<InputFieldRTL>();
 
-            m_inputFieldRTL.textComponent = base.textComponent;
+            m_inputFieldRTL.textComponent = textComponent;
 
             onValueChanged.AddListener(str =>
             {
                 if (InputFieldRtl.__internalUpdate)
                 {
+                    InputFieldRtl.__doNotInvokeChangedEvents = true;
                     base.text = str;
+                    InputFieldRtl.__doNotInvokeChangedEvents = false;
                     return;
                 }
 

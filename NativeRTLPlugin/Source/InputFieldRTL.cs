@@ -251,7 +251,7 @@ namespace NativeRTL
             if (TextField != null)
             {
                 TextField.RegisterDirtyVerticesCallback(MarkGeometryAsDirty);
-                TextField.RegisterDirtyVerticesCallback(UpdateLabel);
+                // TextField.RegisterDirtyVerticesCallback(UpdateLabel);
                 UpdateLabel();
             }
 
