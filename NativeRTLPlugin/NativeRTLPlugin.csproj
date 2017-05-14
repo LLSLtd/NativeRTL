@@ -80,7 +80,7 @@ echo DEBUG BUILD
 xcopy /y $(TargetDir)$(TargetName).* $(ProjectDir)..\TestProject\Assets\NativeRTL\Assets\Plugins\NativeRTL\
 ) ELSE (
    echo RELEASE
-   C:\Confuser_ex\Confuser.CLI.exe $(ProjectDir)Confuser.crproj
+C:\Users\esvee\Downloads\ConfuserEx_bin\Confuser.CLI.exe $(ProjectDir)Confuser.crproj
    xcopy /y $(TargetDir)Confused\*.* $(ProjectDir)..\TestProject\Assets\NativeRTL\Assets\Plugins\NativeRTL\
 )</PostBuildEvent>
   </PropertyGroup>
