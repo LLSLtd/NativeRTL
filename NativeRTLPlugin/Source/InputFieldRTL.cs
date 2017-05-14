@@ -515,11 +515,15 @@ namespace NativeRTL
         private bool IsValidChar(char c)
         {
             // Delete key on mac
-            if (c == 127)
-                return false;
-            // Accept newline and tab
-            if (c == '\t' || c == '\n')
-                return true;
+            switch (c)
+            {
+                case (char)127:
+                case '\t':
+                    return false;
+                case '\n':
+                    return true;
+            }
+            // Accept newline
 
             return TextField.font.HasCharacter(c);
         }
@@ -556,6 +560,9 @@ namespace NativeRTL
 
         private void UpdateLabel()
         {
+            if (__internalUpdate)
+                return;
+
             //if (!BabelLicenseManager.IsLicensed(typeof(License)))
             //    throw new Exception("RTL is not licensed!");
 

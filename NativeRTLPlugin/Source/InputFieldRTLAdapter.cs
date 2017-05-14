@@ -21,7 +21,7 @@ namespace NativeRTL
 
             m_inputFieldRTL.textComponent = base.textComponent;
 
-            base.onValueChanged.AddListener(str =>
+            onValueChanged.AddListener(str =>
             {
                 if (InputFieldRtl.__internalUpdate)
                 {
